@@ -12,8 +12,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="{{isActiveRoute regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
-                    <li><a href="#">Properties</a></li>
+                    <li class="{{isActivePath regex='home'}}"><a href="{{pathFor 'home'}}">Home</a></li>
+                    <li class="{{isActivePath regex='properties'}}"><a href="{{pathFor 'propertiesList'}}">Properties</a></li>
                     <li><a href="#">Tenants</a></li>
                     <li><a href="#">Transactions</a></li>
                     <li><a href="#">Documents</a></li>
