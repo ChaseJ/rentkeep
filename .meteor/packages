@@ -10,3 +10,7 @@ iron:router
 accounts-password
 useraccounts:bootstrap
 sacha:spin
+fourseven:scss
+msavin:mongol
+msavin:jetsetter
+zimme:iron-router-active
