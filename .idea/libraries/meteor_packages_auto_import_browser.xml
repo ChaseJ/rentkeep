@@ -55,7 +55,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/npm-bcrypt/0.7.8_2/web.browser/packages/npm-bcrypt.js" />
         <item url="file://$USER_HOME$/.meteor/packages/email/1.0.6/web.browser/packages/email.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.3/web.browser/packages/fastclick.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/insecure/1.0.3/web.browser/packages/insecure.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ejson/1.0.6/web.browser/packages/ejson.js" />
         <item url="file://$USER_HOME$/.meteor/packages/observe-sequence/1.0.6/web.browser/packages/observe-sequence.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ordered-dict/1.0.3/web.browser/packages/ordered-dict.js" />
@@ -75,6 +74,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.3/web.browser/packages/blaze-tools.js" />
         <item url="file://$USER_HOME$/.meteor/packages/localstorage/1.0.3/web.browser/packages/localstorage.js" />
         <item url="file://$USER_HOME$/.meteor/packages/boilerplate-generator/1.0.3/web.browser/packages/boilerplate-generator.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/ongoworks_security/1.1.0/web.browser/packages/ongoworks_security.js" />
         <item url="file://$USER_HOME$/.meteor/packages/useraccounts_bootstrap/1.10.0/web.browser/packages/useraccounts_bootstrap.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp/1.1.0/web.browser/packages/ddp.js" />
         <item url="file://$USER_HOME$/.meteor/packages/underscore/1.0.3/web.browser/packages/underscore.js" />
@@ -144,7 +144,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/email/1.0.6/web.browser/packages/email.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.3/web.browser/packages/fastclick.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ejson/1.0.6/web.browser/packages/ejson.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/insecure/1.0.3/web.browser/packages/insecure.js" />
       <root url="file://$USER_HOME$/.meteor/packages/observe-sequence/1.0.6/web.browser/packages/observe-sequence.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ordered-dict/1.0.3/web.browser/packages/ordered-dict.js" />
       <root url="file://$USER_HOME$/.meteor/packages/random/1.0.3/web.browser/packages/random.js" />
@@ -163,6 +162,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.3/web.browser/packages/blaze-tools.js" />
       <root url="file://$USER_HOME$/.meteor/packages/localstorage/1.0.3/web.browser/packages/localstorage.js" />
       <root url="file://$USER_HOME$/.meteor/packages/boilerplate-generator/1.0.3/web.browser/packages/boilerplate-generator.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/ongoworks_security/1.1.0/web.browser/packages/ongoworks_security.js" />
       <root url="file://$USER_HOME$/.meteor/packages/useraccounts_bootstrap/1.10.0/web.browser/packages/useraccounts_bootstrap.js" />
       <root url="file://$USER_HOME$/.meteor/packages/underscore/1.0.3/web.browser/packages/underscore.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp/1.1.0/web.browser/packages/ddp.js" />

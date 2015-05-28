@@ -1,0 +1,1 @@
+Properties.permit('insert').ifLoggedIn().apply();
