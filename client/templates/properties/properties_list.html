@@ -5,9 +5,22 @@
         </div>
         <div class="col-xs-4">
             {{>autoformModals}}
-            {{#afModal class="btn btn-default pull-right heading-btn" buttonContent="Save" collection="Properties" operation="insert"}}
+            {{#afModal class="btn btn-default pull-right heading-btn" formId="insertPropertyForm" buttonContent="Save" collection="Properties" operation="insert"}}
                 Add Property
             {{/afModal}}
         </div>
     </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{#each properties}}
+                {{> propertyItem }}
+            {{/each}}
+        </tbody>
+    </table>
 </template>
