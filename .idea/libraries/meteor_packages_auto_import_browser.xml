@@ -2,8 +2,10 @@
   <library name="meteor-packages-auto-import-browser" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.8.4/web.browser/packages/momentjs:moment.js" />
         <item url="file://$USER_HOME$/.meteor/packages/softwarerero_accounts-t9n/1.0.9/web.browser/packages/softwarerero_accounts-t9n.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_url/1.0.7/web.browser/packages/iron:url.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.3.0/web.browser/packages/aldeed:simple-schema.js" />
         <item url="file://$USER_HOME$/.meteor/packages/sha/1.0.3/web.browser/packages/sha.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_router/1.0.7/web.browser/packages/iron:router.js" />
         <item url="file://$USER_HOME$/.meteor/packages/spacebars-compiler/1.0.6/web.browser/packages/spacebars-compiler.js" />
@@ -14,24 +16,30 @@
         <item url="file://$USER_HOME$/.meteor/packages/srp/1.0.3/web.browser/packages/srp.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dburles_mongo-collection-instances/0.3.3/web.browser/packages/dburles:mongo-collection-instances.js" />
         <item url="file://$USER_HOME$/.meteor/packages/json/1.0.3/web.browser/packages/json.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.3.2/web.browser/packages/aldeed:collection2.js" />
         <item url="file://$USER_HOME$/.meteor/packages/babrahams_editable-json/0.4.3/web.browser/packages/babrahams_editable-json.js" />
         <item url="file://$USER_HOME$/.meteor/packages/jquery/1.11.3_2/web.browser/packages/jquery.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/3.4.3/web.browser/packages/aldeed:template-extension.js" />
         <item url="file://$USER_HOME$/.meteor/packages/tracker/1.0.7/web.browser/packages/tracker.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/aldeed_autoform/5.2.0/web.browser/packages/aldeed_autoform.js" />
         <item url="file://$USER_HOME$/.meteor/packages/base64/1.0.3/web.browser/packages/base64.js" />
         <item url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/1.0.13/web.browser/packages/msavin:jetsetter.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_core/1.0.7/web.browser/packages/iron:core.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/mpowaga_string-template/0.1.0/web.browser/packages/mpowaga:string-template.js" />
         <item url="file://$USER_HOME$/.meteor/packages/retry/1.0.3/web.browser/packages/retry.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_toykit/0.5.0/web.browser/packages/meteortoys_toykit.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reload/1.1.3/web.browser/packages/reload.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.7/web.browser/packages/iron:controller.js" />
         <item url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.3/web.browser/packages/binary-heap.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/autopublish/1.0.3/web.browser/packages/autopublish.js" />
         <item url="file://$USER_HOME$/.meteor/packages/lai_collection-extensions/0.1.3/web.browser/packages/lai:collection-extensions.js" />
         <item url="file://$USER_HOME$/.meteor/packages/routepolicy/1.0.5/web.browser/packages/routepolicy.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.1.2/web.browser/packages/blaze.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/yogiben_autoform-modals/0.3.5/web.browser/packages/yogiben_autoform-modals.js" />
         <item url="file://$USER_HOME$/.meteor/packages/id-map/1.0.3/web.browser/packages/id-map.js" />
         <item url="file://$USER_HOME$/.meteor/packages/gwendall_session-json/0.1.7/web.browser/packages/gwendall:session-json.js" />
         <item url="file://$USER_HOME$/.meteor/packages/http/1.1.0/web.browser/packages/http.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/raix_handlebar-helpers/0.2.4/web.browser/packages/raix:handlebar-helpers.js" />
         <item url="file://$USER_HOME$/.meteor/packages/accounts-base/1.2.0/web.browser/packages/accounts-base.js" />
         <item url="file://$USER_HOME$/.meteor/packages/service-configuration/1.0.4/web.browser/packages/service-configuration.js" />
         <item url="file://$USER_HOME$/.meteor/packages/zimme_iron-router-active/1.0.4/web.browser/packages/zimme_iron-router-active.js" />
@@ -82,7 +90,9 @@
     </properties>
     <CLASSES>
       <root url="file://$USER_HOME$/.meteor/packages/softwarerero_accounts-t9n/1.0.9/web.browser/packages/softwarerero_accounts-t9n.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/momentjs_moment/2.8.4/web.browser/packages/momentjs:moment.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_url/1.0.7/web.browser/packages/iron:url.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/aldeed_simple-schema/1.3.0/web.browser/packages/aldeed:simple-schema.js" />
       <root url="file://$USER_HOME$/.meteor/packages/sha/1.0.3/web.browser/packages/sha.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_router/1.0.7/web.browser/packages/iron:router.js" />
       <root url="file://$USER_HOME$/.meteor/packages/spacebars-compiler/1.0.6/web.browser/packages/spacebars-compiler.js" />
@@ -93,24 +103,30 @@
       <root url="file://$USER_HOME$/.meteor/packages/launch-screen/1.0.2/web.browser/packages/launch-screen.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dburles_mongo-collection-instances/0.3.3/web.browser/packages/dburles:mongo-collection-instances.js" />
       <root url="file://$USER_HOME$/.meteor/packages/json/1.0.3/web.browser/packages/json.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.3.2/web.browser/packages/aldeed:collection2.js" />
       <root url="file://$USER_HOME$/.meteor/packages/babrahams_editable-json/0.4.3/web.browser/packages/babrahams_editable-json.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/3.4.3/web.browser/packages/aldeed:template-extension.js" />
       <root url="file://$USER_HOME$/.meteor/packages/jquery/1.11.3_2/web.browser/packages/jquery.js" />
       <root url="file://$USER_HOME$/.meteor/packages/tracker/1.0.7/web.browser/packages/tracker.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/aldeed_autoform/5.2.0/web.browser/packages/aldeed_autoform.js" />
       <root url="file://$USER_HOME$/.meteor/packages/base64/1.0.3/web.browser/packages/base64.js" />
       <root url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/1.0.13/web.browser/packages/msavin:jetsetter.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_core/1.0.7/web.browser/packages/iron:core.js" />
       <root url="file://$USER_HOME$/.meteor/packages/retry/1.0.3/web.browser/packages/retry.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/mpowaga_string-template/0.1.0/web.browser/packages/mpowaga:string-template.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reload/1.1.3/web.browser/packages/reload.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_toykit/0.5.0/web.browser/packages/meteortoys_toykit.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_controller/1.0.7/web.browser/packages/iron:controller.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/autopublish/1.0.3/web.browser/packages/autopublish.js" />
       <root url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.3/web.browser/packages/binary-heap.js" />
       <root url="file://$USER_HOME$/.meteor/packages/routepolicy/1.0.5/web.browser/packages/routepolicy.js" />
       <root url="file://$USER_HOME$/.meteor/packages/lai_collection-extensions/0.1.3/web.browser/packages/lai:collection-extensions.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/yogiben_autoform-modals/0.3.5/web.browser/packages/yogiben_autoform-modals.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.1.2/web.browser/packages/blaze.js" />
       <root url="file://$USER_HOME$/.meteor/packages/id-map/1.0.3/web.browser/packages/id-map.js" />
       <root url="file://$USER_HOME$/.meteor/packages/gwendall_session-json/0.1.7/web.browser/packages/gwendall:session-json.js" />
       <root url="file://$USER_HOME$/.meteor/packages/http/1.1.0/web.browser/packages/http.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/raix_handlebar-helpers/0.2.4/web.browser/packages/raix:handlebar-helpers.js" />
       <root url="file://$USER_HOME$/.meteor/packages/zimme_iron-router-active/1.0.4/web.browser/packages/zimme_iron-router-active.js" />
       <root url="file://$USER_HOME$/.meteor/packages/service-configuration/1.0.4/web.browser/packages/service-configuration.js" />
       <root url="file://$USER_HOME$/.meteor/packages/accounts-base/1.2.0/web.browser/packages/accounts-base.js" />

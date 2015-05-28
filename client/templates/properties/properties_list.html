@@ -4,7 +4,10 @@
             <h1>Properties</h1>
         </div>
         <div class="col-xs-4">
-            <a class="btn btn-default pull-right heading-btn" href="{{pathFor 'propertyAdd'}}" role="button">Add Property</a>
+            {{>autoformModals}}
+            {{#afModal class="btn btn-default pull-right heading-btn" buttonContent="Save" collection="Properties" operation="insert"}}
+                Add Property
+            {{/afModal}}
         </div>
     </div>
 </template>
