@@ -55,6 +55,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.3/os/packages/blaze-tools.js" />
         <item url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.3/os/packages/binary-heap.js" />
         <item url="file://$USER_HOME$/.meteor/packages/localstorage/1.0.3/os/packages/localstorage.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/insecure/1.0.3/os/packages/insecure.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.1.2/os/packages/blaze.js" />
         <item url="file://$USER_HOME$/.meteor/packages/logging/1.0.7/os/packages/logging.js" />
         <item url="file://$USER_HOME$/.meteor/packages/autoupdate/1.2.1/os/packages/autoupdate.js" />
@@ -141,6 +142,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/ordered-dict/1.0.3/os/packages/ordered-dict.js" />
       <root url="file://$USER_HOME$/.meteor/packages/binary-heap/1.0.3/os/packages/binary-heap.js" />
       <root url="file://$USER_HOME$/.meteor/packages/localstorage/1.0.3/os/packages/localstorage.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/insecure/1.0.3/os/packages/insecure.js" />
       <root url="file://$USER_HOME$/.meteor/packages/logging/1.0.7/os/packages/logging.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.1.2/os/packages/blaze.js" />
       <root url="file://$USER_HOME$/.meteor/packages/autoupdate/1.2.1/os/packages/autoupdate.js" />
