@@ -1,3 +1,9 @@
 <template name="propertyView">
     <h1>{{property.name}}</h1>
+    <h4>{{property.street}}</h4>
+    <h4>{{property.city}}, {{property.state}} {{property.postalCode}}</h4>
+    {{>autoformModals}}
+    {{#afModal class="btn btn-link" title="Edit Property" buttonContent="Save" collection="Properties" operation="update" doc=property._id}}
+        edit
+    {{/afModal}}
 </template>
