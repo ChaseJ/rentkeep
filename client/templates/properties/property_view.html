@@ -1,9 +1,19 @@
 <template name="propertyView">
     <h1>{{property.name}}</h1>
-    <h4>{{property.street}}</h4>
-    <h4>{{property.city}}, {{property.state}} {{property.postalCode}}</h4>
-    {{>autoformModals}}
-    {{#afModal class="btn btn-link" title="Edit Property" buttonContent="Save" collection="Properties" operation="update" doc=property._id}}
-        edit
-    {{/afModal}}
+    <div>
+        <img src="" class="img-thumbnail pull-left" style="width: 140px; height: 140px;">
+        <div class="pull-left">
+            <h4>{{property.street}}</h4>
+            <h4>{{property.city}}, {{property.state}} {{property.postalCode}}</h4>
+            {{>autoformModals}}
+            {{#afModal class="btn btn-link" title="Edit Property" buttonContent="Save" collection="Properties" operation="update" doc=property._id}}
+                edit
+            {{/afModal}}
+            {{#afModal class="btn btn-link" title="Delete Property" formId="removePropertyForm" buttonContent="Delete" closeButtonContent="Cancel"
+                prompt="Are you sure you want to delete this property? This process cannot be undone." collection="Properties"
+                operation="remove" doc=property._id onSuccess=removePropertyHook}}
+                delete
+            {{/afModal}}
+        </div>
+    </div>
 </template>

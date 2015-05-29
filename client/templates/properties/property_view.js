@@ -14,5 +14,14 @@ Template.propertyView.onCreated(function () {
 Template.propertyView.helpers({
     property: function () {
         return Template.instance().property();
+    },
+    removePropertyHook: function() {
+        //When the operation is remove, I must use the onSuccess parameter,
+        //instead of just adding a onSuccess hook
+        return function(){
+            $('#afModal').on('hidden.bs.modal', function () {
+                Router.go('propertiesList');
+            });
+        };
     }
 });
