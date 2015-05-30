@@ -1,14 +1,15 @@
 Template.propertyView.onCreated(function () {
     //Initialization
     var instance = this;
+    var propertyId = Router.current().params._id;
 
     //Subscriptions
-    instance.subscribe('property', Router.current().params._id);
-    instance.subscribe('unitsByProperty', Router.current().params._id);
+    instance.subscribe('property', propertyId);
+    instance.subscribe('unitsByProperty', propertyId);
 
     //Cursors
     instance.property = function() {
-        return Properties.findOne(Router.current().params._id);
+        return Properties.findOne(propertyId);
     }
 });
 
