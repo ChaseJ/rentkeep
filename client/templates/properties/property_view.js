@@ -4,6 +4,7 @@ Template.propertyView.onCreated(function () {
 
     //Subscriptions
     instance.subscribe('property', Router.current().params._id);
+    instance.subscribe('unitsByProperty', Router.current().params._id);
 
     //Cursors
     instance.property = function() {

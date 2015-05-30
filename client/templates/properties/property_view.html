@@ -1,11 +1,11 @@
 <template name="propertyView">
+    {{>autoformModals}}
     <h1>{{property.name}}</h1>
-    <div>
+    <div class="clearfix">
         <img src="" class="img-thumbnail pull-left" style="width: 140px; height: 140px;">
         <div class="pull-left">
             <h4>{{property.street}}</h4>
             <h4>{{property.city}}, {{property.state}} {{property.postalCode}}</h4>
-            {{>autoformModals}}
             {{#afModal class="btn btn-link" title="Edit Property" buttonContent="Save" collection="Properties" operation="update" doc=property._id}}
                 edit
             {{/afModal}}
@@ -15,5 +15,11 @@
                 delete
             {{/afModal}}
         </div>
+    </div>
+    <div>
+        <br><br><br>
+        {{#afModal class="btn btn-default" title="Add Unit" formId="insertUnitForm" buttonContent="Save" collection="Units" operation="insert" data=property}}
+            Add Unit
+        {{/afModal}}
     </div>
 </template>
