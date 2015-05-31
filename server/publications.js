@@ -12,6 +12,11 @@ Meteor.publish('unitsByProperty', function(propertyId) {
     return Units.find({propertyId: propertyId});
 });
 
+Meteor.publish('unit', function(unitId) {
+    check(unitId, String);
+    return Units.find({_id: unitId});
+});
+
 Meteor.publish('tenants', function() {
     return Tenants.find({userId: this.userId});
 });
