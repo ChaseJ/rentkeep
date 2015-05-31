@@ -1,0 +1,27 @@
+<template name="tenantsList">
+    <div class="row">
+        <div class="col-xs-8">
+            <h1>Tenants</h1>
+        </div>
+        <div class="col-xs-4">
+            {{>autoformModals}}
+            {{#afModal class="btn btn-default pull-right heading-btn" title="Add Tenant" formId="insertTenantForm" buttonContent="Save" collection="Tenants" operation="insert"}}
+                Add Tenant
+            {{/afModal}}
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each tenants}}
+            {{> tenantRow }}
+        {{/each}}
+        </tbody>
+    </table>
+</template>
