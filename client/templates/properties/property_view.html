@@ -22,4 +22,18 @@
             Add Unit
         {{/afModal}}
     </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Unit Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each units}}
+            <tr>
+                <td>{{unitNo}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </template>

@@ -10,7 +10,10 @@ Template.propertyView.onCreated(function () {
     //Cursors
     instance.property = function() {
         return Properties.findOne(propertyId);
-    }
+    };
+    instance.units = function() {
+        return Units.find();
+    };
 });
 
 Template.propertyView.helpers({
@@ -25,5 +28,8 @@ Template.propertyView.helpers({
                 Router.go('propertiesList');
             });
         };
+    },
+    units: function () {
+        return Template.instance().units();
     }
 });
