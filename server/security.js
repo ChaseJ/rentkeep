@@ -15,3 +15,6 @@ Units.permit(['update', 'remove']).ifIsCurrentUser().apply();
 
 Tenants.permit('insert').ifLoggedIn().apply();
 Tenants.permit(['update', 'remove']).ifIsCurrentUser().apply();
+
+Leases.permit('insert').ifLoggedIn().apply();
+Leases.permit(['update', 'remove']).ifIsCurrentUser().apply();
