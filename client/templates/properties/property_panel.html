@@ -1,0 +1,22 @@
+<template name="propertyPanel">
+
+    {{#if singleUnitProperty}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{street}} <small>{{city}}, {{state}} {{postalCode}}</small></h3>
+            </div>
+        </div>
+    {{else}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{street}} <small>{{city}}, {{state}} {{postalCode}}</small></h3>
+            </div>
+            <ul class="list-group">
+                {{#each units}}
+                    <li class="list-group-item">{{unitNo}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+
+</template>

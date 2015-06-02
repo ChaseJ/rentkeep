@@ -1,4 +1,5 @@
 <template name="propertiesList">
+
     <div class="page-header clearfix">
         <div class="pull-left">
             <h1 class="page-header-fix">Properties</h1>
@@ -10,17 +11,9 @@
             {{/afModal}}
         </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-        </tr>
-        </thead>
-        <tbody>
-            {{#each properties}}
-                {{> propertyRow }}
-            {{/each}}
-        </tbody>
-    </table>
+
+    {{#each properties}}
+        {{> propertyPanel }}
+    {{/each}}
+
 </template>
