@@ -1,11 +1,11 @@
 <template name="propertiesList">
-    <div class="row">
-        <div class="col-xs-8">
-            <h1>Properties</h1>
+    <div class="page-header clearfix">
+        <div class="pull-left">
+            <h1 class="page-header-fix">Properties</h1>
         </div>
-        <div class="col-xs-4">
+        <div class="pull-right">
             {{>autoformModals}}
-            {{#afModal class="btn btn-default pull-right heading-btn" title="Add Property" formId="insertPropertyForm" buttonContent="Save" collection="Properties" operation="insert"}}
+            {{#afModal class="btn btn-default" title="Add Property" formId="insertPropertyForm" buttonContent="Save" collection="Properties" operation="insert"}}
                 Add Property
             {{/afModal}}
         </div>
