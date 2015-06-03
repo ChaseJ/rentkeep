@@ -1,5 +1,5 @@
 <template name="addPropertyModal">
-    <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addPropertyModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -7,28 +7,35 @@
                     <h4 class="modal-title">Add Property</h4>
                 </div>
 
-                {{#autoForm collection="Properties" id="insertPropertyForm" type="insert"}}
-                    <div class="modal-body">
-                        {{> afQuickField name='street'}}
-                        {{> afQuickField name='city'}}
-                        {{> afQuickField name='state'}}
-                        {{> afQuickField name='postalCode'}}
-                        <div class="checkbox">
-                            <label>
-                                <input id="multipleUnitsCheckbox" type="checkbox"> Yes, this property has multiple units.
-                            </label>
+                <div class="show" id="propertyTab">
+                    {{#autoForm collection="Properties" id="insertPropertyForm" type="insert"}}
+                        <div class="modal-body">
+                            {{> afQuickField name='street'}}
+                            {{> afQuickField name='city'}}
+                            {{> afQuickField name='state'}}
+                            {{> afQuickField name='postalCode'}}
+                            <div class="checkbox">
+                                <label>
+                                    <input id="multipleUnitsCheckbox" type="checkbox"> Yes, this property has multiple units.
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        {{#if isMultipleUnits}}
-                            <button type="button" class="btn btn-primary">Next</button>
-                        {{else}}
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        {{/if}}
-                    </div>
-                {{/autoForm}}
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            {{#if isMultipleUnits}}
+                                <button id="nextBtn" type="button" class="btn btn-primary">Next</button>
+                            {{else}}
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            {{/if}}
+                        </div>
+                    {{/autoForm}}
+                </div>
+
+                <div class="hidden" id="unitTab">
+                    <h1>Unit Tab</h1>
+                </div>
             </div>
+
         </div>
     </div>
 </template>
