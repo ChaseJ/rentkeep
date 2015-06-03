@@ -1,7 +1,7 @@
 Template.addPropertyModal.onCreated(function() {
-    //Initialization
     var instance = this;
     instance.isMultipleUnits = new ReactiveVar(false);
+    instance.unitArray = new ReactiveVar([{id:0,unitNo:''},{id:1,unitNo:''}])
 
 });
 
@@ -9,7 +9,6 @@ Template.addPropertyModal.onRendered(function() {
     //When modal is closed, reset which tabs will show when opened
     $('#addPropertyModal').on('hidden.bs.modal', function (e) {
         e.preventDefault();
-        console.log("Hidden ran");
         $('#propertyTab').removeClass('hidden').addClass('show');
         $('#unitTab').removeClass('show').addClass('hidden');
     });
@@ -31,6 +30,30 @@ Template.addPropertyModal.events({
             $('#propertyTab').removeClass('show').addClass('hidden');
             $('#unitTab').removeClass('hidden').addClass('show');
         }
+    },
+    'change [name=unitNo]' : function (e) {
+        e.preventDefault();
+        this.unitNo = $(e.target).val();
+        var unitArray = Template.instance().unitArray.get();
+        unitArray[this.id] = this;
+        Template.instance().unitArray.set(unitArray);
+    },
+    'click .form-add-item': function(e){
+        e.preventDefault();
+        var unitArray = Template.instance().unitArray.get();
+        unitArray.push({id:unitArray.length, unitNo:''});
+        Template.instance().unitArray.set(unitArray);
+    },
+    'click .form-remove-item' : function (e) {
+        e.preventDefault();
+        var id = this.id;
+        var unitArray = Template.instance().unitArray.get();
+        unitArray.splice(id, 1);
+        for(var i = 0; i < unitArray.length; i++){
+            unitArray[i].id = i;
+        }
+        Template.instance().unitArray.set(unitArray);
+        console.log(Template.instance().unitArray.get());
     }
 
 });
@@ -38,5 +61,8 @@ Template.addPropertyModal.events({
 Template.addPropertyModal.helpers({
     'isMultipleUnits': function () {
         return Template.instance().isMultipleUnits.get();
+    },
+    'unitArray': function() {
+        return Template.instance().unitArray.get();
     }
 });
