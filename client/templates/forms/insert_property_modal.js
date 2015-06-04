@@ -1,20 +1,20 @@
-Template.addPropertyModal.onCreated(function() {
+Template.insertPropertyModal.onCreated(function() {
     var instance = this;
     instance.isMultipleUnits = new ReactiveVar(false);
     instance.unitArray = new ReactiveVar([{id:0,unitNo:''},{id:1,unitNo:''}])
 
 });
 
-Template.addPropertyModal.onRendered(function() {
+Template.insertPropertyModal.onRendered(function() {
     //When modal is closed, reset which tabs will show when opened
-    $('#addPropertyModal').on('hidden.bs.modal', function (e) {
+    $('#insertPropertyModal').on('hidden.bs.modal', function (e) {
         e.preventDefault();
         $('#propertyTab').removeClass('hidden').addClass('show');
         $('#unitTab').removeClass('show').addClass('hidden');
     });
 });
 
-Template.addPropertyModal.events({
+Template.insertPropertyModal.events({
     'change #multipleUnitsCheckbox': function(e) {
         e.preventDefault();
         if (e.target.checked) {
@@ -72,13 +72,13 @@ Template.addPropertyModal.events({
             if (error) {
                 return alert(error.reason);
             } else {
-                $('#addPropertyModal').modal('hide');
+                $('#insertPropertyModal').modal('hide');
             }
         });
     }
 });
 
-Template.addPropertyModal.helpers({
+Template.insertPropertyModal.helpers({
     'isMultipleUnits': function () {
         return Template.instance().isMultipleUnits.get();
     },
