@@ -51,14 +51,12 @@ minimongo@1.0.8
 mobile-status-bar@1.0.3
 momentjs:moment@2.8.4
 mongo@1.1.0
-mpowaga:string-template@0.1.0
 msavin:jetsetter@1.0.13
 msavin:mongol@1.0.70
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ongoworks:security@1.1.0
 ordered-dict@1.0.3
-raix:handlebar-helpers@0.2.4
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
@@ -84,5 +82,4 @@ useraccounts:bootstrap@1.10.0
 useraccounts:core@1.10.0
 webapp@1.2.0
 webapp-hashing@1.0.3
-yogiben:autoform-modals@0.3.5
 zimme:iron-router-active@1.0.4
