@@ -53,9 +53,29 @@ Template.addPropertyModal.events({
             unitArray[i].id = i;
         }
         Template.instance().unitArray.set(unitArray);
-        console.log(Template.instance().unitArray.get());
-    }
+    },
+    'click #saveBtn': function(e){
+        e.preventDefault();
 
+        AutoForm.validateForm('insertPropertyForm');
+        var propertyDoc = AutoForm.getFormValues('insertPropertyForm',null,null,false);
+
+        var unitArrayOfObjects = Template.instance().unitArray.get();
+        var unitArray = [];
+        if (Template.instance().isMultipleUnits.get()) {
+            for (var i = 0; i < unitArrayOfObjects.length; i++) {
+                unitArray.push(unitArrayOfObjects[i].unitNo);
+            }
+        }
+
+        Meteor.call('propertyInsert', propertyDoc, unitArray, function(error) {
+            if (error) {
+                return alert(error.reason);
+            } else {
+                $('#addPropertyModal').modal('hide');
+            }
+        });
+    }
 });
 
 Template.addPropertyModal.helpers({

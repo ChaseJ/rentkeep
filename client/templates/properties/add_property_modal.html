@@ -21,6 +21,14 @@
                             </div>
                         </div>
                     {{/autoForm}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        {{#if isMultipleUnits}}
+                            <button id="nextBtn" type="button" class="btn btn-primary">Next</button>
+                        {{else}}
+                            <button id="saveBtn" type="submit" class="btn btn-primary">Save</button>
+                        {{/if}}
+                    </div>
                 </div>
 
                 <div class="hidden" id="unitTab">
@@ -48,15 +56,10 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    {{#if isMultipleUnits}}
-                        <button id="nextBtn" type="button" class="btn btn-primary">Next</button>
-                    {{else}}
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    {{/if}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button id="saveBtn" type="submit" class="btn btn-primary">Save</button>
+                    </div>
                 </div>
 
             </div>
