@@ -23,7 +23,7 @@ Template.propertyPanel.helpers({
     units: function () {
         return Template.instance().units();
     },
-    singleUnitProperty: function() {
-        return Template.instance().units().count()===1;
+    isMultiUnitProperty: function() {
+        return Template.instance().units().count()>1;
     }
 });

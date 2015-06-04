@@ -1,0 +1,14 @@
+.panel-heading {
+  a {
+    color: #333333;
+    :hover{
+      color: #999999;
+    }
+  }
+  .panel-heading-update {
+    padding: 10px 5px;
+  }
+  .panel-heading-remove {
+    padding: 10px 0 5px 10px;
+  }
+}
