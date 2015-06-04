@@ -1,9 +1,10 @@
 Template.removePropertyModal.onRendered(function() {
     var instance = this;
+    instance.propertyId = new ReactiveVar();
 
     $('#removePropertyModal').on('show.bs.modal', function (e) {
         var button = $(e.relatedTarget);
-        instance.propertyId = new ReactiveVar(button.data('property-id'));
+        instance.propertyId.set(button.data('property-id'));
     })
 });
 
