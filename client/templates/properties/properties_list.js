@@ -15,8 +15,5 @@ Template.propertiesList.onCreated(function () {
 Template.propertiesList.helpers({
     properties: function () {
         return Template.instance().properties();
-    },
-    hasNoProperties: function(){
-        return Template.instance().properties().count()===0;
     }
 });
