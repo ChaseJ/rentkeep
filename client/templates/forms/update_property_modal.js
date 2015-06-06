@@ -57,7 +57,7 @@ Template.updatePropertyModal.events({
     'click #saveBtn': function(e){
         e.preventDefault();
 
-        AutoForm.validateForm('updatePropertyForm');
+        if(!AutoForm.validateForm('updatePropertyForm')){return;}
         var propertyModifier = AutoForm.getFormValues('updatePropertyForm',null,null,true);
 
         var unitArrayOfObjects = Template.instance().unitArray.get();

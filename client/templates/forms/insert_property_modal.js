@@ -57,7 +57,7 @@ Template.insertPropertyModal.events({
     'click #saveBtn': function(e){
         e.preventDefault();
 
-        AutoForm.validateForm('insertPropertyForm');
+        if(!AutoForm.validateForm('insertPropertyForm')){return;}
         var propertyDoc = AutoForm.getFormValues('insertPropertyForm',null,null,false);
 
         var unitArrayOfObjects = Template.instance().unitArray.get();
