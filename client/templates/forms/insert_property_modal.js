@@ -9,8 +9,8 @@ Template.insertPropertyModal.onRendered(function() {
     //When modal is closed, reset which tabs will show when opened
     $('#insertPropertyModal').on('hidden.bs.modal', function (e) {
         e.preventDefault();
-        $('#propertyTab').removeClass('hidden').addClass('show');
-        $('#unitTab').removeClass('show').addClass('hidden');
+        $('#propertyTab-insert').removeClass('hidden').addClass('show');
+        $('#unitTab-insert').removeClass('show').addClass('hidden');
     });
 });
 
@@ -27,8 +27,8 @@ Template.insertPropertyModal.events({
     'click #nextBtn': function(e){
         e.preventDefault();
         if (AutoForm.validateForm('insertPropertyForm')) {
-            $('#propertyTab').removeClass('show').addClass('hidden');
-            $('#unitTab').removeClass('hidden').addClass('show');
+            $('#propertyTab-insert').removeClass('show').addClass('hidden');
+            $('#unitTab-insert').removeClass('hidden').addClass('show');
         }
     },
     'change [name=unitNo]' : function (e) {
