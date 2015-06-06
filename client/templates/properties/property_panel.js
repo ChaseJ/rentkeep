@@ -16,6 +16,10 @@ Template.propertyPanel.events({
     'click .panel-heading-update': function(e) {
         e.preventDefault();
         Session.set('propertyId',Template.instance().data._id);
+    },
+    'click .panel-heading-remove': function(e) {
+        e.preventDefault();
+        Session.set('propertyId',Template.instance().data._id);
     }
 });
 
