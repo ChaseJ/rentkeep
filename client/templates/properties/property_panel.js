@@ -13,9 +13,9 @@ Template.propertyPanel.onCreated(function() {
 });
 
 Template.propertyPanel.events({
-    'click tr': function(event) {
-        event.preventDefault();
-        Router.go('propertyView', this);
+    'click .panel-heading-update': function(e) {
+        e.preventDefault();
+        Session.set('propertyId',Template.instance().data._id);
     }
 });
 

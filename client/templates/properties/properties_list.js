@@ -1,6 +1,7 @@
 Template.propertiesList.onCreated(function () {
     //Initialization
     var instance = this;
+    Session.set('propertyId','');
 
     //Subscriptions
     instance.subscribe('properties');
