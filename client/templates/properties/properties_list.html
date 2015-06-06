@@ -8,19 +8,34 @@
         <div class="pull-left">
             <h1 class="page-header-fix">Properties</h1>
         </div>
-        <div class="pull-right">
+        <div class="form-inline pull-right">
+            {{> esInput index="properties" placeholder="Search..." class="form-control search-header"}}
             <button class="btn btn-default" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button>
         </div>
     </div>
 
-    {{#each properties}}
-        {{> propertyPanel }}
+    {{#ifEsIsSearching index="properties"}}
+        {{>loading}}
     {{else}}
-        <div class="jumbotron">
-            <h1>Welcome to RentKeep</h1>
-            <p>Get started by adding your first property.</p>
-            <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button></p>
-        </div>
-    {{/each}}
+        {{#esEach index="properties"}}
+            {{> propertyPanel }}
+        {{/esEach}}
+    {{/ifEsIsSearching}}
+
+    {{#ifEsHasNoResults index="properties"}}
+        <h3>No results found.</h3>
+    {{/ifEsHasNoResults}}
+
+    {{#ifEsInputIsEmpty index="properties"}}
+        {{#each properties}}
+            {{> propertyPanel }}
+        {{else}}
+            <div class="jumbotron">
+                <h1>Welcome to RentKeep</h1>
+                <p>Get started by adding your first property.</p>
+                <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button></p>
+            </div>
+        {{/each}}
+    {{/ifEsInputIsEmpty}}
 
 </template>
