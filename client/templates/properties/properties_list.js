@@ -9,11 +9,14 @@ Template.propertiesList.onCreated(function () {
     //Cursors
     instance.properties = function() {
         return Properties.find();
-    }
+    };
 });
 
 Template.propertiesList.helpers({
     properties: function () {
         return Template.instance().properties();
+    },
+    hasNoProperties: function(){
+        return Template.instance().properties().count()===0;
     }
 });
