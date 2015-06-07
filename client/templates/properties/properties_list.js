@@ -1,3 +1,5 @@
+PropertiesPagination = new Paginator(Properties);
+
 Template.propertiesList.onCreated(function () {
     //Initialization
     var instance = this;
@@ -5,15 +7,10 @@ Template.propertiesList.onCreated(function () {
 
     //Subscriptions
     instance.subscribe('properties');
-
-    //Cursors
-    instance.properties = function() {
-        return Properties.find();
-    };
 });
 
 Template.propertiesList.helpers({
     properties: function () {
-        return Template.instance().properties();
+        return PropertiesPagination.find({}, {sort: {street: 1}, itemsPerPage:10});
     }
 });

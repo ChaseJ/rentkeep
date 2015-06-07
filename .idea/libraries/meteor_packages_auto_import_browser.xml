@@ -67,8 +67,10 @@
         <item url="file://$USER_HOME$/.meteor/packages/callback-hook/1.0.3/web.browser/packages/callback-hook.js" />
         <item url="file://$USER_HOME$/.meteor/packages/useraccounts_core/1.10.0/web.browser/packages/useraccounts_core.js" />
         <item url="file://$USER_HOME$/.meteor/packages/less/1.0.14/web.browser/packages/less.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/cfs_http-methods/0.0.29/web.browser/packages/cfs_http-methods.js" />
         <item url="file://$USER_HOME$/.meteor/packages/check/1.0.5/web.browser/packages/check.js" />
         <item url="file://$USER_HOME$/.meteor/packages/livedata/1.0.13/web.browser/packages/livedata.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/hitchcott_paginator/0.2.0/web.browser/packages/hitchcott:paginator.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.3/web.browser/packages/blaze-tools.js" />
         <item url="file://$USER_HOME$/.meteor/packages/localstorage/1.0.3/web.browser/packages/localstorage.js" />
         <item url="file://$USER_HOME$/.meteor/packages/boilerplate-generator/1.0.3/web.browser/packages/boilerplate-generator.js" />
@@ -79,6 +81,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/logging/1.0.7/web.browser/packages/logging.js" />
         <item url="file://$USER_HOME$/.meteor/packages/url/1.0.4/web.browser/packages/url.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteor-platform/1.2.2/web.browser/packages/meteor-platform.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/tap_i18n/1.4.1/web.browser/packages/tap:i18n.js" />
         <item url="file://$USER_HOME$/.meteor/packages/deps/1.0.7/web.browser/packages/deps.js" />
         <item url="file://$USER_HOME$/.meteor/packages/minifiers/1.1.5/web.browser/packages/minifiers.js" />
         <item url="file://$USER_HOME$/.meteor/packages/twbs_bootstrap/3.3.4/web.browser/packages/twbs:bootstrap.js" />
@@ -153,8 +156,10 @@
       <root url="file://$USER_HOME$/.meteor/packages/callback-hook/1.0.3/web.browser/packages/callback-hook.js" />
       <root url="file://$USER_HOME$/.meteor/packages/less/1.0.14/web.browser/packages/less.js" />
       <root url="file://$USER_HOME$/.meteor/packages/useraccounts_core/1.10.0/web.browser/packages/useraccounts_core.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/cfs_http-methods/0.0.29/web.browser/packages/cfs_http-methods.js" />
       <root url="file://$USER_HOME$/.meteor/packages/livedata/1.0.13/web.browser/packages/livedata.js" />
       <root url="file://$USER_HOME$/.meteor/packages/check/1.0.5/web.browser/packages/check.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/hitchcott_paginator/0.2.0/web.browser/packages/hitchcott:paginator.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.3/web.browser/packages/blaze-tools.js" />
       <root url="file://$USER_HOME$/.meteor/packages/localstorage/1.0.3/web.browser/packages/localstorage.js" />
       <root url="file://$USER_HOME$/.meteor/packages/boilerplate-generator/1.0.3/web.browser/packages/boilerplate-generator.js" />
@@ -165,6 +170,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/logging/1.0.7/web.browser/packages/logging.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteor-platform/1.2.2/web.browser/packages/meteor-platform.js" />
       <root url="file://$USER_HOME$/.meteor/packages/url/1.0.4/web.browser/packages/url.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/tap_i18n/1.4.1/web.browser/packages/tap:i18n.js" />
       <root url="file://$USER_HOME$/.meteor/packages/deps/1.0.7/web.browser/packages/deps.js" />
       <root url="file://$USER_HOME$/.meteor/packages/minifiers/1.1.5/web.browser/packages/minifiers.js" />
       <root url="file://$USER_HOME$/.meteor/packages/twbs_bootstrap/3.3.4/web.browser/packages/twbs:bootstrap.js" />
