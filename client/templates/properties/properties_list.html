@@ -14,30 +14,36 @@
         </div>
     </div>
 
-    {{#ifEsIsSearching index="properties"}}
-        {{>loading}}
-    {{else}}
-        {{#esEach index="properties"}}
-            {{> propertyPanel }}
-        {{/esEach}}
-        {{> esLoadMoreButton index="properties" class="btn btn-primary btn-lg btn-block" howMany=5}}
-    {{/ifEsIsSearching}}
+    {{#if Template.subscriptionsReady}}
 
-    {{#ifEsHasNoResults index="properties"}}
-        <h3>No results found.</h3>
-    {{/ifEsHasNoResults}}
-
-    {{#ifEsInputIsEmpty index="properties"}}
-        {{#each properties}}
-            {{> propertyPanel }}
+        {{#ifEsIsSearching index="properties"}}
+            {{>loading}}
         {{else}}
-            <div class="jumbotron">
-                <h1>Welcome to RentKeep</h1>
-                <p>Get started by adding your first property.</p>
-                <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button></p>
-            </div>
-        {{/each}}
-        {{> Paginator_UI properties}}
-    {{/ifEsInputIsEmpty}}
+            {{#esEach index="properties"}}
+                {{> propertyPanel }}
+            {{/esEach}}
+            {{> esLoadMoreButton index="properties" class="btn btn-primary btn-lg btn-block" howMany=5}}
+        {{/ifEsIsSearching}}
+
+        {{#ifEsHasNoResults index="properties"}}
+            <h3>No results found.</h3>
+        {{/ifEsHasNoResults}}
+
+        {{#ifEsInputIsEmpty index="properties"}}
+            {{#each properties}}
+                {{> propertyPanel }}
+            {{else}}
+                <div class="jumbotron">
+                    <h1>Welcome to RentKeep</h1>
+                    <p>Get started by adding your first property.</p>
+                    <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button></p>
+                </div>
+            {{/each}}
+            {{> Paginator_UI properties}}
+        {{/ifEsInputIsEmpty}}
+
+    {{else}}
+        {{>loading}}
+    {{/if}}
 
 </template>
