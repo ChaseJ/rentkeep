@@ -20,6 +20,7 @@
         {{#esEach index="properties"}}
             {{> propertyPanel }}
         {{/esEach}}
+        {{> esLoadMoreButton index="properties" class="btn btn-primary btn-lg btn-block" howMany=5}}
     {{/ifEsIsSearching}}
 
     {{#ifEsHasNoResults index="properties"}}
