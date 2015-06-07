@@ -20,6 +20,11 @@ Template.propertyPanel.events({
     'click .panel-heading-remove': function(e) {
         e.preventDefault();
         Session.set('propertyId',Template.instance().data._id);
+    },
+    'click .single-unit-link': function(e) {
+        e.preventDefault();
+        Router.go('unitView', Units.findOne({propertyId: this._id}));
+
     }
 });
 
