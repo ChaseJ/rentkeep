@@ -7,7 +7,7 @@ Template.propertyPanel.onCreated(function() {
 
     //Cursors
     instance.units = function() {
-        return Units.find({propertyId: instance.data._id});
+        return Units.find({propertyId: instance.data._id},{sort: {unitNo: 1}});
     };
 
 });
