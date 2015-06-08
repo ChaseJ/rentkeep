@@ -1,7 +1,6 @@
 //Create test user if no users have been created
-var testUserId;
 if (Meteor.users.find().count() === 0) {
-    testUserId = Accounts.createUser({
+    Accounts.createUser({
         email : 'test@rentkeep.com',
         password : 'password',
         profile  : {
@@ -15,8 +14,6 @@ if (Meteor.users.find().count() === 0) {
 //Methods to run on client to load test data
 Meteor.methods({
     insertTestPropertyData: function(){
-        check(this.userId, testUserId);
-
         var unitsOne = ['1'];
         var unitsTwo = ['100','200'];
         var unitsFive = ['100', '101', '200', '201', '300'];
@@ -51,6 +48,31 @@ Meteor.methods({
                     unitNo: unitNo
                 })
             })
+        }
+    },
+    insertTestTenantData: function() {
+        var tenants = [
+            {firstName:'John',      lastName:'Doe',         phone:'(555) 555-5555',    email:'john@example.com'},
+            {firstName:'Steve',     lastName:'Johnson',     phone:'(555) 555-1234',    email:'steve@example.com'},
+            {firstName:'Wendy',     lastName:'Lewis',       phone:'(555) 555-3214',    email:'wendy@example.com'},
+            {firstName:'Carl',      lastName:'Black',       phone:'(555) 555-0823',    email:'carl@example.com'},
+            {firstName:'James',     lastName:'Allen',       phone:'(555) 555-0012',    email:'james@example.com'},
+            {firstName:'Mary',      lastName:'Johnson',     phone:'(555) 555-0992',    email:'mary@example.com'},
+            {firstName:'David',     lastName:'White',       phone:'(555) 555-4581',    email:'david@example.com'},
+            {firstName:'Kyle',      lastName:'Washington',  phone:'(555) 555-0331',    email:'kyle@example.com'},
+            {firstName:'Chase',     lastName:'Madison',     phone:'(555) 555-8029',    email:'chase@example.com'},
+            {firstName:'Stephanie', lastName:'Brown',       phone:'(555) 555-5435',    email:'stephanie@example.com'},
+            {firstName:'Brian',     lastName:'James',       phone:'(555) 555-3215',    email:'brian@example.com'},
+            {firstName:'Sue',       lastName:'Peterson',    phone:'(555) 555-0002',    email:'sue@example.com'}
+        ];
+
+        for (var i=0; i<tenants.length; i++){
+            Tenants.insert({
+                firstName: tenants[i].firstName,
+                lastName: tenants[i].lastName,
+                phone: tenants[i].phone,
+                email: tenants[i].email
+            });
         }
     }
 });
