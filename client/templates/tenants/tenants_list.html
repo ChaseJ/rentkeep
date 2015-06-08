@@ -5,27 +5,48 @@
             <h1 class="page-header-fix">Tenants</h1>
         </div>
         <div class="form-inline pull-right">
-            <!--{{> esInput index="tenants" placeholder="Search..." class="form-control search-header"}}-->
+            {{> esInput index="tenants" placeholder="Search..." class="form-control search-header"}}
             <button class="btn btn-default" type="button" data-toggle="modal" data-target="#insertTenantModal">Add Tenant</button>
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>Email Address</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each tenants}}
-                {{> tenantRow }}
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
+    {{#if Template.subscriptionsReady}}
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#ifEsIsSearching index="tenants"}}
+                        {{>loading}}
+                    {{else}}
+                        {{#esEach index="tenants"}}
+                            {{> tenantRow }}
+                        {{/esEach}}
+                    {{/ifEsIsSearching}}
+
+                    {{#ifEsHasNoResults index="tenants"}}
+                        <h3>No results found.</h3>
+                    {{/ifEsHasNoResults}}
+
+                    {{#ifEsInputIsEmpty index="tenants"}}
+                        {{#each tenants}}
+                            {{> tenantRow }}
+                        {{/each}}
+                    {{/ifEsInputIsEmpty}}
+                </tbody>
+            </table>
+        </div>
+        {{> esLoadMoreButton index="tenants" class="btn btn-primary btn-lg btn-block" howMany=10}}
+
+    {{else}}
+        {{>loading}}
+    {{/if}}
 
 </template>
