@@ -5,3 +5,20 @@
 .search-header {
   margin-right: 10px;
 }
+
+.header-glyphicons {
+  padding-top: 10px;
+
+  a {
+    color: #333333;
+    :hover{
+      color: #999999;
+    }
+  }
+  .glyphicon {
+    font-size: 24px;
+  }
+  .unit-update {
+    margin-right: 10px;
+  }
+}
