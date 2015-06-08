@@ -26,8 +26,8 @@
     <div class="row">
         <div class="col-sm-3 col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#">Active Lease</a></li>
-                <li role="presentation"><a href="#">Future Lease</a></li>
+                <li role="presentation" class="{{isActivePath regex='activeLease'}}"><a href="{{pathFor route='activeLease' data=unit}}">Active Lease</a></li>
+                <li role="presentation" class="{{isActivePath regex='futureLease'}}"><a href="{{pathFor route='futureLease' data=unit}}">Future Lease</a></li>
                 <li role="presentation"><a href="#">Past Leases</a></li>
                 <li role="presentation"><a href="#">Prospective Tenants</a></li>
                 <li role="presentation"><a href="#">Maintenance</a></li>
@@ -35,7 +35,7 @@
             </ul>
         </div>
         <div class="col-sm-9 col-md-10">
-
+            {{> yield 'unitView'}}
         </div>
     </div>
 

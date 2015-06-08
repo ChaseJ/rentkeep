@@ -23,7 +23,7 @@ Template.propertyPanel.events({
     },
     'click .single-unit-link': function(e) {
         e.preventDefault();
-        Router.go('unitView', Units.findOne({propertyId: this._id}));
+        Router.go('activeLease', Units.findOne({propertyId: this._id}));
 
     }
 });
