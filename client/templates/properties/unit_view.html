@@ -1,5 +1,27 @@
 <template name="unitView">
     <div class="page-header">
-        <h1>Unit {{unit.unitNo}} <small>{{property.street}}</small></h1>
+        {{#if isMultipleUnits}}
+            <h1>{{unit.unitNo}} <small>{{property.street}}</small></h1>
+        {{else}}
+            <h1>{{property.street}}</h1>
+        {{/if}}
     </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active"><a href="#">Active Lease</a></li>
+                <li role="presentation"><a href="#">Future Lease</a></li>
+                <li role="presentation"><a href="#">Past Leases</a></li>
+                <li role="presentation"><a href="#">Prospective Tenants</a></li>
+                <li role="presentation"><a href="#">Maintenance</a></li>
+                <li role="presentation"><a href="#">List Unit</a></li>
+                <li role="presentation"><a href="#">Edit Unit</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10">
+
+        </div>
+    </div>
+
 </template>
