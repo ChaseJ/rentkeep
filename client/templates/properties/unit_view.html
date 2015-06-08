@@ -2,6 +2,7 @@
 
     {{#if isMultipleUnits}}
         {{>updateUnitModal unitDoc=unit}}
+        {{>removeUnitModal unitDoc=unit}}
     {{/if}}
 
     <div class="page-header clearfix">
@@ -13,7 +14,7 @@
                 <a href="" class="unit-update"  data-toggle="modal" data-target="#updateUnitModal">
                     <span class="glyphicon glyphicon-edit"></span>
                 </a>
-                <a href="" class="unit-remove">
+                <a href="" class="unit-remove" data-toggle="modal" data-target="#removeUnitModal">
                     <span class="glyphicon glyphicon-trash"></span>
                 </a>
             </div>
