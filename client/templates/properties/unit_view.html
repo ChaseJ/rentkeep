@@ -1,11 +1,16 @@
 <template name="unitView">
+
+    {{#if isMultipleUnits}}
+        {{>updateUnitModal unitDoc=unit}}
+    {{/if}}
+
     <div class="page-header clearfix">
         {{#if isMultipleUnits}}
             <div class="pull-left">
                 <h1 class="page-header-fix">{{unit.unitNo}} <small>{{property.street}}</small></h1>
             </div>
             <div class="pull-right header-glyphicons">
-                <a href="" class="unit-update">
+                <a href="" class="unit-update"  data-toggle="modal" data-target="#updateUnitModal">
                     <span class="glyphicon glyphicon-edit"></span>
                 </a>
                 <a href="" class="unit-remove">
