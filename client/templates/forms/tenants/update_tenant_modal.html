@@ -1,0 +1,26 @@
+<template name="updateTenantModal">
+    <div class="modal fade" id="updateTenantModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit Tenant</h4>
+                </div>
+                {{#if tenantDoc}}
+                    {{#autoForm collection="Tenants" id="updateTenantForm" type="update" doc=tenantDoc}}
+                        <div class="modal-body">
+                            {{> afQuickField name='firstName'}}
+                            {{> afQuickField name='lastName'}}
+                            {{> afQuickField name='phone'}}
+                            {{> afQuickField name='email'}}
+                        </div>
+                    {{/autoForm}}
+                {{/if}}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="saveBtn" type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

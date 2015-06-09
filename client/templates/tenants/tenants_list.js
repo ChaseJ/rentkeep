@@ -3,6 +3,7 @@ TenantsPagination = new Paginator(Tenants);
 Template.tenantsList.onCreated(function () {
     //Initialization
     var instance = this;
+    Session.set('tenantId','');
 
     //Subscriptions
     instance.subscribe('tenants');
