@@ -7,10 +7,15 @@ Template.propertiesList.onCreated(function () {
 
     //Subscriptions
     instance.subscribe('properties');
+
+    //Cursors
+    instance.properties = function() {
+        return PropertiesPagination.find({}, {sort: {street: 1}, itemsPerPage:10});
+    };
 });
 
 Template.propertiesList.helpers({
     properties: function () {
-        return PropertiesPagination.find({}, {sort: {street: 1}, itemsPerPage:10});
+        return Template.instance().properties();
     }
 });
