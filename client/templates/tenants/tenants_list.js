@@ -1,18 +1,16 @@
+TenantsPagination = new Paginator(Tenants);
+
+
 Template.tenantsList.onCreated(function () {
     //Initialization
     var instance = this;
 
     //Subscriptions
     instance.subscribe('tenants');
-
-    //Cursors
-    instance.tenants = function() {
-        return Tenants.find();
-    }
 });
 
 Template.tenantsList.helpers({
     tenants: function () {
-        return Template.instance().tenants();
+        return TenantsPagination.find({}, {sort: {lastName: 1}, itemsPerPage:10});
     }
 });

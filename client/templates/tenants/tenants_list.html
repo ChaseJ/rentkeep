@@ -44,6 +44,9 @@
             </table>
         </div>
         {{> esLoadMoreButton index="tenants" class="btn btn-primary btn-lg btn-block" howMany=10}}
+        {{#ifEsInputIsEmpty index="tenants"}}
+            {{> Paginator_UI tenants}}
+        {{/ifEsInputIsEmpty}}
 
     {{else}}
         {{>loading}}
