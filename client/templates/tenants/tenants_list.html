@@ -12,41 +12,50 @@
 
     {{#if Template.subscriptionsReady}}
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Phone Number</th>
-                    <th>Email Address</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {{#ifEsIsSearching index="tenants"}}
-                        {{>loading}}
-                    {{else}}
-                        {{#esEach index="tenants"}}
-                            {{> tenantRow }}
-                        {{/esEach}}
-                    {{/ifEsIsSearching}}
+        {{#unless tenants.count}}
+            <div class="jumbotron">
+                <h1>Welcome to RentKeep</h1>
+                <p>Get started by adding your first tenant.</p>
+                <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertTenantModal">Add Tenant</button></p>
+            </div>
 
-                    {{#ifEsHasNoResults index="tenants"}}
-                        <h3>No results found.</h3>
-                    {{/ifEsHasNoResults}}
+        {{else}}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email Address</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {{#ifEsIsSearching index="tenants"}}
+                            {{>loading}}
+                        {{else}}
+                            {{#esEach index="tenants"}}
+                                {{> tenantRow }}
+                            {{/esEach}}
+                        {{/ifEsIsSearching}}
 
-                    {{#ifEsInputIsEmpty index="tenants"}}
-                        {{#each tenants}}
-                            {{> tenantRow }}
-                        {{/each}}
-                    {{/ifEsInputIsEmpty}}
-                </tbody>
-            </table>
-        </div>
-        {{> esLoadMoreButton index="tenants" class="btn btn-primary btn-lg btn-block" howMany=10}}
-        {{#ifEsInputIsEmpty index="tenants"}}
-            {{> Paginator_UI tenants}}
-        {{/ifEsInputIsEmpty}}
+                        {{#ifEsHasNoResults index="tenants"}}
+                            <h3>No results found.</h3>
+                        {{/ifEsHasNoResults}}
+
+                        {{#ifEsInputIsEmpty index="tenants"}}
+                            {{#each tenants}}
+                                {{> tenantRow }}
+                            {{/each}}
+                        {{/ifEsInputIsEmpty}}
+                    </tbody>
+                </table>
+            </div>
+            {{> esLoadMoreButton index="tenants" class="btn btn-primary btn-lg btn-block" howMany=10}}
+            {{#ifEsInputIsEmpty index="tenants"}}
+                {{> Paginator_UI tenants}}
+            {{/ifEsInputIsEmpty}}
+        {{/unless}}
 
     {{else}}
         {{>loading}}
