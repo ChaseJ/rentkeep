@@ -6,15 +6,19 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Add Lease</h4>
                 </div>
-                {{#autoForm collection="Leases" id="insertLeaseForm" type="insert"}}
-                    <div class="modal-body">
-                        {{> afQuickField name='rentAmt'}}
-                        {{> afQuickField name='depositAmt'}}
-                        {{> afQuickField name='startDate'}}
-                        {{> afQuickField name='endDate'}}
-                        {{> afQuickField name='tenants'}}
-                    </div>
-                {{/autoForm}}
+                {{#if Template.subscriptionsReady}}
+                    {{#autoForm collection="Leases" id="insertLeaseForm" type="insert"}}
+                        <div class="modal-body">
+                            {{> afQuickField name='rentAmt'}}
+                            {{> afQuickField name='depositAmt'}}
+                            {{> afQuickField name='startDate'}}
+                            {{> afQuickField name='endDate'}}
+                            {{> afQuickField name='tenants' type='select2' multiple=true select2Options=s2Opts}}
+                        </div>
+                    {{/autoForm}}
+                {{else}}
+                    {{>loading}}
+                {{/if}}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button id="saveBtn" type="button" class="btn btn-primary">Save</button>
