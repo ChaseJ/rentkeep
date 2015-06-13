@@ -15,9 +15,17 @@ Template.insertLeaseModal.onCreated(function() {
 Template.insertLeaseModal.events({
     'click #saveBtn': function(e){
         e.preventDefault();
+
         if(!AutoForm.validateForm('insertLeaseForm')){return;}
         var leaseDoc = AutoForm.getFormValues('insertLeaseForm',null,null,false);
-        console.log(leaseDoc);
+
+        Meteor.call('leaseInsert', leaseDoc, function(error) {
+            if (error) {
+                return alert(error.reason);
+            } else {
+                $('#insertLeaseModal').modal('hide');
+            }
+        })
     }
 });
 
