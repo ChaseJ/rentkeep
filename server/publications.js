@@ -20,3 +20,9 @@ Meteor.publish('unit', function(unitId) {
 Meteor.publish('tenants', function() {
     return Tenants.find({userId: this.userId});
 });
+
+Meteor.publish('activeLeaseByUnit', function(unitId) {
+    check(unitId, String);
+    var today = new Date();
+    return Leases.find({unitId: unitId, endDate: { $gte: today }});
+});
