@@ -3,5 +3,5 @@ Template.registerHelper("formatDate", function(value){
 });
 
 Template.registerHelper("formatCurrency", function(value){
-    return numeral(value).format('$0,0');
+    return numeral(value).format('$0,0[.]00');
 });
