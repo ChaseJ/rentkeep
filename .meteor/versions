@@ -59,6 +59,7 @@ mongo-livedata@1.0.8
 msavin:jetsetter@1.0.13
 msavin:mongol@1.0.70
 npm-bcrypt@0.7.8_2
+numeral:numeral@1.5.3
 observe-sequence@1.0.6
 ongoworks:security@1.1.0
 ordered-dict@1.0.3

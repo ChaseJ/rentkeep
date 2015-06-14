@@ -21,6 +21,11 @@ Meteor.publish('tenants', function() {
     return Tenants.find({userId: this.userId});
 });
 
+Meteor.publish('tenantsById', function(tenantIds) {
+    check(tenantIds, [String]);
+    return Tenants.find({_id: {$in: tenantIds} });
+});
+
 Meteor.publish('activeLeaseByUnit', function(unitId) {
     check(unitId, String);
     var today = new Date();

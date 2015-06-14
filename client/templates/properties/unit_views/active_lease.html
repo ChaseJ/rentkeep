@@ -2,83 +2,88 @@
 
     {{>insertLeaseModal}}
 
-    {{#if hasActiveLease}}
-        <div class="row active-lease-header">
-            <div class="col-sm-3">
-                <h3><small>Start Date</small> 9/1/15</h3>
-            </div>
-            <div class="col-sm-3">
-                <h3><small>End Date</small> 8/31/15</h3>
-            </div>
-            <div class="col-sm-3">
-                <h3><small>Rent</small> $1,000</h3>
-            </div>
-            <div class="col-sm-3">
-                <button id="edit-lease-button" class="btn btn-default pull-right" type="button">Edit Lease</button>
-            </div>
-        </div>
+    {{#if Template.subscriptionsReady}}
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Tenants</h3>
-            </div>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>Chase Greiner</td>
-                        <td>(555) 555-5555</td>
-                        <td>chase@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>(555) 555-1234</td>
-                        <td>john@example.com</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-                <div class="pull-left">
-                    <h3 class="panel-title">Ledger</h3>
+        {{#with lease}}
+            <div class="row active-lease-header">
+                <div class="col-sm-3">
+                    <h3><small>Start Date</small> {{formatDate startDate}}</h3>
                 </div>
-                <div class="pull-right">
-                    <a href="" class="transaction-add">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </a>
+                <div class="col-sm-3">
+                    <h3><small>End Date</small> {{formatDate endDate}}</h3>
+                </div>
+                <div class="col-sm-3">
+                    <h3><small>Rent</small> {{formatCurrency rentAmt}}</h3>
+                </div>
+                <div class="col-sm-3">
+                    <button id="edit-lease-button" class="btn btn-default pull-right" type="button">Edit Lease</button>
                 </div>
             </div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Due Date</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-                </thead>
-                <tbody>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Tenants</h3>
+                </div>
+                <table class="table">
+                    <tbody>
+                        {{#each tenants}}
+                            <tr>
+                                <td>{{firstName}} {{lastName}}</td>
+                                <td>{{phone}}</td>
+                                <td>{{email}}</td>
+                            </tr>
+                        {{else}}
+                            <tr>No tenants have been added yet</tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <div class="pull-left">
+                        <h3 class="panel-title">Ledger</h3>
+                    </div>
+                    <div class="pull-right">
+                        <a href="" class="transaction-add">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>2/1/15</td>
-                        <td>Rent</td>
-                        <td>$1,000</td>
-                        <td>Late</td>
+                        <th>Due Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Status</th>
                     </tr>
-                    <tr>
-                        <td>1/1/15</td>
-                        <td>Rent</td>
-                        <td>$1,000</td>
-                        <td>Paid</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2/1/15</td>
+                            <td>Rent</td>
+                            <td>$1,000</td>
+                            <td>Late</td>
+                        </tr>
+                        <tr>
+                            <td>1/1/15</td>
+                            <td>Rent</td>
+                            <td>$1,000</td>
+                            <td>Paid</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        {{else}}
+            <div class="jumbotron">
+                <h1>This unit is vacant.</h1>
+                <p>Click below to add a lease to the unit.</p>
+                <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertLeaseModal">Add Lease</button></p>
+            </div>
+        {{/with}}
 
     {{else}}
-        <div class="jumbotron">
-            <h1>This unit is vacant.</h1>
-            <p>Click below to add a lease to the unit.</p>
-            <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertLeaseModal">Add Lease</button></p>
-        </div>
+        {{>loading}}
     {{/if}}
 </template>
