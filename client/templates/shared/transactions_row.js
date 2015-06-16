@@ -1,9 +1,8 @@
 Template.transactionsRow.helpers({
     status: function() {
-        var today = new Date();
         var amtRemaining = this.amtDue - this.amtPaid;
         if(amtRemaining > 0){
-            if(today>this.dueDate){
+            if(moment.utc().isAfter(moment.utc(this.dueDate), 'day')){
                 return 'Late'
             } else {
                 return 'Open'
