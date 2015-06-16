@@ -31,3 +31,8 @@ Meteor.publish('activeLeaseByUnit', function(unitId) {
     var today = new Date();
     return Leases.find({unitId: unitId, endDate: { $gte: today }});
 });
+
+Meteor.publish('transactionsByLease', function(leaseId) {
+    check(leaseId, String);
+    return Transactions.find({leaseId: leaseId});
+});

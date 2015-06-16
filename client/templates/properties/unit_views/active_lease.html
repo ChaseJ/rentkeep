@@ -33,7 +33,7 @@
                                 <td>{{email}}</td>
                             </tr>
                         {{else}}
-                            <tr>No tenants have been added yet</tr>
+                            <tr><td>No tenants have been added yet</td></tr>
                         {{/each}}
                     </tbody>
                 </table>
@@ -59,18 +59,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>2/1/15</td>
-                            <td>Rent</td>
-                            <td>$1,000</td>
-                            <td>Late</td>
-                        </tr>
-                        <tr>
-                            <td>1/1/15</td>
-                            <td>Rent</td>
-                            <td>$1,000</td>
-                            <td>Paid</td>
-                        </tr>
+                        {{#each transactions}}
+                            {{> transactionsRow}}
+                        {{else}}
+                            <tr><td>No transactions have been added yet</td></tr>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
