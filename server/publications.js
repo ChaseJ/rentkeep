@@ -29,6 +29,7 @@ Meteor.publish('tenantsById', function(tenantIds) {
 Meteor.publish('activeLeaseByUnit', function(unitId) {
     check(unitId, String);
     var today = new Date();
+    today.setUTCHours(0,0,0,0);
     return Leases.find({unitId: unitId, endDate: { $gte: today }});
 });
 
