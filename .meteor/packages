@@ -21,7 +21,6 @@ reactive-var
 matteodem:easy-search
 hitchcott:paginator
 aldeed:autoform-select2
-momentjs:moment
 numeral:numeral
 aldeed:autoform-bs-datepicker
 rajit:bootstrap3-datepicker
