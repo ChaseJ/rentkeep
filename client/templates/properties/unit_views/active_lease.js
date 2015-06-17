@@ -29,7 +29,7 @@ Template.activeLease.onCreated(function () {
         return Tenants.find({_id: {$in: tenantIds} });
     };
     instance.transactions = function() {
-        return Transactions.find({leaseId: leaseId});
+        return Transactions.find({leaseId: leaseId}, {sort: {dueDate: 1}});
     };
 });
 
