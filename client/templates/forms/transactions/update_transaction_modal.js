@@ -12,6 +12,10 @@ Template.updateTransactionModal.events({
                 $('#updateTransactionModal').modal('hide');
             }
         });
+    },
+    'click #deleteBtn': function(e){
+        e.preventDefault();
+        $('#updateTransactionModal').modal('hide');
     }
 });
 
