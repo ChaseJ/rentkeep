@@ -1,6 +1,7 @@
 <template name="activeLease">
 
     {{>insertLeaseModal}}
+    {{>insertTransactionModal}}
 
     {{#if Template.subscriptionsReady}}
 
@@ -45,7 +46,7 @@
                     </div>
                     <div class="pull-right">
                         <a href="" class="transaction-add">
-                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#insertTransactionModal"></span>
                         </a>
                     </div>
                 </div>

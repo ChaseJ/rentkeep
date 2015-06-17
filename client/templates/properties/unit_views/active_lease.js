@@ -3,7 +3,7 @@ Template.activeLease.onCreated(function () {
     var instance = this;
     var unitId = Router.current().params._id;
     var tenantIds = [];
-    var leaseId;
+    Session.set('leaseId', '');
 
     //Subscriptions
     var leaseSubscription = instance.subscribe('activeLeaseByUnit', unitId);
@@ -15,8 +15,8 @@ Template.activeLease.onCreated(function () {
                 tenantIds = lease.tenants;
                 instance.subscribe('tenantsById', tenantIds);
 
-                leaseId = lease._id;
-                instance.subscribe('transactionsByLease', leaseId);
+                Session.set('leaseId', lease._id);
+                instance.subscribe('transactionsByLease', Session.get('leaseId'));
             }
         }
     });
@@ -29,7 +29,7 @@ Template.activeLease.onCreated(function () {
         return Tenants.find({_id: {$in: tenantIds} });
     };
     instance.transactions = function() {
-        return Transactions.find({leaseId: leaseId}, {sort: {dueDate: 1}});
+        return Transactions.find({leaseId: Session.get('leaseId')}, {sort: {dueDate: 1}});
     };
 });
 
