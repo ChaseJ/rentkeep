@@ -2,11 +2,23 @@
   padding-left: 30px;
 }
 
-.active-lease-header {
+.lease-header {
   margin-bottom: 10px;
 }
 
-#edit-lease-button {
-  margin-top: 20px;
-}
+.lease-header-glyphicons {
+  padding-top: 20px;
 
+  a {
+    color: #333333;
+    :hover{
+      color: #999999;
+    }
+  }
+  .glyphicon {
+    font-size: 24px;
+  }
+  .lease-update {
+    margin-right: 10px;
+  }
+}

@@ -8,7 +8,7 @@
     {{#if Template.subscriptionsReady}}
 
         {{#with lease}}
-            <div class="row active-lease-header">
+            <div class="row lease-header">
                 <div class="col-sm-3">
                     <h3><small>Start Date</small> {{formatDate startDate}}</h3>
                 </div>
@@ -19,7 +19,14 @@
                     <h3><small>Rent</small> {{formatCurrency rentAmt}}</h3>
                 </div>
                 <div class="col-sm-3">
-                    <button id="edit-lease-button" class="btn btn-default pull-right" type="button">Edit Lease</button>
+                    <div class="pull-right lease-header-glyphicons">
+                        <a href="" class="lease-update" data-toggle="modal" data-target="#updateLeaseModal">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a href="" class="lease-remove"  data-toggle="modal" data-target="#removeLeaseModal">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
