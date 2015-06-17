@@ -1,3 +1,10 @@
+Template.transactionsRow.events({
+    'click tr': function(e) {
+        e.preventDefault();
+        Session.set('transactionId',Template.instance().data._id);
+    }
+});
+
 Template.transactionsRow.helpers({
     status: function() {
         var amtRemaining = this.amtDue - this.amtPaid;

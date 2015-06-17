@@ -1,5 +1,5 @@
 <template name="transactionsRow">
-    <tr>
+    <tr data-toggle="modal" data-target="#updateTransactionModal">
         <td>{{formatDate dueDate}}</td>
         <td>{{desc}}</td>
         <td>{{formatCurrency amtDue}}</td>
