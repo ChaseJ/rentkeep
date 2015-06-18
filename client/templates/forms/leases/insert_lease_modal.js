@@ -31,21 +31,22 @@ Template.insertLeaseModal.events({
 
 Template.insertLeaseModal.helpers({
     s2Opts: function () {
-        var tenantArray = Template.instance().tenants();
-        var data=[];
-        for(var i = 0; i < tenantArray.length; i++) {
-            var dataObject = {
-                id: tenantArray[i]._id,
-                text: tenantArray[i].firstName + ' ' + tenantArray[i].lastName
-            };
-            data.push(dataObject);
-        }
-
         return {
-            data: data,
             theme: "bootstrap",
             width: "style",
             placeholder: "Search..."
         };
+    },
+    selectOptions: function () {
+        var tenantArray = Template.instance().tenants();
+        var data=[];
+        for(var i = 0; i < tenantArray.length; i++) {
+            var dataObject = {
+                value: tenantArray[i]._id,
+                label: tenantArray[i].firstName + ' ' + tenantArray[i].lastName
+            };
+            data.push(dataObject);
+        }
+        return data;
     }
 });
