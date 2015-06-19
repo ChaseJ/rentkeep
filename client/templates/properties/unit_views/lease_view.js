@@ -2,39 +2,63 @@ Template.leaseView.onCreated(function () {
     //Initialization
     var instance = this;
     var unitId = Router.current().params._id;
-    var tenantIds = [];
     Session.set('leaseId', '');
     Session.set('transactionId','');
+    instance.tenantIds = new ReactiveVar([]);
 
     //Subscriptions
-    var leaseSubscription = instance.subscribe('activeLeaseByUnit', unitId);
-
+    instance.subscribe('leasesByUnit', unitId);
     instance.autorun(function(){
-        if(leaseSubscription.ready()){
-            var lease = Leases.findOne({unitId: unitId});
-            if(lease){
-                tenantIds = lease.tenants;
-                instance.subscribe('tenantsById', tenantIds);
-
-                Session.set('leaseId', lease._id);
-                instance.subscribe('transactionsByLease', Session.get('leaseId'));
-            }
+        var lease = Leases.findOne({_id: Session.get('leaseId')});
+        if(lease){
+            instance.tenantIds.set(lease.tenants);
+            instance.subscribe('tenantsById', instance.tenantIds.get());
+            instance.subscribe('transactionsByLease', Session.get('leaseId'));
         }
     });
 
     //Cursors
+    instance.leases = function() {
+        return Leases.find({unitId: unitId}, {sort: {startDate: -1}});
+    };
     instance.lease = function() {
-        return Leases.findOne({unitId: unitId});
+        return Leases.findOne({_id: Session.get('leaseId')});
     };
     instance.tenants = function() {
-        return Tenants.find({_id: {$in: tenantIds} });
+        return Tenants.find({_id: {$in: instance.tenantIds.get()} });
     };
     instance.transactions = function() {
         return Transactions.find({leaseId: Session.get('leaseId')}, {sort: {dueDate: 1}});
     };
+
+    //Set leaseId if blank
+    instance.autorun(function() {
+        if(!Session.get('leaseId')){
+            var today = new Date();
+            today.setUTCHours(0,0,0,0);
+            instance.leases().forEach(function(lease, index){
+                if(lease.startDate<today && lease.endDate>today){
+                    Session.set('leaseId', lease._id);
+                } else if (index===0) {
+                    Session.set('leaseId', lease._id);
+                }
+            });
+        }
+    });
+
+});
+
+Template.leaseView.events({
+    'change #lease-select': function(e) {
+        e.preventDefault();
+        Session.set('leaseId', $('#lease-select').val());
+    }
 });
 
 Template.leaseView.helpers({
+    leases: function() {
+        return Template.instance().leases();
+    },
     lease : function() {
         return Template.instance().lease();
     },
@@ -43,5 +67,11 @@ Template.leaseView.helpers({
     },
     transactions: function() {
         return Template.instance().transactions();
+    },
+    hasLeases: function() {
+        return Template.instance().leases().count()>0;
+    },
+    selectedLease: function() {
+        return Session.get('leaseId');
     }
 });

@@ -19,11 +19,12 @@ Template.insertLeaseModal.events({
         if(!AutoForm.validateForm('insertLeaseForm')){return;}
         var leaseDoc = AutoForm.getFormValues('insertLeaseForm',null,null,false);
 
-        Meteor.call('leaseInsert', leaseDoc, function(error) {
+        Meteor.call('leaseInsert', leaseDoc, function(error, result) {
             if (error) {
                 return alert(error.reason);
             } else {
                 $('#insertLeaseModal').modal('hide');
+                Session.set('leaseId', result);
             }
         })
     }

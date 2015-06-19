@@ -7,6 +7,7 @@ Template.removeLeaseModal.events({
                 return alert(error.reason);
             } else {
                 $('#removeLeaseModal').modal('hide');
+                Session.set('leaseId','');
             }
         });
     }

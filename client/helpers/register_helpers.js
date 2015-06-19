@@ -1,3 +1,7 @@
+Template.registerHelper("isEqual",function(left,right){
+    return left===right;
+});
+
 Template.registerHelper("formatDate", function(value){
     return moment.utc(value).format("M/D/YY");
 });

@@ -9,16 +9,14 @@
 
     {{#if Template.subscriptionsReady}}
 
-        {{#with lease}}
+        {{#if hasLeases}}
             <div class="row lease-header">
-                <div class="col-sm-3">
-                    <h3><small>Start Date</small> {{formatDate startDate}}</h3>
-                </div>
-                <div class="col-sm-3">
-                    <h3><small>End Date</small> {{formatDate endDate}}</h3>
-                </div>
-                <div class="col-sm-3">
-                    <h3><small>Rent</small> {{formatCurrency rentAmt}}</h3>
+                <div class="col-sm-9">
+                    <select id="lease-select" title="Select a lease to view">
+                        {{#each leases}}
+                            <option selected="{{isEqual selectedLease _id}}" value="{{_id}}">{{formatDate startDate}} - {{formatDate endDate}}</option>
+                        {{/each}}
+                    </select>
                 </div>
                 <div class="col-sm-3">
                     <div class="pull-right lease-header-glyphicons">
@@ -89,7 +87,7 @@
                 <p>Click below to add a lease to the unit.</p>
                 <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertLeaseModal">Add Lease</button></p>
             </div>
-        {{/with}}
+        {{/if}}
 
     {{else}}
         {{>loading}}
