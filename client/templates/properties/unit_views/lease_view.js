@@ -1,4 +1,4 @@
-Template.activeLease.onCreated(function () {
+Template.leaseView.onCreated(function () {
     //Initialization
     var instance = this;
     var unitId = Router.current().params._id;
@@ -34,7 +34,7 @@ Template.activeLease.onCreated(function () {
     };
 });
 
-Template.activeLease.helpers({
+Template.leaseView.helpers({
     lease : function() {
         return Template.instance().lease();
     },

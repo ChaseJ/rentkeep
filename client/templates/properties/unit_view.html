@@ -16,9 +16,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="{{isActivePath regex='activeLease'}}"><a href="{{pathFor route='activeLease' data=unit}}">Active Lease</a></li>
-                <li role="presentation" class="{{isActivePath regex='futureLease'}}"><a href="{{pathFor route='futureLease' data=unit}}">Future Lease</a></li>
-                <li role="presentation"><a href="#">Past Leases</a></li>
+                <li role="presentation" class="{{isActivePath regex='lease'}}"><a href="{{pathFor route='leaseView' data=unit}}">Leases</a></li>
                 {{#if isMultipleUnits}}
                     <li role="presentation"><a href="" data-toggle="modal" data-target="#updateUnitModal">Edit Unit</a></li>
                     <li role="presentation"><a href="" data-toggle="modal" data-target="#removeUnitModal">Delete Unit</a></li>
