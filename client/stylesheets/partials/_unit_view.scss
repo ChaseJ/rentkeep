@@ -3,25 +3,34 @@
 }
 
 .lease-header {
-  margin-bottom: 10px;
-}
+  margin-bottom: 20px;
 
-.lease-header-glyphicons {
-  padding-top: 20px;
+  #lease-select {
+    font-size: 24px;
+    height: 36px;
+  }
 
-  a {
-    color: #333333;
-    :hover{
-      color: #999999;
+  .lease-header-glyphicons {
+    padding: 6px 0;
+
+    a {
+      color: #333333;
+      :hover{
+        color: #999999;
+      }
+    }
+
+    .glyphicon {
+      font-size: 24px;
+    }
+
+    .lease-update {
+      margin-right: 10px;
+    }
+
+    .lease-add {
+      margin-right: 10px;
     }
   }
-  .glyphicon {
-    font-size: 24px;
-  }
-  .lease-update {
-    margin-right: 10px;
-  }
-  .lease-add {
-    margin-right: 10px;
-  }
 }
+

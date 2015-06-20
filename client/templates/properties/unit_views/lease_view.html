@@ -11,14 +11,14 @@
 
         {{#if hasLeases}}
             <div class="row lease-header">
-                <div class="col-sm-9">
-                    <select id="lease-select" title="Select a lease to view">
+                <div class="col-sm-4">
+                    <select id="lease-select" class="form-control" title="Select a lease to view">
                         {{#each leases}}
                             <option selected="{{isEqual selectedLease _id}}" value="{{_id}}">{{formatDate startDate}} - {{formatDate endDate}}</option>
                         {{/each}}
                     </select>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-8">
                     <div class="pull-right lease-header-glyphicons">
                         <a href="" class="lease-add" data-toggle="modal" data-target="#insertLeaseModal">
                             <span class="glyphicon glyphicon-plus"></span>
