@@ -11,8 +11,8 @@
                         <div class="modal-body">
                             {{> afQuickField name='rentAmt' type='text'}}
                             {{> afQuickField name='depositAmt' type='text'}}
-                            {{> afQuickField name='startDate' type='bootstrap-datepicker'}}
-                            {{> afQuickField name='endDate' type='bootstrap-datepicker'}}
+                            {{> afQuickField name='startDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
+                            {{> afQuickField name='endDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
                             {{> afQuickField name='tenants' type='select2' multiple=true options=selectOptions select2Options=s2Opts}}
                         </div>
                     {{/autoForm}}
