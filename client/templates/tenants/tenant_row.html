@@ -1,15 +1,7 @@
 <template name="tenantRow">
-    <tr>
+    <tr data-toggle="modal" data-target="#updateTenantModal">
         <td>{{firstName}} {{lastName}}</td>
         <td>{{phone}}</td>
         <td>{{email}}</td>
-        <td class="table-buttons">
-            <a href="" class="tenant-update" data-toggle="modal" data-target="#updateTenantModal">
-                <span class="glyphicon glyphicon-edit"></span>
-            </a>
-            <a href="" class="tenant-remove"  data-toggle="modal" data-target="#removeTenantModal">
-                <span class="glyphicon glyphicon-trash"></span>
-            </a>
-        </td>
     </tr>
 </template>
