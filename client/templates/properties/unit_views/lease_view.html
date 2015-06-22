@@ -3,6 +3,8 @@
     {{>insertLeaseModal}}
     {{>updateLeaseModal}}
     {{>removeLeaseModal}}
+    {{>updateTenantModal}}
+    {{>removeTenantModal}}
     {{>insertTransactionModal}}
     {{>updateTransactionModal}}
     {{>removeTransactionModal}}
@@ -37,14 +39,10 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Tenants</h3>
                 </div>
-                <table class="table">
+                <table class="table table-hover">
                     <tbody>
                         {{#each tenants}}
-                            <tr>
-                                <td>{{firstName}} {{lastName}}</td>
-                                <td>{{phone}}</td>
-                                <td>{{email}}</td>
-                            </tr>
+                            {{> tenantRow}}
                         {{else}}
                             <tr><td>No tenants have been added yet</td></tr>
                         {{/each}}

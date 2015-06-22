@@ -4,6 +4,7 @@ Template.leaseView.onCreated(function () {
     var unitId = Router.current().params._id;
     Session.set('leaseId', '');
     Session.set('transactionId','');
+    Session.set('tenantId','');
     instance.tenantIds = new ReactiveVar([]);
 
     //Subscriptions
