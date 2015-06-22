@@ -1,11 +1,11 @@
-Template.transactionsRow.events({
+Template.transactionRow.events({
     'click tr': function(e) {
         e.preventDefault();
         Session.set('transactionId',Template.instance().data._id);
     }
 });
 
-Template.transactionsRow.helpers({
+Template.transactionRow.helpers({
     status: function() {
         var amtRemaining = this.amtDue - this.amtPaid;
         if(amtRemaining > 0){
