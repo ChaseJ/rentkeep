@@ -12,6 +12,10 @@ Template.updateTenantModal.events({
                 $('#updateTenantModal').modal('hide');
             }
         });
+    },
+    'click #deleteBtn': function(e){
+        e.preventDefault();
+        $('#updateTenantModal').modal('hide');
     }
 });
 
