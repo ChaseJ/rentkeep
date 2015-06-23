@@ -6,15 +6,15 @@
 
 meteor-platform
 twbs:bootstrap
-iron:router
+iron:router@1.0.9
 accounts-password
-useraccounts:bootstrap
+useraccounts:bootstrap@1.11.1
 sacha:spin
 fourseven:scss
-msavin:mongol
-msavin:jetsetter
+msavin:mongol@1.0.97
+msavin:jetsetter@1.0.17
 zimme:iron-router-active
-aldeed:autoform
+aldeed:autoform@5.3.0
 aldeed:collection2
 reactive-var
 matteodem:easy-search
