@@ -24,3 +24,5 @@ numeral:numeral
 aldeed:autoform-bs-datepicker
 rajit:bootstrap3-datepicker
 adelq:moment-recur
+cfs:standard-packages
+cfs:gridfs
