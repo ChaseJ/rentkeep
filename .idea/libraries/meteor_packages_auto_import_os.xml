@@ -12,13 +12,14 @@
         <item url="file://$USER_HOME$/.meteor/packages/sacha_spin/2.0.4/os/packages/sacha:spin.js" />
         <item url="file://$USER_HOME$/.meteor/packages/rajit_bootstrap3-datepicker/1.4.1/os/packages/rajit:bootstrap3-datepicker.js" />
         <item url="file://$USER_HOME$/.meteor/packages/routepolicy/1.0.5/os/packages/routepolicy.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/cfs_ui/0.1.3/os/packages/cfs:ui.js" />
         <item url="file://$USER_HOME$/.meteor/packages/session/1.1.0/os/packages/session.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/ongoworks_security/1.2.0/os/packages/ongoworks_security.js" />
         <item url="file://$USER_HOME$/.meteor/packages/service-configuration/1.0.4/os/packages/service-configuration.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reactive-var/1.0.5/os/packages/reactive-var.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.0/os/packages/reactive-dict.js" />
         <item url="file://$USER_HOME$/.meteor/packages/retry/1.0.3/os/packages/retry.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_autoform-select2/2.0.2/os/packages/aldeed_autoform-select2.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/yogiben_autoform-file/0.2.7/os/packages/yogiben_autoform-file.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reload/1.1.3/os/packages/reload.js" />
         <item url="file://$USER_HOME$/.meteor/packages/numeral_numeral/1.5.3/os/packages/numeral:numeral.js" />
         <item url="file://$USER_HOME$/.meteor/packages/useraccounts_bootstrap/1.11.1/os/packages/useraccounts_bootstrap.js" />
@@ -44,8 +45,8 @@
         <item url="file://$USER_HOME$/.meteor/packages/jquery/1.11.3_2/os/packages/jquery.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_access-point/0.1.49/os/packages/cfs_access-point.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_autoform/5.3.0/os/packages/aldeed_autoform.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/cfs_tempstore/0.1.5/os/packages/cfs_tempstore.js" />
         <item url="file://$USER_HOME$/.meteor/packages/tracker/1.0.7/os/packages/tracker.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/cfs_tempstore/0.1.5/os/packages/cfs_tempstore.js" />
         <item url="file://$USER_HOME$/.meteor/packages/srp/1.0.3/os/packages/srp.js" />
         <item url="file://$USER_HOME$/.meteor/packages/id-map/1.0.3/os/packages/id-map.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_upload-http/0.0.20/os/packages/cfs:upload-http.js" />
@@ -103,7 +104,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/iron_layout/1.0.8/os/packages/iron_layout.js" />
         <item url="file://$USER_HOME$/.meteor/packages/gwendall_session-json/0.1.7/os/packages/gwendall:session-json.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_http-methods/0.0.29/os/packages/cfs_http-methods.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.3.0/os/packages/fortawesome_fontawesome.js" />
         <item url="file://$USER_HOME$/.meteor/packages/lai_collection-extensions/0.1.3/os/packages/lai:collection-extensions.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_worker/0.1.4/os/packages/cfs:worker.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_core/1.0.8/os/packages/iron_core.js" />
@@ -124,13 +124,14 @@
       <root url="file://$USER_HOME$/.meteor/packages/rajit_bootstrap3-datepicker/1.4.1/os/packages/rajit:bootstrap3-datepicker.js" />
       <root url="file://$USER_HOME$/.meteor/packages/routepolicy/1.0.5/os/packages/routepolicy.js" />
       <root url="file://$USER_HOME$/.meteor/packages/session/1.1.0/os/packages/session.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/cfs_ui/0.1.3/os/packages/cfs:ui.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/ongoworks_security/1.2.0/os/packages/ongoworks_security.js" />
       <root url="file://$USER_HOME$/.meteor/packages/service-configuration/1.0.4/os/packages/service-configuration.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reactive-var/1.0.5/os/packages/reactive-var.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.0/os/packages/reactive-dict.js" />
       <root url="file://$USER_HOME$/.meteor/packages/retry/1.0.3/os/packages/retry.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_autoform-select2/2.0.2/os/packages/aldeed_autoform-select2.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reload/1.1.3/os/packages/reload.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/yogiben_autoform-file/0.2.7/os/packages/yogiben_autoform-file.js" />
       <root url="file://$USER_HOME$/.meteor/packages/numeral_numeral/1.5.3/os/packages/numeral:numeral.js" />
       <root url="file://$USER_HOME$/.meteor/packages/observe-sequence/1.0.6/os/packages/observe-sequence.js" />
       <root url="file://$USER_HOME$/.meteor/packages/useraccounts_bootstrap/1.11.1/os/packages/useraccounts_bootstrap.js" />
@@ -155,8 +156,8 @@
       <root url="file://$USER_HOME$/.meteor/packages/jquery/1.11.3_2/os/packages/jquery.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_access-point/0.1.49/os/packages/cfs_access-point.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_autoform/5.3.0/os/packages/aldeed_autoform.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/tracker/1.0.7/os/packages/tracker.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_tempstore/0.1.5/os/packages/cfs_tempstore.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/tracker/1.0.7/os/packages/tracker.js" />
       <root url="file://$USER_HOME$/.meteor/packages/srp/1.0.3/os/packages/srp.js" />
       <root url="file://$USER_HOME$/.meteor/packages/id-map/1.0.3/os/packages/id-map.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.3.3/os/packages/aldeed_collection2.js" />
@@ -214,7 +215,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/iron_layout/1.0.8/os/packages/iron_layout.js" />
       <root url="file://$USER_HOME$/.meteor/packages/gwendall_session-json/0.1.7/os/packages/gwendall:session-json.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_http-methods/0.0.29/os/packages/cfs_http-methods.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.3.0/os/packages/fortawesome_fontawesome.js" />
       <root url="file://$USER_HOME$/.meteor/packages/lai_collection-extensions/0.1.3/os/packages/lai:collection-extensions.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_worker/0.1.4/os/packages/cfs:worker.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_core/1.0.8/os/packages/iron_core.js" />

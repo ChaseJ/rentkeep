@@ -26,3 +26,5 @@ rajit:bootstrap3-datepicker
 adelq:moment-recur
 cfs:standard-packages
 cfs:gridfs
+ongoworks:security
+cfs:ui

@@ -49,6 +49,7 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <div class="pull-left">
@@ -75,6 +76,36 @@
                         {{else}}
                             <tr><td>No transactions have been added yet</td></tr>
                         {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <div class="pull-left">
+                        <h3 class="panel-title">Documents</h3>
+                    </div>
+                    <div class="pull-right">
+                        <a href="" class="document-select">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                        <input type="file" class="hidden document-input">
+                    </div>
+                </div>
+                <table class="table documents-table">
+                    <tbody>
+                    {{#each documents}}
+                        <tr><td>
+                            {{#if isUploaded}}
+                                <a target="_blank" href="{{url}}">{{original.name}}</a>
+                                {{#FS.DeleteButton class="close"}}<span>&times;</span>{{/FS.DeleteButton}}
+                            {{else}}
+                                {{> FS.UploadProgressBar bootstrap=true}}
+                            {{/if}}
+                        </td></tr>
+                    {{else}}
+                        <tr><td>No documents have been added yet</td></tr>
+                    {{/each}}
                     </tbody>
                 </table>
             </div>

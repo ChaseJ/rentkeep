@@ -35,3 +35,8 @@ Meteor.publish('transactionsByLease', function(leaseId) {
     check(leaseId, String);
     return Transactions.find({leaseId: leaseId});
 });
+
+Meteor.publish('documentsByLease', function(leaseId) {
+    check(leaseId, String);
+    return Documents.find({leaseId: leaseId});
+});
