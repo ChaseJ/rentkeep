@@ -11,8 +11,6 @@ accounts-password
 useraccounts:bootstrap@1.11.1
 sacha:spin
 fourseven:scss
-msavin:mongol@1.0.97
-msavin:jetsetter@1.0.17
 zimme:iron-router-active
 aldeed:autoform@5.3.0
 aldeed:collection2
@@ -28,3 +26,4 @@ cfs:standard-packages
 cfs:gridfs
 ongoworks:security
 cfs:ui
+meteortoys:allthings
