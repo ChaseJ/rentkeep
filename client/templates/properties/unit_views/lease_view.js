@@ -53,6 +53,18 @@ Template.leaseView.onCreated(function () {
 
 });
 
+Template.leaseView.onRendered(function () {
+    $('#updateLeaseModal').on('show.bs.modal', function () {
+        AutoForm.resetForm('updateLeaseForm');
+    });
+    $('#updateTenantModal').on('show.bs.modal', function () {
+        AutoForm.resetForm('updateTenantForm');
+    });
+    $('#updateTransactionModal').on('show.bs.modal', function () {
+        AutoForm.resetForm('updateTransactionForm');
+    });
+});
+
 Template.leaseView.events({
     'change #lease-select': function(e) {
         e.preventDefault();

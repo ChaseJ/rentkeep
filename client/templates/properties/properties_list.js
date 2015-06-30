@@ -14,6 +14,12 @@ Template.propertiesList.onCreated(function () {
     };
 });
 
+Template.propertiesList.onRendered(function () {
+    $('#updatePropertyModal').on('show.bs.modal', function () {
+        AutoForm.resetForm('updatePropertyForm');
+    });
+});
+
 Template.propertiesList.helpers({
     properties: function () {
         return Template.instance().properties();
