@@ -9,7 +9,9 @@ Template.transactionRow.helpers({
     status: function() {
         var amtRemaining = this.amtDue - this.amtPaid;
         if(amtRemaining > 0){
-            if(moment.utc().isAfter(moment.utc(this.dueDate), 'day')){
+            //Because moment() is local time, and dueDate is UTC midnight,
+            //I have to add the timezone offset to compare days
+            if(moment().isAfter(moment(this.dueDate).add(moment().zone(),"m"), 'day')){
                 return 'Late'
             } else {
                 return 'Open'
