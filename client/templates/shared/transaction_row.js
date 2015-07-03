@@ -7,8 +7,7 @@ Template.transactionRow.events({
 
 Template.transactionRow.helpers({
     status: function() {
-        var amtRemaining = this.amtDue - this.amtPaid;
-        if(amtRemaining > 0){
+        if(this.balance > 0){
             //Because moment() is local time, and dueDate is UTC midnight,
             //I have to add the timezone offset to compare days
             if(moment().isAfter(moment(this.dueDate).add(moment().zone(),"m"), 'day')){
