@@ -7,6 +7,10 @@ Meteor.publish('properties', function() {
     return Properties.find({userId: this.userId});
 });
 
+Meteor.publish('units', function() {
+    return Units.find({userId: this.userId});
+});
+
 Meteor.publish('unitsByProperty', function(propertyId) {
     check(propertyId, String);
     return Units.find({propertyId: propertyId});
@@ -26,6 +30,10 @@ Meteor.publish('tenantsById', function(tenantIds) {
     return Tenants.find({_id: {$in: tenantIds} });
 });
 
+Meteor.publish('leases', function() {
+    return Leases.find({userId: this.userId});
+});
+
 Meteor.publish('leasesByUnit', function(unitId) {
     check(unitId, String);
     return Leases.find({unitId: unitId});
@@ -39,4 +47,11 @@ Meteor.publish('transactionsByLease', function(leaseId) {
 Meteor.publish('documentsByLease', function(leaseId) {
     check(leaseId, String);
     return Documents.find({leaseId: leaseId});
+});
+
+Meteor.publish('dueTransactions', function(days) {
+    var today = new Date();
+    var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000));
+    var compareDate = new Date(todayAdj.setDate(todayAdj.getDate()+days));
+    return Transactions.find({userId: this.userId, dueDate: { $lt: compareDate }, balance: { $gt: 0 }});
 });

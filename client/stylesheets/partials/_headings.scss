@@ -6,6 +6,28 @@
   margin-right: 10px;
 }
 
+.header-squares {
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    float: left;
+    width: 25%;
+    height: 100px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-right: 20px solid #fff;
+  }
+
+}
+
+
 //Not currently used, can probably be removed later
 .header-glyphicons {
   padding-top: 10px;

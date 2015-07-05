@@ -1,3 +1,68 @@
 <template name="home">
-    <h1>This is the home page</h1>
+    {{>updateTransactionModal}}
+    {{>removeTransactionModal}}
+
+    {{#if Template.subscriptionsReady}}
+        <div class="clearfix page-header">
+            <div class="header-squares">
+                <ul class="header-squares-list">
+                    <li>
+                        <div class="">$10,000</div>
+                        <div class="">Rent Outstanding</div>
+                    </li>
+                    <li>
+                        <div class="">$5,000</div>
+                        <div class="">Rent Over 1 Month Past Due</div>
+                    </li>
+                    <li>
+                        <div class="">90%</div>
+                        <div class="">Occupancy Rate</div>
+                    </li>
+                    <li>
+                        <div class="">5</div>
+                        <div class="">Units to Renew in Next Month</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Payments Due</h3>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Due Date</th>
+                        <th>Unit</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each transactions}}
+                    {{> homeTransactionRow}}
+                {{else}}
+                    <tr><td>No payments due in the next 7 days.</td></tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Vacancies</h3>
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                {{#each vacancy}}
+                    {{> vacancyRow}}
+                {{else}}
+                    <tr><td>All properties are rented.</td></tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{/if}}
 </template>

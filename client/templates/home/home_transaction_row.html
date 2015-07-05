@@ -1,0 +1,9 @@
+<template name="homeTransactionRow">
+    <tr data-toggle="modal" data-target="#updateTransactionModal">
+        <td>{{formatDate dueDate}}</td>
+        <td>{{streetAndUnit}}</td>
+        <td>{{desc}}</td>
+        <td>{{formatCurrency amtDue}}</td>
+        <td class="{{isLate status}}">{{status}}</td>
+    </tr>
+</template>
