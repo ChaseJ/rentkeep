@@ -27,3 +27,4 @@ cfs:gridfs
 ongoworks:security
 cfs:ui
 meteortoys:allthings
+dburles:collection-helpers
