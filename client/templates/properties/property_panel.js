@@ -31,8 +31,5 @@ Template.propertyPanel.events({
 Template.propertyPanel.helpers({
     units: function () {
         return Template.instance().units();
-    },
-    isMultiUnitProperty: function() {
-        return Template.instance().units().count()>1;
     }
 });

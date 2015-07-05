@@ -1,12 +1,12 @@
 <template name="unitView">
 
-    {{#if isMultipleUnits}}
+    {{#if isMultiUnit}}
         {{>updateUnitModal unitDoc=unit}}
         {{>removeUnitModal unitDoc=unit}}
     {{/if}}
 
     <div class="page-header">
-        {{#if isMultipleUnits}}
+        {{#if isMultiUnit}}
             <h1 class="page-header-fix">{{unit.unitNo}} <small>{{property.street}}</small></h1>
         {{else}}
             <h1 class="page-header-fix">{{property.street}}</h1>
@@ -17,7 +17,7 @@
         <div class="col-sm-3 col-md-2">
             <ul class="nav nav-pills nav-stacked">
                 <li role="presentation" class="{{isActivePath regex='lease'}}"><a href="{{pathFor route='leaseView' data=unit}}">Leases</a></li>
-                {{#if isMultipleUnits}}
+                {{#if isMultiUnit}}
                     <li role="presentation"><a href="" data-toggle="modal" data-target="#updateUnitModal">Edit Unit</a></li>
                     <li role="presentation"><a href="" data-toggle="modal" data-target="#removeUnitModal">Delete Unit</a></li>
                 {{/if}}

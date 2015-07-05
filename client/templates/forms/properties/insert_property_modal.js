@@ -1,6 +1,6 @@
 Template.insertPropertyModal.onCreated(function() {
     var instance = this;
-    instance.isMultipleUnits = new ReactiveVar(false);
+    instance.isMultiUnit = new ReactiveVar(false);
     instance.unitArray = new ReactiveVar([{id:0,unitNo:''},{id:1,unitNo:''}])
 
 });
@@ -15,12 +15,12 @@ Template.insertPropertyModal.onRendered(function() {
 });
 
 Template.insertPropertyModal.events({
-    'change #multipleUnitsCheckbox': function(e) {
+    'change #multiUnitCheckbox': function(e) {
         e.preventDefault();
         if (e.target.checked) {
-            Template.instance().isMultipleUnits.set(true);
+            Template.instance().isMultiUnit.set(true);
         } else {
-            Template.instance().isMultipleUnits.set(false);
+            Template.instance().isMultiUnit.set(false);
         }
 
     },
@@ -62,7 +62,7 @@ Template.insertPropertyModal.events({
 
         var unitArrayOfObjects = Template.instance().unitArray.get();
         var unitArray = [];
-        if (Template.instance().isMultipleUnits.get()) {
+        if (Template.instance().isMultiUnit.get()) {
             for (var i = 0; i < unitArrayOfObjects.length; i++) {
                 unitArray.push(unitArrayOfObjects[i].unitNo);
             }
@@ -79,8 +79,8 @@ Template.insertPropertyModal.events({
 });
 
 Template.insertPropertyModal.helpers({
-    'isMultipleUnits': function () {
-        return Template.instance().isMultipleUnits.get();
+    'isMultiUnit': function () {
+        return Template.instance().isMultiUnit.get();
     },
     'unitArray': function() {
         return Template.instance().unitArray.get();

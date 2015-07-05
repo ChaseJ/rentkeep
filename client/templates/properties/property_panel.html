@@ -3,7 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <div class="pull-left">
-                    {{#if isMultiUnitProperty}}
+                    {{#if isMultiUnit}}
                         <h3 class="panel-title">{{street}} <small>{{city}}, {{state}} {{postalCode}}</small></h3>
                     {{else}}
                             <a href="" class="single-unit-link"><h3 class="panel-title">{{street}} <small>{{city}}, {{state}} {{postalCode}}</small></h3></a>
@@ -18,7 +18,7 @@
                     </a>
                 </div>
             </div>
-            {{#if isMultiUnitProperty}}
+            {{#if isMultiUnit}}
             <div class="list-group">
                 {{#each units}}
                     <a href="{{pathFor 'leaseView'}}" class="list-group-item unit-item">{{unitNo}}</a>

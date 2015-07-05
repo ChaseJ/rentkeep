@@ -4,9 +4,9 @@ Template.unitView.onCreated(function () {
     var unitId = Router.current().params._id;
     var propertyId = Router.current().params.propertyId;
 
-    instance.isMultipleUnits = new ReactiveVar(false);
-    Meteor.call('isMultipleUnits', propertyId, function(error,result){
-        instance.isMultipleUnits.set(result);
+    instance.isMultiUnit = new ReactiveVar(false);
+    Meteor.call('isMultiUnit', propertyId, function(error,result){
+        instance.isMultiUnit.set(result);
     });
 
     //Subscriptions
@@ -29,7 +29,7 @@ Template.unitView.helpers({
     property: function() {
         return Template.instance().property();
     },
-    isMultipleUnits: function() {
-        return Template.instance().isMultipleUnits.get();
+    isMultiUnit: function() {
+        return Template.instance().isMultiUnit.get();
     }
 });
