@@ -3,7 +3,7 @@ Template.registerHelper("isEqual",function(left,right){
 });
 
 Template.registerHelper("formatDate", function(value){
-    return moment.utc(value).format("M/D/YY");
+    return moment.isDate(value) ? moment.utc(value).format("M/D/YY") : value;
 });
 
 Template.registerHelper("formatCurrency", function(value){

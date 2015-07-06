@@ -21,10 +21,11 @@ aldeed:autoform-select2
 numeral:numeral
 aldeed:autoform-bs-datepicker
 rajit:bootstrap3-datepicker
-adelq:moment-recur
 cfs:standard-packages
 cfs:gridfs
 ongoworks:security
 cfs:ui
 meteortoys:allthings
 dburles:collection-helpers
+gilbertwat:moment-recur
+momentjs:moment
