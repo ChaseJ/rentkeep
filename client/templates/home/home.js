@@ -17,6 +17,12 @@ Template.home.onCreated(function () {
     };
 });
 
+Template.home.onRendered(function () {
+    $('#updateTransactionModal').on('hidden.bs.modal', function () {
+        AutoForm.resetForm('updateTransactionForm');
+    });
+});
+
 Template.home.helpers({
     transactions: function() {
         return Template.instance().transactions();
