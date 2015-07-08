@@ -15,7 +15,7 @@ Template.updateLeaseModal.onCreated(function() {
 Template.updateLeaseModal.events({
     'click #deleteBtn': function(e){
         e.preventDefault();
-        $('#updateTransactionModal').modal('hide');
+        $('#updateLeaseModal').modal('hide');
     }
 });
 

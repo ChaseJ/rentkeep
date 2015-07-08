@@ -15,7 +15,7 @@ Template.propertiesList.onCreated(function () {
 });
 
 Template.propertiesList.onRendered(function () {
-    $('#updatePropertyModal').on('show.bs.modal', function () {
+    $('#updatePropertyModal').on('hidden.bs.modal', function () {
         AutoForm.resetForm('updatePropertyForm');
     });
 });

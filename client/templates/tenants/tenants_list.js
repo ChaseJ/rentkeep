@@ -15,7 +15,7 @@ Template.tenantsList.onCreated(function () {
 });
 
 Template.tenantsList.onRendered(function () {
-    $('#updateTenantModal').on('show.bs.modal', function () {
+    $('#updateTenantModal').on('hidden.bs.modal', function () {
         AutoForm.resetForm('updateTenantForm');
     });
 });

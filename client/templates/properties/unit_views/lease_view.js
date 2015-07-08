@@ -54,13 +54,13 @@ Template.leaseView.onCreated(function () {
 });
 
 Template.leaseView.onRendered(function () {
-    $('#updateLeaseModal').on('show.bs.modal', function () {
+    $('#updateLeaseModal').on('hidden.bs.modal', function () {
         AutoForm.resetForm('updateLeaseForm');
     });
-    $('#updateTenantModal').on('show.bs.modal', function () {
+    $('#updateTenantModal').on('hidden.bs.modal', function () {
         AutoForm.resetForm('updateTenantForm');
     });
-    $('#updateTransactionModal').on('show.bs.modal', function () {
+    $('#updateTransactionModal').on('hidden.bs.modal', function () {
         AutoForm.resetForm('updateTransactionForm');
     });
 });
