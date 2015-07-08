@@ -7,20 +7,20 @@
             <div class="header-squares">
                 <ul class="header-squares-list">
                     <li>
-                        <div class="">$10,000</div>
-                        <div class="">Rent Outstanding</div>
+                        <div class="">{{formatCurrency rentPastDue}}</div>
+                        <div class="">Rent Past Due</div>
                     </li>
                     <li>
-                        <div class="">$5,000</div>
+                        <div class="">{{formatCurrency rentMonthPastDue}}</div>
                         <div class="">Rent Over 1 Month Past Due</div>
                     </li>
                     <li>
-                        <div class="">90%</div>
-                        <div class="">Occupancy Rate</div>
+                        <div class="">{{vacantUnits}}</div>
+                        <div class="">Vacant Units</div>
                     </li>
                     <li>
-                        <div class="">5</div>
-                        <div class="">Units to Renew in Next Month</div>
+                        <div class="">{{soonToBeVacantUnits}}</div>
+                        <div class="">Soon to be Vacant Units</div>
                     </li>
                 </ul>
             </div>
