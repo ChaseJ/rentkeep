@@ -18,6 +18,7 @@ Meteor.methods({
 
         Meteor.call('insertTestTenantData');
         Meteor.call('insertTestPropertyData');
+        Meteor.call('insertTestActiveLeaseData');
     },
     removeTestUserData: function() {
         check(Meteor.user().emails[0].address, 'test@rentkeep.com');
@@ -80,6 +81,56 @@ Meteor.methods({
         _.each(tenants, function(tenant) {
             Meteor.call('tenantInsert', tenant);
         })
+    },
+    insertTestActiveLeaseData: function(){
+        check(Meteor.user().emails[0].address, 'test@rentkeep.com');
+
+        var userId = Meteor.user()._id;
+        var units = Units.find({userId: userId});
+        var tenantsObjects = Tenants.find({userId: userId}, {fields: {_id: 1}}).fetch();
+        var tenants = _.map(tenantsObjects, function(tenantObj){return tenantObj._id});
+        var numberOfTenants = [1,2,3];
+        var rentAmounts = [1000, 500, 750];
+        var startDates = [
+            moment.utc().startOf('day').startOf('month').toISOString(),
+            moment.utc().startOf('day').startOf('month').subtract(1, 'months').toISOString(),
+            moment.utc().startOf('day').subtract(1, 'months').toISOString()
+        ];
+        var leaseLengths = [1,2,5,11,11,11];
+
+        var vacantCounter = 0;
+        var leaseDoc;
+        var rentAmt;
+        var startDate;
+        var endDate;
+        var tenantArray;
+
+        units.forEach(function(unit) {
+            if(vacantCounter % 10 !== 0){
+                rentAmt = _.sample(rentAmounts);
+                startDate = _.sample(startDates);
+                endDate = moment.utc(startDate).add(_.sample(leaseLengths), 'months').endOf('month').startOf('day').toISOString();
+                tenantArray = _.sample(tenants, _.sample(numberOfTenants));
+
+                leaseDoc = {
+                    unitId: unit._id,
+                    rentAmt: rentAmt,
+                    depositAmt: rentAmt,
+                    startDate: startDate,
+                    endDate: endDate,
+                    tenants: tenantArray
+                };
+
+                Meteor.call('leaseInsert', leaseDoc);
+            }
+            vacantCounter += 1;
+        });
+    },
+    insertTestFutureLeaseData: function(){
+
+    },
+    updateTestTransactions: function() {
+
     }
 });
 
