@@ -19,6 +19,7 @@ Meteor.methods({
         Meteor.call('insertTestTenantData');
         Meteor.call('insertTestPropertyData');
         Meteor.call('insertTestActiveLeaseData');
+        Meteor.call('updateTestTransactions');
     },
     removeTestUserData: function() {
         check(Meteor.user().emails[0].address, 'test@rentkeep.com');
@@ -126,13 +127,29 @@ Meteor.methods({
             vacantCounter += 1;
         });
     },
-    insertTestFutureLeaseData: function(){
-
-    },
     updateTestTransactions: function() {
+        check(Meteor.user().emails[0].address, 'test@rentkeep.com');
 
+        var userId = Meteor.user()._id;
+        var today = new Date();
+        var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000));
+        var transactions = Transactions.find({userId: userId, dueDate: { $lt: todayAdj }}, {sort: {dueDate: 1}});
+        var transactionsCount = transactions.count();
+        var transModifier;
+        var counter = 0;
+
+        transactions.forEach(function(transaction) {
+            if(counter < (transactionsCount-3)) {
+                transModifier = {
+                    '$set': {
+                        amtDue: transaction.amtDue,
+                        amtPaid: transaction.amtDue,
+                        balance: 0
+                    }
+                };
+                Meteor.call('transactionUpdate', transModifier, transaction._id);
+                counter++;
+            }
+        });
     }
 });
-
-
-
