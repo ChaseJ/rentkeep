@@ -22,6 +22,16 @@ var insertLeaseHook = {
     }
 };
 
+var updateProfileHook = {
+    onSuccess: function() {
+        this.template.parent().profileFormSuccess.set(true);
+    },
+    onError: function() {
+        this.template.parent().profileFormSuccess.set(false);
+    }
+};
+
+AutoForm.addHooks('updateProfileForm', updateProfileHook);
 AutoForm.addHooks('insertTransactionForm', insertTransactionHook);
 AutoForm.addHooks('insertLeaseForm', insertLeaseHook);
 AutoForm.addHooks(
