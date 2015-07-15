@@ -28,3 +28,5 @@ Template.registerHelper("s2Opts", function() {
         placeholder: "Search..."
     };
 });
+
+Template.registerHelper("Schemas", Schemas);

@@ -1,0 +1,23 @@
+<template name="accountSettings">
+    <div class="page-header">
+        <h1 class="page-header-fix">Account Settings</h1>
+    </div>
+
+    <div class="panel panel-default panel-profile">
+        <div class="panel-heading">
+            <h3 class="panel-title">Profile</h3>
+        </div>
+        {{#autoForm collection='Meteor.users' schema=Schemas.User doc=currentUser type='update' id='profileForm'}}
+            {{> afQuickFields name="profile"}}
+            <button type="submit" id="saveProfile" class="btn btn-lg btn-block btn-default">Save Profile</button>
+        {{/autoForm}}
+    </div>
+
+    <div class="panel panel-default panel-change-password">
+        <div class="panel-heading">
+            <h3 class="panel-title">Change Password</h3>
+        </div>
+        {{> atForm state='changePwd'}}
+    </div>
+
+</template>

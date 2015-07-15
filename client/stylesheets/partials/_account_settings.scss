@@ -1,0 +1,29 @@
+.panel-profile {
+  form {
+    padding: 15px;
+  }
+
+  #saveProfile {
+    margin-top: 30px;
+  }
+}
+
+
+.panel-change-password {
+  .at-form {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .at-pwd-form > form {
+    margin-top: 0;
+
+    label {
+      font-weight: bold;
+    }
+  }
+
+  #at-btn {
+    font-size: 18px;
+  }
+}
