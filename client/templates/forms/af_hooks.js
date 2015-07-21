@@ -31,6 +31,16 @@ var updateProfileHook = {
     }
 };
 
+var contactHook = {
+    onSuccess: function() {
+        this.template.parent().contactFormSuccess.set(true);
+    },
+    onError: function() {
+        this.template.parent().contactFormSuccess.set(false);
+    }
+};
+
+AutoForm.addHooks('contactForm', contactHook);
 AutoForm.addHooks('updateProfileForm', updateProfileHook);
 AutoForm.addHooks('insertTransactionForm', insertTransactionHook);
 AutoForm.addHooks('insertLeaseForm', insertLeaseHook);

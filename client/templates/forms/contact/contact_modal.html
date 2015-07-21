@@ -8,6 +8,11 @@
                 </div>
                 {{#autoForm schema=Schemas.ContactForm id="contactForm" type="method" meteormethod="sendEmail"}}
                     <div class="modal-body">
+                        {{#if contactFormSuccess}}
+                            <div class="alert alert-success text-center">
+                                <span>Email has been sent. You will hear back from us within 24 hours.</span>
+                            </div>
+                        {{/if}}
                         {{> afQuickField name="name"}}
                         {{> afQuickField name="email"}}
                         {{> afQuickField name="subject"}}
