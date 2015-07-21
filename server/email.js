@@ -10,6 +10,22 @@ Meteor.startup(function () {
 
 });
 
+Meteor.startup(function() {
+
+    Accounts.emailTemplates.from = 'RentKeep <no-reply@rentkeep.com>';
+
+    Accounts.emailTemplates.siteName = 'RentKeep';
+
+    Accounts.emailTemplates.resetPassword.subject = function() {
+        return 'Reset your RentKeep password';
+    };
+
+    Accounts.emailTemplates.resetPassword.text = function(user, url) {
+        url = url.replace('#/', '');
+        return "Click this link to reset your password: " + url;
+    };
+});
+
 Meteor.methods({
     sendEmail: function(doc) {
         check(doc, Schemas.ContactForm);
