@@ -13,8 +13,8 @@
                                 <span>Email has been sent. You will hear back from us within 24 hours.</span>
                             </div>
                         {{/if}}
-                        {{> afQuickField name="name"}}
-                        {{> afQuickField name="email"}}
+                        {{> afQuickField name="name" value=currentUser.profile.firstName}}
+                        {{> afQuickField name="email" value=currentUser.emails.[0].address}}
                         {{> afQuickField name="subject"}}
                         {{> afQuickField name="message" rows=10}}
                     </div>
