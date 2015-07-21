@@ -13,7 +13,14 @@
                             {{> afQuickField name='depositAmt' type='text'}}
                             {{> afQuickField name='startDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
                             {{> afQuickField name='endDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
-                            {{> afQuickField name='tenants' type='select2' multiple=true options=selectOptions select2Options=s2Opts}}
+                            <div class="form-group {{#if afFieldIsInvalid name='tenants'}}has-error{{/if}}">
+                                <label class="control-label">{{afFieldLabelText name='tenants'}}</label>
+                                <a class="pull-right" href="" data-toggle="modal" data-target="#insertTenantModal">Add new tenant</a>
+                                {{> afFieldInput name='tenants' type='select2' multiple=true options=selectOptions select2Options=s2Opts}}
+                                {{#if afFieldIsInvalid name='tenants'}}
+                                    <span class="help-block">{{{afFieldMessage name='tenants'}}}</span>
+                                {{/if}}
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
