@@ -1,7 +1,3 @@
-Template.updateTenantModal.onCreated(function(){
-   console.log(Router.current());
-});
-
 Template.updateTenantModal.events({
     'click #deleteBtn': function(e){
         e.preventDefault();
