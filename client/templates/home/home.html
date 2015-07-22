@@ -3,26 +3,38 @@
     {{>removeTransactionModal}}
 
     {{#if Template.subscriptionsReady}}
-        <div class="clearfix page-header">
-            <div class="header-squares">
-                <ul class="header-squares-list">
-                    <li>
-                        <div class="">{{formatCurrency rentPastDue}}</div>
-                        <div class="">Rent Past Due</div>
-                    </li>
-                    <li>
-                        <div class="">{{formatCurrency rentMonthPastDue}}</div>
-                        <div class="">Rent Over 1 Month Past Due</div>
-                    </li>
-                    <li>
-                        <div class="">{{vacantUnits}}</div>
-                        <div class="">Vacant Units</div>
-                    </li>
-                    <li>
-                        <div class="">{{soonToBeVacantUnits}}</div>
-                        <div class="">Soon to be Vacant Units</div>
-                    </li>
-                </ul>
+        <div class="row page-header">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="huge text-center">{{formatCurrency rentPastDue}}</div>
+                        <div class="text-center">Rent Past Due</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="huge text-center">{{formatCurrency rentMonthPastDue}}</div>
+                        <div class="text-center">Rent Over 1 Month Past Due</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="huge text-center">{{vacantUnits}}</div>
+                        <div class="text-center">Vacant Units</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="huge text-center">{{soonToBeVacantUnits}}</div>
+                        <div class="text-center">Soon to be Vacant Units</div>
+                    </div>
+                </div>
             </div>
         </div>
 
