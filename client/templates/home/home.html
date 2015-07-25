@@ -1,87 +1,99 @@
 <template name="home">
     {{>updateTransactionModal}}
     {{>removeTransactionModal}}
+    {{>insertPropertyModal}}
 
     {{#if Template.subscriptionsReady}}
-        <div class="row page-header">
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="huge text-center">{{formatCurrency rentPastDue}}</div>
-                        <div class="text-center">Rent Past Due</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="huge text-center">{{formatCurrency rentMonthPastDue}}</div>
-                        <div class="text-center">Rent Over 1 Month Past Due</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="huge text-center">{{vacantUnits}}</div>
-                        <div class="text-center">Vacant Units</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="huge text-center">{{soonToBeVacantUnits}}</div>
-                        <div class="text-center">Soon to be Vacant Units</div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Payments Due</h3>
+        {{#if hasUnits}}
+            <div class="row page-header">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="huge text-center">{{formatCurrency rentPastDue}}</div>
+                            <div class="text-center">Rent Past Due</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="huge text-center">{{formatCurrency rentMonthPastDue}}</div>
+                            <div class="text-center">Rent Over 1 Month Past Due</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="huge text-center">{{vacantUnits}}</div>
+                            <div class="text-center">Vacant Units</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="huge text-center">{{soonToBeVacantUnits}}</div>
+                            <div class="text-center">Soon to be Vacant Units</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <table class="table table-hover">
-                <thead>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Payments Due</h3>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Due Date</th>
+                            <th>Unit</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{#each transactions}}
+                        {{> homeTransactionRow}}
+                    {{else}}
+                        <tr><td>No payments due in the next 7 days.</td></tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Unit Status</h3>
+                </div>
+                <table class="table table-hover">
+                    <thead>
                     <tr>
-                        <th>Due Date</th>
                         <th>Unit</th>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Status</th>
+                        <th>Current Lease Ends</th>
+                        <th>Next Lease Starts</th>
                     </tr>
-                </thead>
-                <tbody>
-                {{#each transactions}}
-                    {{> homeTransactionRow}}
-                {{else}}
-                    <tr><td>No payments due in the next 7 days.</td></tr>
-                {{/each}}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Unit Status</h3>
+                    </thead>
+                    <tbody>
+                    {{#each units}}
+                        {{> unitStatusRow}}
+                    {{else}}
+                        <tr><td>All units are rented.</td></tr>
+                    {{/each}}
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Unit</th>
-                    <th>Current Lease Ends</th>
-                    <th>Next Lease Starts</th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each units}}
-                    {{> unitStatusRow}}
-                {{else}}
-                    <tr><td>All units are rented.</td></tr>
-                {{/each}}
-                </tbody>
-            </table>
-        </div>
+
+        {{else}}
+            <div class="jumbotron">
+                <h1>Welcome to RentKeep</h1>
+                <p>Get started by adding your first property.</p>
+                <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button></p>
+            </div>
+        {{/if}}
+
     {{/if}}
 </template>

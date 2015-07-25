@@ -72,7 +72,13 @@ Template.insertPropertyModal.events({
             if (error) {
                 return alert(error.reason);
             } else {
-                $('#insertPropertyModal').modal('hide');
+                var propModal = $('#insertPropertyModal');
+                propModal.modal('hide');
+                if (Router.current().route.getName() === 'home') {
+                    propModal.on('hidden.bs.modal', function () {
+                        Router.go('propertiesList');
+                    })
+                }
             }
         });
     }

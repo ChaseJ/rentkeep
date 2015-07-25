@@ -24,6 +24,9 @@ Template.home.onRendered(function () {
 });
 
 Template.home.helpers({
+    hasUnits: function() {
+        return Template.instance().units().count()>0;
+    },
     transactions: function() {
         return Template.instance().transactions();
     },
