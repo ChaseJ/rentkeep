@@ -11,7 +11,11 @@ Template.registerHelper("formatCurrency", function(value){
 });
 
 Template.registerHelper("isLate", function(value){
-    return value==='Late' ? 'text-danger' : '';
+    if (value === 'Late' || value ==='Late (Partial)') {
+        return 'text-danger';
+    } else {
+        return '';
+    }
 });
 
 Template.registerHelper("dpOpts", function() {
