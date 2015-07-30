@@ -17,6 +17,7 @@
         <div class="col-sm-3 col-md-2">
             <ul class="nav nav-pills nav-stacked">
                 <li role="presentation" class="{{isActivePath regex='lease'}}"><a href="{{pathFor route='leaseView' data=unit}}">Leases</a></li>
+                <li role="presentation" class="{{isActivePath regex='expenses'}}"><a href="{{pathFor route='propertyExpenses' data=unit}}">Expenses</a></li>
                 {{#if isMultiUnit}}
                     <li role="presentation"><a href="" data-toggle="modal" data-target="#updateUnitModal">Edit Unit</a></li>
                     <li role="presentation"><a href="" data-toggle="modal" data-target="#removeUnitModal">Delete Unit</a></li>
