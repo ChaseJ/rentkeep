@@ -1,0 +1,26 @@
+<template name="insertExpenseModal">
+    <div class="modal fade" id="insertExpenseModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Expense</h4>
+                </div>
+                {{#autoForm collection="Expenses" id="insertExpenseForm" type="method" meteormethod="expenseInsert"}}
+                    <div class="modal-body">
+                        {{> afQuickField name='unitId' options=unitOptions firstOption='' value=defaultUnit}}
+                        {{> afQuickField name='expDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
+                        {{> afQuickField name='payee'}}
+                        {{> afQuickField name='desc'}}
+                        {{> afQuickField name='amount' type='text'}}
+                        {{> afQuickField name='notes'}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>
