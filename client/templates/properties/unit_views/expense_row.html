@@ -1,0 +1,15 @@
+<template name="expenseRow">
+    <tr data-toggle="modal" data-target="#updateExpenseModal">
+        <td>
+            {{#unless unitNo}}
+                Property
+            {{else}}
+                Unit {{unitNo}}
+            {{/unless}}
+        </td>
+        <td>{{formatDate expDate}}</td>
+        <td>{{payee}}</td>
+        <td>{{desc}}</td>
+        <td>{{formatCurrency amount}}</td>
+    </tr>
+</template>
