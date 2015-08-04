@@ -2,6 +2,7 @@ Template.propertyExpenses.onCreated(function () {
     //Initialization
     var instance = this;
     var propertyId = Router.current().params.propertyId;
+    Session.set('expenseId','');
     instance.startDate = new ReactiveVar();
     instance.endDate = new ReactiveVar();
     instance.unitId = new ReactiveVar('all');

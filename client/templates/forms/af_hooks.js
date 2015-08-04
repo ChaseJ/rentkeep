@@ -61,6 +61,7 @@ AutoForm.addHooks(
         'updateTransactionForm',
         'insertLeaseForm',
         'updateLeaseForm',
-        'insertExpenseForm'
+        'insertExpenseForm',
+        'updateExpenseForm'
     ],
     modalHook);
