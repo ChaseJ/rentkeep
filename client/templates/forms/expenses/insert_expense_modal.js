@@ -26,5 +26,8 @@ Template.insertExpenseModal.helpers({
     },
     defaultUnit: function() {
         return Router.current().params._id;
+    },
+    isMultiUnit: function() {
+        return Template.instance().units().count()>1;
     }
 });

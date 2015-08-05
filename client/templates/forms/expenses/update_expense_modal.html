@@ -9,7 +9,9 @@
                 {{#if expenseDoc}}
                     {{#autoForm collection="Expenses" id="updateExpenseForm" type="method-update" meteormethod="expenseUpdate" doc=expenseDoc}}
                         <div class="modal-body">
-                            {{> afQuickField name='unitId' options=unitOptions firstOption=''}}
+                            {{#if isMultiUnit}}
+                                {{> afQuickField name='unitId' options=unitOptions firstOption=''}}
+                            {{/if}}
                             {{> afQuickField name='expDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
                             {{> afQuickField name='payee'}}
                             {{> afQuickField name='desc'}}

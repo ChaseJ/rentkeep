@@ -8,7 +8,9 @@
                 </div>
                 {{#autoForm collection="Expenses" id="insertExpenseForm" type="method" meteormethod="expenseInsert"}}
                     <div class="modal-body">
-                        {{> afQuickField name='unitId' options=unitOptions firstOption='' value=defaultUnit}}
+                        {{#if isMultiUnit}}
+                            {{> afQuickField name='unitId' options=unitOptions firstOption='' value=defaultUnit}}
+                        {{/if}}
                         {{> afQuickField name='expDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
                         {{> afQuickField name='payee'}}
                         {{> afQuickField name='desc'}}

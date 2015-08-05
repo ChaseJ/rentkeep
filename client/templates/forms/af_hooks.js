@@ -7,6 +7,9 @@ var modalHook = {
 
 var insertExpenseHook = {
     formToDoc: function(doc) {
+        if(!doc.unitId) {
+            doc.unitId = 'property';
+        }
         doc.propertyId = Router.current().params.propertyId;
         return doc;
     }

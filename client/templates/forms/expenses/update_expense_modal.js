@@ -34,5 +34,8 @@ Template.updateExpenseModal.helpers({
     'expenseDoc': function () {
         var expenseId = Session.get('expenseId');
         return expenseId==='' ? false : Expenses.findOne(expenseId);
+    },
+    isMultiUnit: function() {
+        return Template.instance().units().count()>1;
     }
 });

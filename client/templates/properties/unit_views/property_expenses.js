@@ -68,5 +68,8 @@ Template.propertyExpenses.helpers({
     },
     expenses: function() {
         return Template.instance().expenses();
+    },
+    isMultiUnit: function() {
+        return Template.instance().units().count()>1;
     }
 });

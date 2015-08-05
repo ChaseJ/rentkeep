@@ -5,15 +5,17 @@
     {{>removeExpenseModal}}
 
         <div class="row expenses-header">
-            <div class="col-sm-3">
-                <select id="unit-select" class="form-control" title="Select a unit to view">
-                    <option value="all">Property & All Units</option>
-                    <option value="property">Only Property</option>
-                    {{#each units}}
-                        <option value="{{_id}}">Unit {{unitNo}}</option>
-                    {{/each}}
-                </select>
-            </div>
+            {{#if isMultiUnit}}
+                <div class="col-sm-3">
+                    <select id="unit-select" class="form-control" title="Select a unit to view">
+                        <option value="all">Property & All Units</option>
+                        <option value="property">Only Property</option>
+                        {{#each units}}
+                            <option value="{{_id}}">Unit {{unitNo}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            {{/if}}
             <div class="col-sm-4">
                 <div class="input-daterange input-group" id="datepicker">
                     <input type="text" class="form-control" name="start-date" />
@@ -21,7 +23,7 @@
                     <input type="text" class="form-control" name="end-date" />
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="{{#if isMultiUnit}} col-sm-5 {{else}} col-sm-8 {{/if}}">
                 <div class="pull-right">
                     <button class="btn btn-default" type="button" data-toggle="modal" data-target="#insertExpenseModal">Add Expense</button>
                 </div>
