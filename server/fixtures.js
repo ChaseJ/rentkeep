@@ -180,7 +180,7 @@ Meteor.methods({
         var amount;
 
         units.forEach(function(unit) {
-            if(unitCounter % 5 !== 0){
+            if(unitCounter % 5 !== 0 && unit.unitNo !== '1'){
                 for(var i = 0; i < Math.round(Math.random()*10); i++){
                     expDate = _.sample(expDates);
                     payee = _.sample(payees);
