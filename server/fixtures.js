@@ -20,6 +20,7 @@ Meteor.methods({
         Meteor.call('insertTestPropertyData');
         Meteor.call('insertTestActiveLeaseData');
         Meteor.call('updateTestTransactions');
+        Meteor.call('insertTestExpenseData')
     },
     removeTestUserData: function() {
         check(Meteor.user().emails[0].address, 'test@rentkeep.com');
@@ -32,6 +33,7 @@ Meteor.methods({
         Transactions.remove({userId: userId});
         Documents.remove({userId: userId});
         Tenants.remove({userId: userId});
+        Expenses.remove({userId: userId});
     },
     insertTestPropertyData: function(){
         check(Meteor.user().emails[0].address, 'test@rentkeep.com');
@@ -150,6 +152,74 @@ Meteor.methods({
                 Meteor.call('transactionUpdate', transModifier, transaction._id);
                 counter++;
             }
+        });
+    },
+    insertTestExpenseData: function() {
+        check(Meteor.user().emails[0].address, 'test@rentkeep.com');
+
+        var userId = Meteor.user()._id;
+        var properties = Properties.find({userId: userId});
+        var units = Units.find({userId: userId});
+        var payees = ['Acme', 'ABC Corp', 'XYZ Inc', 'Southeastern Co.'];
+        var descriptions = ['Painting', 'General Repairs', 'Coop Fee', 'Plumbing'];
+        var amounts = [100, 200, 500, 1000];
+        var expDates = [
+            moment.utc().startOf('day').startOf('month').toISOString(),
+            moment.utc().startOf('day').subtract(1, 'months').toISOString(),
+            moment.utc().startOf('day').subtract(3, 'months').toISOString(),
+            moment.utc().startOf('day').subtract(6, 'months').toISOString(),
+            moment.utc().startOf('day').subtract(12, 'months').toISOString()
+        ];
+
+        var unitCounter = 0;
+        var propertyCounter = 0;
+        var expenseDoc;
+        var expDate;
+        var payee;
+        var desc;
+        var amount;
+
+        units.forEach(function(unit) {
+            if(unitCounter % 5 !== 0){
+                for(var i = 0; i < Math.round(Math.random()*10); i++){
+                    expDate = _.sample(expDates);
+                    payee = _.sample(payees);
+                    desc = _.sample(descriptions);
+                    amount = _.sample(amounts);
+
+                    expenseDoc = {
+                        propertyId: unit.propertyId,
+                        unitId: unit._id,
+                        userId: userId,
+                        expDate: expDate,
+                        payee: payee,
+                        desc: desc,
+                        amount: amount
+                    };
+
+                    Meteor.call('expenseInsert', expenseDoc);
+                }
+            }
+            unitCounter++;
+        });
+
+        properties.forEach(function(property) {
+            if(propertyCounter % 4 !== 0){
+                for(var i = 0; i < Math.round(Math.random()*10); i++){
+                    expenseDoc = {
+                        propertyId: property._id,
+                        unitId: 'property',
+                        userId: userId,
+                        expDate: moment.utc().startOf('day').subtract(i, 'months').toISOString(),
+                        payee: 'Johnson Lawn Care',
+                        desc: 'Mowing',
+                        amount: 100
+                    };
+
+                    Meteor.call('expenseInsert', expenseDoc);
+                }
+            }
+            propertyCounter++;
         });
     }
 });
