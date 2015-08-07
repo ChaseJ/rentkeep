@@ -1,0 +1,19 @@
+<template name="reports">
+
+    <div class="page-header">
+        <h1 class="page-header-fix">Reports</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="{{isActivePath regex='property'}}"><a href="{{pathFor route='propertyReport'}}">Property</a></li>
+                <li role="presentation" class="{{isActivePath regex='paymentsDue'}}"><a href="{{pathFor route='paymentsDueReport'}}">Payments Due</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10 unit-view-yield">
+            {{> yield 'report'}}
+        </div>
+    </div>
+
+</template>
