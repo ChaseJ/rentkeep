@@ -39,13 +39,21 @@ Meteor.publish('leasesByUnit', function(unitId) {
     return Leases.find({unitId: unitId});
 });
 
+Meteor.publish('transactions', function() {
+    return Transactions.find({});
+});
+
 Meteor.publish('transactionsByLease', function(leaseId) {
     check(leaseId, String);
     return Transactions.find({leaseId: leaseId});
 });
 
+Meteor.publish('expenses', function() {
+    return Expenses.find({userId: this.userId});
+});
+
 Meteor.publish('expensesByProperty', function(propertyId) {
-   check(propertyId, String);
+    check(propertyId, String);
     return Expenses.find({propertyId: propertyId});
 });
 
