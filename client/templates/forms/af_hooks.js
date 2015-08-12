@@ -18,6 +18,8 @@ var insertExpenseHook = {
 var insertTransactionHook = {
     formToDoc: function(doc) {
         doc.leaseId = Session.get('leaseId');
+        doc.propertyId = Router.current().params.propertyId;
+        doc.unitId = Router.current().params._id;
         return doc;
     }
 };
@@ -27,6 +29,7 @@ var insertLeaseHook = {
         Session.set('leaseId', result);
     },
     formToDoc: function(doc) {
+        doc.propertyId = Router.current().params.propertyId;
         doc.unitId = Router.current().params._id;
         return doc;
     }

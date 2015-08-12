@@ -117,6 +117,7 @@ Meteor.methods({
 
                 leaseDoc = {
                     unitId: unit._id,
+                    propertyId: unit.propertyId,
                     rentAmt: rentAmt,
                     depositAmt: rentAmt,
                     startDate: startDate,
