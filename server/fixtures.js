@@ -147,6 +147,7 @@ Meteor.methods({
                     '$set': {
                         amtDue: transaction.amtDue,
                         amtPaid: transaction.amtDue,
+                        paidDate: transaction.dueDate,
                         balance: 0
                     }
                 };
