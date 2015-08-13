@@ -69,12 +69,12 @@ Template.ledgerReport.onRendered(function () {
 
     var today = new Date();
     var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000)); //UTC midnight
-    var yearAgo = new Date();
-    yearAgo = new Date(yearAgo.setDate(yearAgo.getDate()-365));
-    var yearAgoAdj = new Date(yearAgo.setHours(0,0,0,0) - (yearAgo.getTimezoneOffset() * 60000)); //UTC midnight
+    var monthAgo = new Date();
+    monthAgo = new Date(monthAgo.setDate(monthAgo.getDate()-30));
+    var monthAgoAdj = new Date(monthAgo.setHours(0,0,0,0) - (monthAgo.getTimezoneOffset() * 60000)); //UTC midnight
 
     $('[name=end-date]').datepicker('setUTCDate', todayAdj);
-    $('[name=start-date]').datepicker('setUTCDate', yearAgoAdj);
+    $('[name=start-date]').datepicker('setUTCDate', monthAgoAdj);
 });
 
 Template.ledgerReport.events({
