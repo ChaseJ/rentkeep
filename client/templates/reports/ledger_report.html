@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="col-sm-3">
-            <select id="unit-select" class="form-control" title="Select a unit to view">
+            <select id="unit-select" class="form-control" title="Select a unit to view" {{disablePropertySelect}}>
                 <option value="all">Property & All Units</option>
                 <option value="property">Only Property</option>
                 {{#each units}}

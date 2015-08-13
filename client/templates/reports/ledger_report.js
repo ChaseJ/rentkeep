@@ -108,5 +108,10 @@ Template.ledgerReport.helpers({
     },
     transactions: function() {
         return Template.instance().transactions();
+    },
+    disablePropertySelect: function() {
+        if (Template.instance().propertyId.get()==='all' || Template.instance().units().count()===1) {
+            return "disabled";
+        }
     }
 });
