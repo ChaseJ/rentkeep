@@ -1,5 +1,5 @@
 <template name="ledgerTransactionRow">
-    <tr>
+    <tr data-toggle="modal" data-target="#updateTransactionModal">
         <td>{{streetAndUnit}}</td>
         <td>{{formatDate paidDate}}</td>
         <td>{{desc}}</td>

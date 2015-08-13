@@ -1,5 +1,10 @@
 <template name="ledgerReport">
 
+    {{>updateExpenseModal}}
+    {{>updateTransactionModal}}
+    {{>removeExpenseModal}}
+    {{>removeTransactionModal}}
+
     <div class="row report-header">
         <div class="col-sm-3">
             <select id="property-select" class="form-control" title="Select a property to view">

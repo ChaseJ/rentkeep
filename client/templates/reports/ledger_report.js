@@ -1,6 +1,8 @@
 Template.ledgerReport.onCreated(function () {
     //Initialization
     var instance = this;
+    Session.set('expenseId','');
+    Session.set('transactionId','');
     instance.startDate = new ReactiveVar();
     instance.endDate = new ReactiveVar();
     instance.propertyId = new ReactiveVar('all');

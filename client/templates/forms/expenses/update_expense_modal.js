@@ -1,13 +1,10 @@
 Template.updateExpenseModal.onCreated(function() {
     //Initialization
     var instance = this;
-    var propertyId = Router.current().params.propertyId;
-
-    //Subscriptions
-    instance.subscribe('unitsByProperty', propertyId);
 
     //Data
     instance.units = function() {
+        var propertyId = Expenses.findOne(Session.get('expenseId')).propertyId;
         return Units.find({propertyId: propertyId},{sort: {unitNo: 1}});
     };
 
