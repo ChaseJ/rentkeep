@@ -7,6 +7,8 @@ Template.ledgerReport.onCreated(function () {
     instance.endDate = new ReactiveVar();
     instance.propertyId = new ReactiveVar('all');
     instance.unitId = new ReactiveVar('all');
+    instance.expenseTotal = new ReactiveVar(0);
+    instance.transactionTotal = new ReactiveVar(0);
 
     //Subscriptions
     instance.subscribe('properties');
@@ -113,5 +115,24 @@ Template.ledgerReport.helpers({
         if (Template.instance().propertyId.get()==='all' || Template.instance().units().count()===1) {
             return "disabled";
         }
+    },
+    expenseTotal: function() {
+        var sum = 0;
+        Template.instance().expenses().forEach(function(expense){
+            sum = sum + expense.amount;
+        });
+        Template.instance().expenseTotal.set(sum);
+        return sum;
+    },
+    transactionTotal: function() {
+        var sum = 0;
+        Template.instance().transactions().forEach(function(transaction){
+            sum = sum + transaction.amtPaid;
+        });
+        Template.instance().transactionTotal.set(sum);
+        return sum;
+    },
+    profitTotal: function() {
+        return Template.instance().transactionTotal.get() - Template.instance().expenseTotal.get();
     }
 });
