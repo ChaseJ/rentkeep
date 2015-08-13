@@ -1,0 +1,33 @@
+<template name="vacanciesReport">
+
+    <div class="row report-header">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="datepicker">Vacant as of </label>
+                <input type="text" class="form-control" id="datepicker">
+            </div>
+        </form>
+    </div>
+
+    {{#if Template.subscriptionsReady}}
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Unit</th>
+                <th>Current Lease Ends</th>
+                <th>Next Lease Starts</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each units}}
+                {{> unitStatusRow}}
+            {{else}}
+                <tr><td>All units are rented.</td></tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+    {{/if}}
+
+</template>
