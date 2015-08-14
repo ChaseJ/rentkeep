@@ -1,6 +1,7 @@
 Template.leasesReport.onCreated(function () {
     //Initialization
     var instance = this;
+    instance.propertyId = new ReactiveVar('all');
     instance.leasesDate = new ReactiveVar();
 
     //Subscriptions
@@ -9,9 +10,15 @@ Template.leasesReport.onCreated(function () {
     instance.subscribe('leases');
 
     //Cursors
+    instance.properties = function() {
+        return Properties.find( {},{ sort: { street: 1 } });
+    };
     instance.leases = function() {
-        return Leases.find(
-            {startDate: {$lte: instance.leasesDate.get()}, endDate: {$gte: instance.leasesDate.get()}});
+        if (instance.propertyId.get() === 'all') {
+            return Leases.find({startDate: {$lte: instance.leasesDate.get()}, endDate: {$gte: instance.leasesDate.get()}});
+        } else {
+            return Leases.find({propertyId: instance.propertyId.get(), startDate: {$lte: instance.leasesDate.get()}, endDate: {$gte: instance.leasesDate.get()}});
+        }
     };
 });
 
@@ -30,6 +37,10 @@ Template.leasesReport.onRendered(function () {
 });
 
 Template.leasesReport.events({
+    'change #property-select': function(e) {
+        e.preventDefault();
+        Template.instance().propertyId.set($(e.target).val());
+    },
     'change #datepicker': function(e) {
         e.preventDefault();
         Template.instance().leasesDate.set($('#datepicker').datepicker('getUTCDate'));
@@ -37,6 +48,9 @@ Template.leasesReport.events({
 });
 
 Template.leasesReport.helpers({
+    properties: function() {
+        return Template.instance().properties();
+    },
     leases: function() {
         return Template.instance().leases();
     }
