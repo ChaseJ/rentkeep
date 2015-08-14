@@ -68,3 +68,7 @@ Meteor.publish('dueTransactions', function(days) {
     var compareDate = new Date(todayAdj.setDate(todayAdj.getDate()+days));
     return Transactions.find({userId: this.userId, dueDate: { $lt: compareDate }, balance: { $gt: 0 }});
 });
+
+Meteor.publish('unpaidTransactions', function() {
+    return Transactions.find({userId: this.userId, balance: { $gt: 0 }});
+});

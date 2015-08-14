@@ -1,3 +1,39 @@
 <template name="paymentsDueReport">
-    <h1>Payments Due Report</h1>
+
+    {{>updateTransactionModal}}
+    {{>removeTransactionModal}}
+
+    <div class="row report-header">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="datepicker">Due on or before </label>
+                <input type="text" class="form-control" id="datepicker">
+            </div>
+        </form>
+    </div>
+
+    {{#if Template.subscriptionsReady}}
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Due Date</th>
+                <th>Unit</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{#each transactions}}
+                    {{> homeTransactionRow}}
+                {{else}}
+                    <tr><td>No payments are due.</td></tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    {{else}}
+        {{>loading}}
+    {{/if}}
 </template>
