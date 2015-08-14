@@ -2,7 +2,6 @@ Template.leaseView.onCreated(function () {
     //Initialization
     var instance = this;
     var unitId = Router.current().params._id;
-    Session.set('leaseId', '');
     Session.set('transactionId','');
     Session.set('tenantId','');
     instance.tenantIds = new ReactiveVar([]);
@@ -36,9 +35,9 @@ Template.leaseView.onCreated(function () {
         return Documents.find({leaseId: Session.get('leaseId')});
     };
 
-    //Set leaseId if blank
+    //Set leaseId if blank or not associated with the unit
     instance.autorun(function() {
-        if(!Session.get('leaseId')){
+        if(!instance.lease()){
             var today = new Date();
             today.setUTCHours(0,0,0,0);
             instance.leases().forEach(function(lease, index){
