@@ -1,6 +1,7 @@
 Template.paymentsDueReport.onCreated(function () {
     //Initialization
     var instance = this;
+    instance.propertyId = new ReactiveVar('all');
     instance.dueDate = new ReactiveVar();
     Session.set('transactionId','');
 
@@ -10,8 +11,15 @@ Template.paymentsDueReport.onCreated(function () {
     instance.subscribe('units');
 
     //Cursors
+    instance.properties = function() {
+        return Properties.find( {},{ sort: { street: 1 } });
+    };
     instance.transactions = function() {
-        return Transactions.find({balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
+        if (instance.propertyId.get() === 'all') {
+            return Transactions.find({balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
+        } else {
+            return Transactions.find({propertyId: instance.propertyId.get(), balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
+        }
     };
 });
 
@@ -30,6 +38,10 @@ Template.paymentsDueReport.onRendered(function () {
 });
 
 Template.paymentsDueReport.events({
+    'change #property-select': function(e) {
+        e.preventDefault();
+        Template.instance().propertyId.set($(e.target).val());
+    },
     'change #datepicker': function(e) {
         e.preventDefault();
         Template.instance().dueDate.set($('#datepicker').datepicker('getUTCDate'));
@@ -37,6 +49,9 @@ Template.paymentsDueReport.events({
 });
 
 Template.paymentsDueReport.helpers({
+    properties: function() {
+        return Template.instance().properties();
+    },
     transactions: function() {
         return Template.instance().transactions();
     }

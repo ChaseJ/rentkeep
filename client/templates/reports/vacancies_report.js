@@ -1,6 +1,7 @@
 Template.vacanciesReport.onCreated(function () {
     //Initialization
     var instance = this;
+    instance.propertyId = new ReactiveVar('all');
     instance.vacanciesDate = new ReactiveVar();
 
     //Subscriptions
@@ -9,8 +10,15 @@ Template.vacanciesReport.onCreated(function () {
     instance.subscribe('leases');
 
     //Cursors
+    instance.properties = function() {
+        return Properties.find( {},{ sort: { street: 1 } });
+    };
     instance.units = function() {
-        return Units.find({});
+        if (instance.propertyId.get() === 'all') {
+            return Units.find({});
+        } else {
+            return Units.find({propertyId: instance.propertyId.get()});
+        }
     };
 });
 
@@ -29,6 +37,10 @@ Template.vacanciesReport.onRendered(function () {
 });
 
 Template.vacanciesReport.events({
+    'change #property-select': function(e) {
+        e.preventDefault();
+        Template.instance().propertyId.set($(e.target).val());
+    },
     'change #datepicker': function(e) {
         e.preventDefault();
         Template.instance().vacanciesDate.set($('#datepicker').datepicker('getUTCDate'));
@@ -36,6 +48,9 @@ Template.vacanciesReport.events({
 });
 
 Template.vacanciesReport.helpers({
+    properties: function() {
+        return Template.instance().properties();
+    },
     units: function() {
         var date = Template.instance().vacanciesDate.get();
 

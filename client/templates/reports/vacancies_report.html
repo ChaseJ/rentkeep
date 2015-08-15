@@ -1,12 +1,22 @@
 <template name="vacanciesReport">
 
     <div class="row report-header">
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="datepicker">Vacant as of </label>
-                <input type="text" class="form-control" id="datepicker">
-            </div>
-        </form>
+        <div class="col-sm-3">
+            <select id="property-select" class="form-control" title="Select a property to view">
+                <option value="all">All Properties</option>
+                {{#each properties}}
+                    <option value="{{_id}}">{{street}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-sm-9">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="datepicker">Vacant as of </label>
+                    <input type="text" class="form-control" id="datepicker">
+                </div>
+            </form>
+        </div>
     </div>
 
     {{#if Template.subscriptionsReady}}
