@@ -8,6 +8,7 @@ Template.leasesReport.onCreated(function () {
     instance.subscribe('properties');
     instance.subscribe('units');
     instance.subscribe('leases');
+    instance.subscribe('tenants');
 
     //Cursors
     instance.properties = function() {

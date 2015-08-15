@@ -5,3 +5,10 @@ Template.leasesRow.events({
         Router.go('leaseView', Units.findOne({_id: this.unitId}));
     }
 });
+
+Template.leasesRow.helpers({
+    fullName: function () {
+        var tenant = Tenants.findOne({_id: this.valueOf()});
+        return tenant.firstName + " " + tenant.lastName;
+    }
+});

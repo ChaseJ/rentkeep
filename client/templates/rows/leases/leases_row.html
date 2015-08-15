@@ -4,6 +4,6 @@
         <td>{{formatDate startDate}}</td>
         <td>{{formatDate endDate}}</td>
         <td>{{formatCurrency rentAmt}}</td>
-        <!--<td>{{tenants}}</td>-->
+        <td>{{#each tenants}} {{fullName}} <br/> {{/each}}</td>
     </tr>
 </template>
