@@ -45,6 +45,7 @@ fourseven:scss@3.2.0
 geojson-utils@1.0.3
 gilbertwat:moment-recur@1.0.4
 gwendall:session-json@0.1.7
+harrison:papa-parse@1.1.0
 hitchcott:paginator@0.2.2
 html-tools@1.0.4
 htmljs@1.0.4
@@ -97,6 +98,7 @@ numeral:numeral@1.5.3
 observe-sequence@1.0.6
 ongoworks:security@1.2.0
 ordered-dict@1.0.3
+pfafman:filesaver@0.2.0_1
 raix:eventemitter@0.1.2
 rajit:bootstrap3-datepicker@1.4.1
 random@1.0.3

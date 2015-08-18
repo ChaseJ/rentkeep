@@ -45,6 +45,18 @@ Template.paymentsDueReport.events({
     'change #datepicker': function(e) {
         e.preventDefault();
         Template.instance().dueDate.set($('#datepicker').datepicker('getUTCDate'));
+    },
+    'click .export-btn': function(e) {
+        e.preventDefault();
+        var transactionsArray = Template.instance().transactions().map(function(transaction) {
+            transaction.streetAndUnit = transaction.streetAndUnit();
+            transaction.status = transaction.status();
+            transaction.dueDate = moment.utc(transaction.dueDate).format("M/D/YY");
+            return _.omit(transaction, ['leaseId', 'propertyId', 'unitId', 'userId', "_id"]);
+        });
+        var csv = Papa.unparse(transactionsArray);
+        var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+        saveAs(blob, "paymentsDue.csv");
     }
 });
 
