@@ -45,6 +45,22 @@ Template.leasesReport.events({
     'change #datepicker': function(e) {
         e.preventDefault();
         Template.instance().leasesDate.set($('#datepicker').datepicker('getUTCDate'));
+    },
+    'click .export-btn': function(e) {
+        e.preventDefault();
+        var leasesArray = Template.instance().leases().map(function(lease) {
+            lease.streetAndUnit = lease.streetAndUnit();
+            lease.startDate = moment.utc(lease.startDate).format("M/D/YY");
+            lease.endDate = moment.utc(lease.endDate).format("M/D/YY");
+            lease.tenants = _.map(lease.tenants, function(tenantId){
+                var tenant = Tenants.findOne({_id: tenantId});
+                return tenant.firstName + " " + tenant.lastName;
+            });
+            return _.omit(lease, ['propertyId', 'unitId', 'userId', "_id"]);
+        });
+        var csv = Papa.unparse(leasesArray);
+        var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+        saveAs(blob, "leases.csv");
     }
 });
 
