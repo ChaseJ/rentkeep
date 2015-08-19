@@ -45,17 +45,17 @@ Template.ledgerReport.onCreated(function () {
     instance.transactions = function() {
         if (instance.propertyId.get() === 'all' && instance.unitId.get() === 'all' ) {
             return Transactions.find(
-                {paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
+                {amtPaid: { $gt: 0 }, paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
                 {sort: {paidDate: -1}}
             );
         } else if (instance.unitId.get() === 'all' ) {
             return Transactions.find(
-                {propertyId: instance.propertyId.get(), paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
+                {amtPaid: { $gt: 0 }, propertyId: instance.propertyId.get(), paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
                 {sort: {paidDate: -1}}
             );
         } else {
             return Transactions.find(
-                {propertyId: instance.propertyId.get(), unitId: instance.unitId.get(), paidDate: {$gte: instance.startDate.get(), $lte: instance.endDate.get()}},
+                {amtPaid: { $gt: 0 }, propertyId: instance.propertyId.get(), unitId: instance.unitId.get(), paidDate: {$gte: instance.startDate.get(), $lte: instance.endDate.get()}},
                 {sort: {paidDate: -1}}
             );
         }
