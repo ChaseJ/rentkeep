@@ -95,6 +95,29 @@ Template.ledgerReport.events({
     'change [name=end-date]': function(e) {
         e.preventDefault();
         Template.instance().endDate.set($('[name=end-date]').datepicker('getUTCDate'));
+    },
+    'click .export-btn': function(e) {
+        e.preventDefault();
+
+        var transactionsArray = Template.instance().transactions().map(function(transaction) {
+            transaction.streetAndUnit = transaction.streetAndUnit();
+            transaction.status = transaction.status();
+            transaction.dueDate = moment.utc(transaction.dueDate).format("M/D/YY");
+            transaction.paidDate = moment.utc(transaction.paidDate).format("M/D/YY");
+            return _.omit(transaction, ['leaseId', 'propertyId', 'unitId', 'userId', "_id"]);
+        });
+        var csv = Papa.unparse(transactionsArray);
+        var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+        saveAs(blob, "paymentsReceived.csv");
+
+        var expensesArray = Template.instance().expenses().map(function(expense) {
+            expense.streetAndUnit = expense.streetAndUnit();
+            expense.expDate = moment.utc(expense.expDate).format("M/D/YY");
+            return _.omit(expense, ['unitNo', 'propertyId', 'unitId', 'userId', "_id"]);
+        });
+        csv = Papa.unparse(expensesArray);
+        blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+        saveAs(blob, "expenses.csv");
     }
 });
 
