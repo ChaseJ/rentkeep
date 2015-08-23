@@ -65,7 +65,7 @@ Template.vacanciesReport.events({
         e.preventDefault();
         Template.instance().vacanciesDate.set($('#datepicker').datepicker('getUTCDate'));
     },
-    'click .export-btn': function(e) {
+    'click #export-csv': function(e) {
         e.preventDefault();
         var vacanciesArray = _.map(Template.instance().vacancies(), function(unit) {
             var currentLeaseEnds = unit.currentLeaseEnds();
@@ -78,6 +78,17 @@ Template.vacanciesReport.events({
         var csv = Papa.unparse(vacanciesArray);
         var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
         saveAs(blob, "vacancies.csv");
+    },
+    'click #export-pdf': function(e) {
+        e.preventDefault();
+        var data = {
+            vacancies: Template.instance().vacancies(),
+            property: Properties.findOne({_id: Template.instance().propertyId.get()}),
+            date: Template.instance().vacanciesDate.get()
+        };
+        var html = Blaze.toHTMLWithData(Template.vacanciesReportPDF, data);
+        html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
+        Meteor.pdf.save(html, 'vacancies', pdfOptions);
     }
 });
 
