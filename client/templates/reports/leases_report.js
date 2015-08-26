@@ -46,7 +46,7 @@ Template.leasesReport.events({
         e.preventDefault();
         Template.instance().leasesDate.set($('#datepicker').datepicker('getUTCDate'));
     },
-    'click .export-btn': function(e) {
+    'click #export-csv': function(e) {
         e.preventDefault();
         var leasesArray = Template.instance().leases().map(function(lease) {
             lease.streetAndUnit = lease.streetAndUnit();
@@ -61,6 +61,22 @@ Template.leasesReport.events({
         var csv = Papa.unparse(leasesArray);
         var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
         saveAs(blob, "leases.csv");
+    },
+    'click #export-pdf': function(e) {
+        e.preventDefault();
+        var data = {
+            propId: Template.instance().propertyId.get(),
+            date: Template.instance().leasesDate.get()
+        };
+        var html = Blaze.toHTMLWithData(Template.leasesReportPrint, data);
+        html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
+        Meteor.pdf.save(html, 'leases', pdfOptions);
+    },
+    'click .print-btn': function(e) {
+        e.preventDefault();
+        var dateObj = Template.instance().leasesDate.get();
+        var query = 'propId='+Template.instance().propertyId.get()+'&date='+dateObj.toISOString();
+        window.open(Router.url('leasesReportPrint',{},{query: query}),'Leases Report','width=600,height=800');
     }
 });
 

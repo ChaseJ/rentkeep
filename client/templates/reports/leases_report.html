@@ -18,7 +18,16 @@
             </form>
         </div>
         <div class="col-sm-3">
-            <button class="btn btn-default pull-right export-btn" type="button">Export</button>
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Export <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="export-csv" href="#">CSV</a></li>
+                    <li><a id="export-pdf" href="#">PDF</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-default pull-right print-btn" type="button">Print</button>
         </div>
     </div>
 
