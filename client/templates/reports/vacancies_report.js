@@ -21,7 +21,7 @@ Template.vacanciesReport.onCreated(function () {
         }
     };
     instance.vacancies = function() {
-        var date = Template.instance().vacanciesDate.get();
+        var date = instance.vacanciesDate.get();
 
         var unitArray = Template.instance().units().map(function(unit) {
             var vacant = true;
@@ -82,13 +82,18 @@ Template.vacanciesReport.events({
     'click #export-pdf': function(e) {
         e.preventDefault();
         var data = {
-            vacancies: Template.instance().vacancies(),
-            property: Properties.findOne({_id: Template.instance().propertyId.get()}),
+            propId: Template.instance().propertyId.get(),
             date: Template.instance().vacanciesDate.get()
         };
-        var html = Blaze.toHTMLWithData(Template.vacanciesReportPDF, data);
+        var html = Blaze.toHTMLWithData(Template.vacanciesReportPrint, data);
         html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
         Meteor.pdf.save(html, 'vacancies', pdfOptions);
+    },
+    'click .print-btn': function(e) {
+        e.preventDefault();
+        var dateObj = Template.instance().vacanciesDate.get();
+        var query = 'propId='+Template.instance().propertyId.get()+'&date='+dateObj.toISOString();
+        window.open(Router.url('vacanciesReportPrint',{},{query: query}),'Vacancies Report','width=600,height=800');
     }
 });
 

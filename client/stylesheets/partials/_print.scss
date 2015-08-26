@@ -1,0 +1,10 @@
+.print-body {
+  margin: 20px 20px !important;
+  padding: 0 !important;
+}
+
+@media print {
+  .print-btn-container{
+    display: none !important;
+  }
+}
