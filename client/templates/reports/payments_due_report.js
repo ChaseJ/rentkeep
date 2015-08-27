@@ -46,7 +46,7 @@ Template.paymentsDueReport.events({
         e.preventDefault();
         Template.instance().dueDate.set($('#datepicker').datepicker('getUTCDate'));
     },
-    'click .export-btn': function(e) {
+    'click #export-csv': function(e) {
         e.preventDefault();
         var transactionsArray = Template.instance().transactions().map(function(transaction, index) {
             //Show optional properties if not declared yet
@@ -63,6 +63,22 @@ Template.paymentsDueReport.events({
         var csv = Papa.unparse(transactionsArray);
         var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
         saveAs(blob, "paymentsDue.csv");
+    },
+    'click #export-pdf': function(e) {
+        e.preventDefault();
+        var data = {
+            propId: Template.instance().propertyId.get(),
+            date: Template.instance().dueDate.get()
+        };
+        var html = Blaze.toHTMLWithData(Template.paymentsDueReportPrint, data);
+        html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
+        Meteor.pdf.save(html, 'paymentsDue', pdfOptions);
+    },
+    'click .print-btn': function(e) {
+        e.preventDefault();
+        var dateObj = Template.instance().dueDate.get();
+        var query = 'propId='+Template.instance().propertyId.get()+'&date='+dateObj.toISOString();
+        window.open(Router.url('paymentsDueReportPrint',{},{query: query}),'Payments Due Report','width=600,height=800');
     }
 });
 

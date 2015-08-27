@@ -1,0 +1,36 @@
+<template name="paymentsDueReportPrint">
+
+    <h1 class="text-center">{{currentUser.profile.companyName}}</h1>
+    <h3 class="text-center">Payments Due</h3>
+    {{#if property}}
+        <h5 class="text-center">{{property.street}}</h5>
+    {{else}}
+        <h5 class="text-center">All Properties</h5>
+    {{/if}}
+    <h5 class="text-center">As of {{formatDate date}}</h5>
+    <table class="table table-pdf-fix">
+        <thead>
+            <tr>
+                <th>Due Date</th>
+                <th>Unit</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each transactions}}
+            <tr>
+                <td>{{formatDate dueDate}}</td>
+                <td>{{streetAndUnit}}</td>
+                <td>{{desc}}</td>
+                <td>{{formatCurrency amtDue}}</td>
+                <td class="{{isLate status}}">{{status}}</td>
+            </tr>
+        {{else}}
+            <tr><td>No payments are due.</td></tr>
+        {{/each}}
+        </tbody>
+    </table>
+
+</template>
