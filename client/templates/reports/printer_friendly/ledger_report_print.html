@@ -1,0 +1,98 @@
+<template name="ledgerReportPrint">
+
+    <h1 class="text-center">{{currentUser.profile.companyName}}</h1>
+    <h3 class="text-center">Ledger</h3>
+    {{#if property}}
+        <h5 class="text-center">{{property.street}}</h5>
+    {{else}}
+        <h5 class="text-center">All Properties</h5>
+    {{/if}}
+    <h5 class="text-center">{{unit}}</h5>
+    <h5 class="text-center">{{formatDate startDate}} to {{formatDate endDate}}</h5>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-center">Total Revenue</div>
+                    <div class="huge text-center">{{formatCurrency transactionTotal}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-center">Total Expenses</div>
+                    <div class="huge text-center">{{formatCurrency expenseTotal}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-center">Profit</div>
+                    <div class="huge text-center">{{formatCurrency profitTotal}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Payments Received</h3>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Received From</th>
+                <th>Paid Date</th>
+                <th>Description</th>
+                <th>Amount Paid</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each transactions}}
+                <tr>
+                    <td>{{streetAndUnit}}</td>
+                    <td>{{formatDate paidDate}}</td>
+                    <td>{{desc}}</td>
+                    <td>{{formatCurrency amtPaid}}</td>
+                </tr>
+            {{else}}
+                <tr><td>There are no transactions to show.</td></tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Expenses</h3>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Assigned To</th>
+                <th>Date</th>
+                <th>Payee</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each expenses}}
+                <tr>
+                    <td>{{streetAndUnit}}</td>
+                    <td>{{formatDate expDate}}</td>
+                    <td>{{payee}}</td>
+                    <td>{{desc}}</td>
+                    <td>{{formatCurrency amount}}</td>
+                </tr>
+            {{else}}
+                <tr><td>There are no expenses to show.</td></tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</template>

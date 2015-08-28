@@ -23,15 +23,24 @@
                 {{/each}}
             </select>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="input-daterange input-group" id="datepicker">
                 <input type="text" class="form-control" name="start-date" />
                 <span class="input-group-addon">to</span>
                 <input type="text" class="form-control" name="end-date" />
             </div>
         </div>
-        <div class="col-sm-2">
-            <button class="btn btn-default pull-right export-btn" type="button">Export</button>
+        <div class="col-sm-3">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Export <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="export-csv" href="#">CSV</a></li>
+                    <li><a id="export-pdf" href="#">PDF</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-default pull-right print-btn" type="button">Print</button>
         </div>
     </div>
 

@@ -96,7 +96,7 @@ Template.ledgerReport.events({
         e.preventDefault();
         Template.instance().endDate.set($('[name=end-date]').datepicker('getUTCDate'));
     },
-    'click .export-btn': function(e) {
+    'click #export-csv': function(e) {
         e.preventDefault();
 
         var transactionsArray = Template.instance().transactions().map(function(transaction, index) {
@@ -127,6 +127,25 @@ Template.ledgerReport.events({
         csv = Papa.unparse(expensesArray);
         blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
         saveAs(blob, "expenses.csv");
+    },
+    'click #export-pdf': function(e) {
+        e.preventDefault();
+        var data = {
+            propId: Template.instance().propertyId.get(),
+            unitId: Template.instance().unitId.get(),
+            startDate: Template.instance().startDate.get(),
+            endDate: Template.instance().endDate.get()
+        };
+        var html = Blaze.toHTMLWithData(Template.ledgerReportPrint, data);
+        html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
+        Meteor.pdf.save(html, 'ledger', pdfOptions);
+    },
+    'click .print-btn': function(e) {
+        e.preventDefault();
+        var startDateObj = Template.instance().startDate.get();
+        var endDateObj = Template.instance().endDate.get();
+        var query = 'propId='+Template.instance().propertyId.get()+'&unitId='+Template.instance().unitId.get()+'&startDate='+startDateObj.toISOString()+'&endDate='+endDateObj.toISOString();
+        window.open(Router.url('ledgerReportPrint',{},{query: query}),'Ledger Report','width=800,height=800');
     }
 });
 
