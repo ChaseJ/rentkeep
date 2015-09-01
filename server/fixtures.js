@@ -52,33 +52,71 @@ Meteor.methods({
             {street:'245 Sugar Creek Ln',   city:'North Liberty',   state:'IA',     postalCode:'52317'},
             {street:'125 E Zeller St',      city:'North Liberty',   state:'IA',     postalCode:'52317'}
         ];
-        var units = [
-            [],
-            ['100','200'],
-            ['100', '101', '200', '201', '300'],
-            ['100', '110', '120', '200', '210', '300', '310']
-        ];
 
-        _.each(properties, function(property) {
-            Meteor.call('propertyInsert', property, _.sample(units));
+        _.each(properties, function(property, index) {
+            var units = [];
+            switch(index % 3) {
+                case 1:
+                    units = ['100','200'];
+                    break;
+                case 2:
+                    units = ['100', '101', '200', '201', '300'];
+                    break;
+                default:
+                    units = [];
+
+            }
+            Meteor.call('propertyInsert', property, units);
         })
     },
     insertTestTenantData: function() {
         check(Meteor.user().emails[0].address, 'test@rentkeep.com');
 
         var tenants = [
-            {firstName:'John',      lastName:'Doe',         phone:'(555) 555-5555',    email:'john@example.com'},
-            {firstName:'Steve',     lastName:'Johnson',     phone:'(555) 555-1234',    email:'steve@example.com'},
-            {firstName:'Wendy',     lastName:'Lewis',       phone:'(555) 555-3214',    email:'wendy@example.com'},
-            {firstName:'Carl',      lastName:'Black',       phone:'(555) 555-0823',    email:'carl@example.com'},
-            {firstName:'James',     lastName:'Allen',       phone:'(555) 555-0012',    email:'james@example.com'},
-            {firstName:'Mary',      lastName:'Johnson',     phone:'(555) 555-0992',    email:'mary@example.com'},
-            {firstName:'David',     lastName:'White',       phone:'(555) 555-4581',    email:'david@example.com'},
-            {firstName:'Kyle',      lastName:'Washington',  phone:'(555) 555-0331',    email:'kyle@example.com'},
-            {firstName:'Chase',     lastName:'Madison',     phone:'(555) 555-8029',    email:'chase@example.com'},
-            {firstName:'Stephanie', lastName:'Brown',       phone:'(555) 555-5435',    email:'stephanie@example.com'},
-            {firstName:'Brian',     lastName:'James',       phone:'(555) 555-3215',    email:'brian@example.com'},
-            {firstName:'Sue',       lastName:'Peterson',    phone:'(555) 555-0002',    email:'sue@example.com'}
+            {firstName:'James',     lastName:'Smith',       phone:'(555) 555-0000',    email:'james@example.com'},
+            {firstName:'Mary',      lastName:'Johnson',     phone:'(555) 555-0001',    email:'mary@example.com'},
+            {firstName:'John',      lastName:'Williams',    phone:'(555) 555-0002',    email:'john@example.com'},
+            {firstName:'Patricia',  lastName:'Brown',       phone:'(555) 555-0003',    email:'pat@example.com'},
+            {firstName:'Robert',    lastName:'Jones',       phone:'(555) 555-0004',    email:'robert@example.com'},
+            {firstName:'Jennifer',  lastName:'Miller',      phone:'(555) 555-0005',    email:'jenn@example.com'},
+            {firstName:'Michael',   lastName:'Davis',       phone:'(555) 555-0006',    email:'michael@example.com'},
+            {firstName:'Elizabeth', lastName:'Garcia',      phone:'(555) 555-0007',    email:'beth@example.com'},
+            {firstName:'William',   lastName:'Rodriquez',   phone:'(555) 555-0008',    email:'will@example.com'},
+            {firstName:'Linda',     lastName:'Wilson',      phone:'(555) 555-0009',    email:'linda@example.com'},
+            {firstName:'David',     lastName:'Anderson',    phone:'(555) 555-0010',    email:'david@example.com'},
+            {firstName:'Barbara',   lastName:'Taylor',      phone:'(555) 555-0011',    email:'barbara@example.com'},
+            {firstName:'Richard',   lastName:'Thomas',      phone:'(555) 555-0012',    email:'richard@example.com'},
+            {firstName:'Susan',     lastName:'Moore',       phone:'(555) 555-0013',    email:'susan@example.com'},
+            {firstName:'Joseph',    lastName:'Martin',      phone:'(555) 555-0014',    email:'joe@example.com'},
+            {firstName:'Margaret',  lastName:'Jackson',     phone:'(555) 555-0015',    email:'margaret@example.com'},
+            {firstName:'Charles',   lastName:'Thompson',    phone:'(555) 555-0016',    email:'charles@example.com'},
+            {firstName:'Jessica',   lastName:'White',       phone:'(555) 555-0017',    email:'jessica@example.com'},
+            {firstName:'Thomas',    lastName:'Lopez',       phone:'(555) 555-0018',    email:'thomas@example.com'},
+            {firstName:'Sarah',     lastName:'Lee',         phone:'(555) 555-0019',    email:'sarah@example.com'},
+            {firstName:'Chris',     lastName:'Harris',      phone:'(555) 555-0020',    email:'chris@example.com'},
+            {firstName:'Dorothy',   lastName:'Clark',       phone:'(555) 555-0021',    email:'dorothy@example.com'},
+            {firstName:'Daniel',    lastName:'Lewis',       phone:'(555) 555-0022',    email:'daniel@example.com'},
+            {firstName:'Karen',     lastName:'Robinson',    phone:'(555) 555-0023',    email:'karen@example.com'},
+            {firstName:'Matt',      lastName:'Walker',      phone:'(555) 555-0024',    email:'matt@example.com'},
+            {firstName:'Nancy',     lastName:'Perez',       phone:'(555) 555-0025',    email:'nancy@example.com'},
+            {firstName:'Donald',    lastName:'Hall',        phone:'(555) 555-0026',    email:'donald@example.com'},
+            {firstName:'Betty',     lastName:'Young',       phone:'(555) 555-0027',    email:'betty@example.com'},
+            {firstName:'Anthony',   lastName:'King',        phone:'(555) 555-0028',    email:'anthony@example.com'},
+            {firstName:'Lisa',      lastName:'Scott',       phone:'(555) 555-0029',    email:'lisa@example.com'},
+            {firstName:'Mark',      lastName:'Green',       phone:'(555) 555-0030',    email:'mark@example.com'},
+            {firstName:'Sandra',    lastName:'Baker',       phone:'(555) 555-0031',    email:'sandra@example.com'},
+            {firstName:'Paul',      lastName:'Smith',       phone:'(555) 555-0032',    email:'paul@example.com'},
+            {firstName:'Ashley',    lastName:'Harris',      phone:'(555) 555-0033',    email:'ashley@example.com'},
+            {firstName:'Steven',    lastName:'Johson',      phone:'(555) 555-0034',    email:'steven@example.com'},
+            {firstName:'Kim',       lastName:'Lewis',       phone:'(555) 555-0035',    email:'kim@example.com'},
+            {firstName:'George',    lastName:'Robinson',    phone:'(555) 555-0036',    email:'george@example.com'},
+            {firstName:'Donna',     lastName:'Walker',      phone:'(555) 555-0037',    email:'donna@example.com'},
+            {firstName:'Ken',       lastName:'Williams',    phone:'(555) 555-0038',    email:'ken@example.com'},
+            {firstName:'Helen',     lastName:'Hall',        phone:'(555) 555-0039',    email:'helen@example.com'},
+            {firstName:'Andrew',    lastName:'Black',       phone:'(555) 555-0040',    email:'andrew@example.com'},
+            {firstName:'Carol',     lastName:'King',        phone:'(555) 555-0041',    email:'carol@example.com'},
+            {firstName:'Edward',    lastName:'Davis',       phone:'(555) 555-0042',    email:'ed@example.com'},
+            {firstName:'Michelle',  lastName:'Green',       phone:'(555) 555-0043',    email:'michelle@example.com'}
         ];
 
         _.each(tenants, function(tenant) {
@@ -92,7 +130,6 @@ Meteor.methods({
         var units = Units.find({userId: userId});
         var tenantsObjects = Tenants.find({userId: userId}, {fields: {_id: 1}}).fetch();
         var tenants = _.map(tenantsObjects, function(tenantObj){return tenantObj._id});
-        var numberOfTenants = [1,2,3];
         var rentAmounts = [1000, 500, 750];
         var startDates = [
             moment.utc().startOf('day').startOf('month').toISOString(),
@@ -101,7 +138,8 @@ Meteor.methods({
         ];
         var leaseLengths = [1,2,5,11,11,11];
 
-        var vacantCounter = 0;
+        var unitsCount = 1;
+        var tenantsCount = 0;
         var leaseDoc;
         var rentAmt;
         var startDate;
@@ -109,11 +147,28 @@ Meteor.methods({
         var tenantArray;
 
         units.forEach(function(unit) {
-            if(vacantCounter % 10 !== 0){
+            if(unitsCount % 8 !== 0){
                 rentAmt = _.sample(rentAmounts);
                 startDate = _.sample(startDates);
                 endDate = moment.utc(startDate).add(_.sample(leaseLengths), 'months').endOf('month').startOf('day').toISOString();
-                tenantArray = _.sample(tenants, _.sample(numberOfTenants));
+
+                switch(unitsCount % 8) {
+                    case 5:
+                        tenantArray = [tenants[tenantsCount],tenants[tenantsCount+1]];
+                        tenantsCount = tenantsCount + 2;
+                        break;
+                    case 6:
+                        tenantArray = [tenants[tenantsCount],tenants[tenantsCount+1]];
+                        tenantsCount = tenantsCount + 2;
+                        break;
+                    case 7:
+                        tenantArray = [tenants[tenantsCount],tenants[tenantsCount+1], tenants[tenantsCount+2]];
+                        tenantsCount = tenantsCount + 3;
+                        break;
+                    default:
+                        tenantArray = [tenants[tenantsCount]];
+                        tenantsCount = tenantsCount + 1;
+                }
 
                 leaseDoc = {
                     unitId: unit._id,
@@ -127,7 +182,7 @@ Meteor.methods({
 
                 Meteor.call('leaseInsert', leaseDoc);
             }
-            vacantCounter += 1;
+            unitsCount++;
         });
     },
     updateTestTransactions: function() {
