@@ -7,6 +7,9 @@ Template.tenantsList.onCreated(function () {
 
     //Subscriptions
     instance.subscribe('tenants');
+    instance.subscribe('leases');
+    instance.subscribe('units');
+    instance.subscribe('properties');
 
     //Cursors
     instance.tenantsPagination = function() {
