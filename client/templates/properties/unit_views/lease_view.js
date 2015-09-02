@@ -39,9 +39,9 @@ Template.leaseView.onCreated(function () {
     instance.autorun(function() {
         if(!instance.lease()){
             var today = new Date();
-            today.setUTCHours(0,0,0,0);
+            var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000)); //UTC midnight
             instance.leases().forEach(function(lease, index){
-                if(lease.startDate<today && lease.endDate>today){
+                if(lease.startDate<=todayAdj && lease.endDate>=todayAdj){
                     Session.set('leaseId', lease._id);
                 } else if (index===0) {
                     Session.set('leaseId', lease._id);
