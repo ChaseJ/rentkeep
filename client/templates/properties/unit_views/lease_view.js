@@ -38,10 +38,8 @@ Template.leaseView.onCreated(function () {
     //Set leaseId if blank or not associated with the unit
     instance.autorun(function() {
         if(!instance.lease()){
-            var today = new Date();
-            var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000)); //UTC midnight
             instance.leases().forEach(function(lease, index){
-                if(lease.startDate<=todayAdj && lease.endDate>=todayAdj){
+                if(lease.status()==='current'){
                     Session.set('leaseId', lease._id);
                 } else if (index===0) {
                     Session.set('leaseId', lease._id);
