@@ -12,55 +12,80 @@
             {{> esInput index="tenants" placeholder="Search..." class="form-control search-header"}}
             <button class="btn btn-default" type="button" data-toggle="modal" data-target="#insertTenantModal">Add Tenant</button>
             <button class="btn btn-default export-btn" type="button">Export</button>
+            <button class="btn btn-default email-btn" type="button">Email Selected</button>
         </div>
     </div>
 
     {{#if Template.subscriptionsReady}}
 
-        {{#unless tenants.count}}
-            <div class="jumbotron">
-                <h1>Welcome to RentKeep</h1>
-                <p>Get started by adding your first tenant.</p>
-                <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertTenantModal">Add Tenant</button></p>
+        <form class="form-inline">
+            <label for="filterCheckboxes">Tenant Status:</label>
+            <div class="form-group" id="filterCheckboxes">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="currentCheckbox" checked="{{currentChecked}}"> Current
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="pastCheckbox" checked="{{pastChecked}}"> Past
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="futureCheckbox" checked="{{futureChecked}}"> Future
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="applicantsCheckbox" checked="{{applicantsChecked}}"> Applicants
+                </label>
             </div>
+            <div class="form-group">
+                <select id="property-select" class="form-control" title="Select a property to view">
+                    <option value="all">All Properties</option>
+                    {{#each properties}}
+                        <option value="{{_id}}">{{street}}</option>
+                    {{/each}}
+                </select>
+                <select id="unit-select" class="form-control" title="Select a unit to view" {{disablePropertySelect}}>
+                    <option value="all">All Units</option>
+                    {{#each units}}
+                        <option value="{{_id}}">Unit {{unitNo}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </form>
+        <br/>
 
-        {{else}}
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone Number</th>
-                        <th>Email Address</th>
-                        <th>Leases</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {{#ifEsIsSearching index="tenants"}}
-                            {{>loading}}
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th id="checkAllCheckboxContainer"><input type="checkbox" id="checkAllCheckbox"></th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email Address</th>
+                    <th>Leases</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#ifEsIsSearching index="tenants"}}
+                        {{>loading}}
+                    {{else}}
+                        {{#esEach index="tenants"}}
+                            {{> tenantRow }}
+                        {{/esEach}}
+                    {{/ifEsIsSearching}}
+
+                    {{#ifEsHasNoResults index="tenants"}}
+                        <h3>No results found.</h3>
+                    {{/ifEsHasNoResults}}
+
+                    {{#ifEsInputIsEmpty index="tenants"}}
+                        {{#each tenants}}
+                            {{> tenantRow }}
                         {{else}}
-                            {{#esEach index="tenants"}}
-                                {{> tenantRow }}
-                            {{/esEach}}
-                        {{/ifEsIsSearching}}
-
-                        {{#ifEsHasNoResults index="tenants"}}
-                            <h3>No results found.</h3>
-                        {{/ifEsHasNoResults}}
-
-                        {{#ifEsInputIsEmpty index="tenants"}}
-                            {{#each tenants}}
-                                {{> tenantRow }}
-                            {{/each}}
-                        {{/ifEsInputIsEmpty}}
-                    </tbody>
-                </table>
-            </div>
-            {{> esLoadMoreButton index="tenants" class="btn btn-primary btn-lg btn-block" howMany=10}}
-            {{#ifEsInputIsEmpty index="tenants"}}
-                {{> Paginator_UI tenants}}
-            {{/ifEsInputIsEmpty}}
-        {{/unless}}
+                            <tr><td colspan="5">There are no tenants to show.</td></tr>
+                        {{/each}}
+                    {{/ifEsInputIsEmpty}}
+                </tbody>
+            </table>
+        </div>
+        {{> esLoadMoreButton index="tenants" class="btn btn-primary btn-lg btn-block" howMany=10}}
 
     {{else}}
         {{>loading}}

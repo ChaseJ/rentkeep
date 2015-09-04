@@ -1,5 +1,6 @@
 <template name="tenantRow">
-    <tr data-toggle="modal" data-target="#updateTenantModal">
+    <tr>
+        <td class="rowCheckboxContainer"><input type="checkbox" class="rowCheckbox" value="{{_id}}"></td>
         <td>{{firstName}} {{lastName}}</td>
         <td>{{phone}}</td>
         <td>{{email}}</td>
