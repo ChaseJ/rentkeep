@@ -25,7 +25,7 @@ Template.ledgerReport.onCreated(function () {
         return Units.find( { propertyId: instance.propertyId.get() },{ sort: { unitNo: 1 } });
     };
     instance.expenses = function() {
-        if (instance.propertyId.get() === 'all' && instance.unitId.get() === 'all' ) {
+        if (instance.propertyId.get() === 'all') {
             return Expenses.find(
                 {expDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
                 {sort: {expDate: -1}}
@@ -43,7 +43,7 @@ Template.ledgerReport.onCreated(function () {
         }
     };
     instance.transactions = function() {
-        if (instance.propertyId.get() === 'all' && instance.unitId.get() === 'all' ) {
+        if (instance.propertyId.get() === 'all') {
             return Transactions.find(
                 {amtPaid: { $gt: 0 }, paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
                 {sort: {paidDate: -1}}
@@ -83,6 +83,8 @@ Template.ledgerReport.events({
     'change #property-select': function(e) {
         e.preventDefault();
         Template.instance().propertyId.set($(e.target).val());
+        $("#unit-select").val('all');
+        Template.instance().unitId.set('all');
     },
     'change #unit-select': function(e) {
         e.preventDefault();
