@@ -59,7 +59,7 @@
                     {{#each transactions}}
                         {{> homeTransactionRow}}
                     {{else}}
-                        <tr><td>No payments due in the next 7 days.</td></tr>
+                        <tr><td colspan="5">No payments due in the next 7 days.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>
@@ -81,7 +81,7 @@
                     {{#each units}}
                         {{> unitStatusRow}}
                     {{else}}
-                        <tr><td>All units are rented.</td></tr>
+                        <tr><td colspan="3">All units are rented.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>

@@ -91,7 +91,7 @@
                     {{#each transactions}}
                         {{> ledgerTransactionRow}}
                     {{else}}
-                       <tr><td>There are no transactions to show.</td></tr>
+                       <tr><td colspan="4">There are no transactions to show.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>
@@ -117,7 +117,7 @@
                     {{#each expenses}}
                         {{> ledgerExpenseRow}}
                     {{else}}
-                        <tr><td>There are no expenses to show.</td></tr>
+                        <tr><td colspan="5">There are no expenses to show.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>
