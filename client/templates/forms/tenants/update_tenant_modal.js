@@ -11,6 +11,6 @@ Template.updateTenantModal.helpers({
         return tenantId==='' ? false : Tenants.findOne(tenantId);
     },
     'isTenantsURL': function() {
-        return Router.current().url === '/tenants';
+        return Router.current().route.getName() === 'tenantsList';
     }
 });
