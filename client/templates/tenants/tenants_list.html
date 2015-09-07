@@ -11,8 +11,16 @@
         <div class="form-inline pull-right">
             {{> esInput index="tenants" placeholder="Search..." class="form-control search-header"}}
             <button class="btn btn-default" type="button" data-toggle="modal" data-target="#insertTenantModal">Add Tenant</button>
-            <button class="btn btn-default export-btn" type="button">Export</button>
-            <button class="btn btn-default email-btn" type="button">Email Selected</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Export <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="export-csv" href="#">CSV</a></li>
+                    <li><a id="export-pdf" href="#">PDF</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-default print-btn" type="button">Print</button>
         </div>
     </div>
 
@@ -49,6 +57,7 @@
                 </select>
             </div>
         </form>
+        <button class="btn btn-default email-btn" type="button">Email Selected</button>
         <br/>
 
         <div class="table-responsive">

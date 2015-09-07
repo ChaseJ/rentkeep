@@ -73,7 +73,7 @@ Template.tenantsList.onRendered(function () {
 });
 
 Template.tenantsList.events({
-    'click .export-btn': function(e) {
+    'click #export-csv': function(e) {
         e.preventDefault();
         var tenantsArray = Template.instance().tenants().map(function(tenant, index) {
             //Show optional properties if not declared yet
@@ -82,11 +82,35 @@ Template.tenantsList.events({
                 if(!tenant.hasOwnProperty('email')) {tenant.email=''}
                 if(!tenant.hasOwnProperty('notes')) {tenant.notes=''}
             }
+            tenant.leases = _.map(tenant.leases(), function(lease){
+                return lease.desc();
+            });
             return _.omit(tenant, ['userId', "_id"]);
         });
         var csv = Papa.unparse(tenantsArray);
         var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
         saveAs(blob, "tenants.csv");
+    },
+    'click #export-pdf': function(e) {
+        e.preventDefault();
+        var data = {
+            propId: Template.instance().propertyId.get(),
+            unitId: Template.instance().unitId.get(),
+            current: Template.instance().current.get(),
+            past: Template.instance().past.get(),
+            future: Template.instance().future.get(),
+            applicants: Template.instance().applicants.get()
+        };
+        var html = Blaze.toHTMLWithData(Template.tenantsListPrint, data);
+        html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
+        Meteor.pdf.save(html, 'tenants', pdfOptions);
+    },
+    'click .print-btn': function(e) {
+        e.preventDefault();
+        var query = 'propId='+Template.instance().propertyId.get()+'&unitId='+Template.instance().unitId.get()+
+            '&current='+Template.instance().current.get()+'&past='+Template.instance().past.get()+
+            '&future='+Template.instance().future.get()+'&applicants='+Template.instance().applicants.get();
+        window.open(Router.url('tenantsListPrint',{},{query: query}),'Tenants Report','width=800,height=800');
     },
     'change #property-select': function(e) {
         e.preventDefault();

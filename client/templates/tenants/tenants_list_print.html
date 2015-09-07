@@ -1,0 +1,28 @@
+<template name="tenantsListPrint">
+
+    <h1 class="text-center">{{currentUser.profile.companyName}}</h1>
+    <h3 class="text-center">Tenants</h3>
+    <table class="table table-pdf-fix">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+            <th>Leases</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each tenants}}
+            <tr>
+                <td>{{firstName}} {{lastName}}</td>
+                <td>{{phone}}</td>
+                <td>{{email}}</td>
+                <td>{{#each leases}}{{desc}} <br/> {{else}} None {{/each}}</td>
+            </tr>
+        {{else}}
+            <tr><td colspan="5">There are no tenants to show.</td></tr>
+        {{/each}}
+        </tbody>
+    </table>
+
+</template>
