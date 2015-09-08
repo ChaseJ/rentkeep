@@ -5,5 +5,10 @@ Template.tenantRow.events({
     'click .tenant-update': function(e) {
         e.preventDefault();
         Session.set('tenantId',Template.instance().data._id);
+    },
+    'click .tenant-lease>a': function(e) {
+        e.preventDefault();
+        Session.set('leaseId', this._id);
+        Router.go('leaseView', Units.findOne({_id: this.unitId}));
     }
 });
