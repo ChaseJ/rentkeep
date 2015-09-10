@@ -31,16 +31,20 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Export <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a id="export-csv" href="#">CSV</a></li>
-                    <li><a id="export-pdf" href="#">PDF</a></li>
-                </ul>
+            <div class="pull-right filter-glyphicons">
+                <div class="btn-group export-btn-group">
+                    <a href="" class="export-glyphicon" title="Export Data" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-download-alt"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a id="export-csv" href="#">CSV</a></li>
+                        <li><a id="export-pdf" href="#">PDF</a></li>
+                    </ul>
+                </div>
+                <a href="" class="print-glyphicon print-btn" title="Print">
+                    <span class="glyphicon glyphicon-print"></span>
+                </a>
             </div>
-            <button class="btn btn-default pull-right print-btn" type="button">Print</button>
         </div>
     </div>
 
