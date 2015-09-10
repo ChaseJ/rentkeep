@@ -130,11 +130,37 @@ Template.tenantsList.events({
     },
     'click .email-btn': function(e) {
         e.preventDefault();
-        var tenantIds = [];
+        var addresses = [];
+        var noEmailArray = [];
+        var bccString;
+
         $('.rowCheckbox:checked').each(function() {
-            tenantIds.push(this.value);
+            var tenant = Tenants.findOne({_id: this.value});
+            if (tenant.email) {
+                addresses.push(tenant.email);
+            } else {
+                noEmailArray.push(tenant.firstName + " " + tenant.lastName);
+            }
         });
-        console.log(tenantIds);
+
+        _.each(addresses, function(address, index) {
+            console.log(index);
+            if(index === 0){
+                bccString = address;
+            } else {
+                bccString = bccString + ",+" + address
+            }
+        });
+
+        console.log(noEmailArray);
+        console.log(addresses);
+
+        if(bccString){
+            window.location.href = "mailto:?bcc=" + bccString
+        } else {
+            console.log('No email addresses were selected')
+        }
+
     },
     'change #currentCheckbox': function (e) {
         e.preventDefault();
