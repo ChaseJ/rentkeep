@@ -11,54 +11,75 @@
         <div class="form-inline pull-right">
             {{> esInput index="tenants" placeholder="Search..." class="form-control search-header"}}
             <button class="btn btn-default" type="button" data-toggle="modal" data-target="#insertTenantModal">Add Tenant</button>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Export <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a id="export-csv" href="#">CSV</a></li>
-                    <li><a id="export-pdf" href="#">PDF</a></li>
-                </ul>
-            </div>
-            <button class="btn btn-default print-btn" type="button">Print</button>
+
         </div>
     </div>
 
     {{#if Template.subscriptionsReady}}
 
-        <form class="form-inline">
-            <label for="filterCheckboxes">Tenant Status:</label>
-            <div class="form-group" id="filterCheckboxes">
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="currentCheckbox" checked="{{currentChecked}}"> Current
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="pastCheckbox" checked="{{pastChecked}}"> Past
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="futureCheckbox" checked="{{futureChecked}}"> Future
-                </label>
-                <label class="checkbox-inline">
-                    <input type="checkbox" id="applicantsCheckbox" checked="{{applicantsChecked}}"> Applicants
-                </label>
+        <div class="row tenant-filter-row">
+            <div class="col-sm-5">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="filterCheckboxes">Tenant Status: </label>
+                        <div class="form-group" id="filterCheckboxes">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="currentCheckbox" checked="{{currentChecked}}"> Current
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="pastCheckbox" checked="{{pastChecked}}"> Past
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="futureCheckbox" checked="{{futureChecked}}"> Future
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="applicantsCheckbox" checked="{{applicantsChecked}}"> Applicants
+                            </label>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <select id="property-select" class="form-control" title="Select a property to view">
-                    <option value="all">All Properties</option>
-                    {{#each properties}}
-                        <option value="{{_id}}">{{street}}</option>
-                    {{/each}}
-                </select>
-                <select id="unit-select" class="form-control" title="Select a unit to view" {{disablePropertySelect}}>
-                    <option value="all">All Units</option>
-                    {{#each units}}
-                        <option value="{{_id}}">Unit {{unitNo}}</option>
-                    {{/each}}
-                </select>
+
+            <div class="col-sm-5">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <select id="property-select" class="form-control" title="Select a property to view">
+                            <option value="all">All Properties</option>
+                            {{#each properties}}
+                                <option value="{{_id}}">{{street}}</option>
+                            {{/each}}
+                        </select>
+                        <select id="unit-select" class="form-control" title="Select a unit to view" {{disablePropertySelect}}>
+                            <option value="all">All Units</option>
+                            {{#each units}}
+                                <option value="{{_id}}">Unit {{unitNo}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </form>
             </div>
-        </form>
-        <button class="btn btn-default email-btn" type="button">Email Selected</button>
-        <br/>
+
+            <div class="col-sm-2">
+                <div class="pull-right tenant-filter-glyphicons">
+                    <a href="" class="email-glyphicon email-btn" title="Email Selected">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </a>
+                    <div class="btn-group export-btn-group">
+                        <a href="" class="export-glyphicon" title="Export Data" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a id="export-csv" href="#">CSV</a></li>
+                            <li><a id="export-pdf" href="#">PDF</a></li>
+                        </ul>
+                    </div>
+                    <a href="" class="print-glyphicon print-btn" title="Print">
+                        <span class="glyphicon glyphicon-print"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
 
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -82,14 +103,14 @@
                     {{/ifEsIsSearching}}
 
                     {{#ifEsHasNoResults index="tenants"}}
-                        <h3>No results found.</h3>
+                        <tr><td colspan="6">No results found.</td></tr>
                     {{/ifEsHasNoResults}}
 
                     {{#ifEsInputIsEmpty index="tenants"}}
                         {{#each tenants}}
                             {{> tenantRow }}
                         {{else}}
-                            <tr><td colspan="5">There are no tenants to show.</td></tr>
+                            <tr><td colspan="6">There are no tenants to show.</td></tr>
                         {{/each}}
                     {{/ifEsInputIsEmpty}}
                 </tbody>
