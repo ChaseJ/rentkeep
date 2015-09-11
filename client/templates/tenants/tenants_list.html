@@ -17,6 +17,12 @@
 
     {{#if Template.subscriptionsReady}}
 
+        {{#if emailFail}}
+            <div class="alert alert-danger text-center">
+                <span>Please select a tenant before emailing.</span>
+            </div>
+        {{/if}}
+
         <div class="row tenant-filter-row">
             <div class="col-sm-5">
                 <form class="form-inline">

@@ -8,6 +8,7 @@ Template.tenantsList.onCreated(function () {
     instance.applicants = new ReactiveVar(false);
     instance.propertyId = new ReactiveVar('all');
     instance.unitId = new ReactiveVar('all');
+    instance.emailFail = new ReactiveVar(false);
 
     //Subscriptions
     instance.subscribe('tenants');
@@ -144,7 +145,6 @@ Template.tenantsList.events({
         });
 
         _.each(addresses, function(address, index) {
-            console.log(index);
             if(index === 0){
                 bccString = address;
             } else {
@@ -152,13 +152,23 @@ Template.tenantsList.events({
             }
         });
 
-        console.log(noEmailArray);
-        console.log(addresses);
-
         if(bccString){
-            window.location.href = "mailto:?bcc=" + bccString
+            Template.instance().emailFail.set(false);
+            if(noEmailArray.length !== 0){
+                BootstrapModalPrompt.prompt({
+                    title: "Email Tenants",
+                    template: Template.emailTenantsModal,
+                    templateData: { tenants: noEmailArray }
+                }, function(result) {
+                    if (result) {
+                        window.location.href = "mailto:?bcc=" + bccString
+                    }
+                });
+            } else {
+                window.location.href = "mailto:?bcc=" + bccString
+            }
         } else {
-            console.log('No email addresses were selected')
+            Template.instance().emailFail.set(true);
         }
 
     },
@@ -206,5 +216,8 @@ Template.tenantsList.helpers({
     },
     applicantsChecked: function() {
         return Template.instance().applicants.get();
+    },
+    emailFail: function() {
+        return Template.instance().emailFail.get();
     }
 });

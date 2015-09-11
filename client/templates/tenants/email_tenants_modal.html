@@ -1,0 +1,9 @@
+<template name="emailTenantsModal">
+    <p>The following tenants do not have email addresses:</p>
+    <ul>
+        {{#each tenants}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    <p>Do you want to send anyway?</p>
+</template>
