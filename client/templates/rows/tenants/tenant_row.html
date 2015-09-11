@@ -3,7 +3,7 @@
         <td class="rowCheckboxContainer"><input type="checkbox" class="rowCheckbox" value="{{_id}}"></td>
         <td>{{firstName}} {{lastName}}</td>
         <td>{{phone}}</td>
-        <td>{{email}}</td>
+        <td class="tenant-email"><a href="">{{email}}</a></td>
         <td class="tenant-lease">{{#each leases}}<a href="">{{desc}}</a> <br/> {{else}} None {{/each}}</td>
         <td>
             <a href="" class="tenant-update" title="Edit Tenant" data-toggle="modal" data-target="#updateTenantModal">

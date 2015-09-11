@@ -10,5 +10,9 @@ Template.tenantRow.events({
         e.preventDefault();
         Session.set('leaseId', this._id);
         Router.go('leaseView', Units.findOne({_id: this.unitId}));
+    },
+    'click .tenant-email>a': function(e) {
+        e.preventDefault();
+        window.location.href = "mailto:?to=" + this.email;
     }
 });
