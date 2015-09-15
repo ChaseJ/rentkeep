@@ -67,6 +67,37 @@ Template.leaseView.events({
         e.preventDefault();
         Session.set('leaseId', $('#lease-select').val());
     },
+    'click .email-tenants': function(e) {
+        e.preventDefault();
+        var noEmailArray = [];
+        var toString = '';
+
+        Template.instance().tenants().forEach(function(tenant){
+            if(tenant.email){
+                if(toString === '') {
+                    toString = tenant.email;
+                } else {
+                    toString = toString + ',+' + tenant.email;
+                }
+            } else {
+                noEmailArray.push(tenant.firstName + " " + tenant.lastName);
+            }
+        });
+
+        if(noEmailArray.length !== 0){
+            BootstrapModalPrompt.prompt({
+                title: "Email Tenants",
+                template: Template.emailTenantsModal,
+                templateData: { tenants: noEmailArray }
+            }, function(result) {
+                if (result) {
+                    window.location.href = "mailto:?to=" + toString
+                }
+            });
+        } else {
+            window.location.href = "mailto:?to=" + toString
+        }
+    },
     'click .document-select': function(e, t) {
         return t.$('.document-input').click();
     },
