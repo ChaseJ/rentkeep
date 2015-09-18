@@ -20,7 +20,8 @@
                                 <label class="control-label">Last Emailed</label>
                                 <a class="pull-right" id="email-tenant" href="">Email invoice to tenant(s)</a>
                                 {{#with emailed}}
-                                    <p>To {{#each to}}{{this}} {{/each}}at {{formatDate date}}</p>
+                                    <p> At: {{formatDatetime date}}<br/>
+                                        To: {{#each to}}{{this}} {{/each}}</p>
                                 {{else}}
                                     <p>This invoice has not been sent yet.</p>
                                 {{/with}}
