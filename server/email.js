@@ -1,3 +1,4 @@
+//Email smtp setup
 Meteor.startup(function () {
     smtp = {
         username: 'rentkeep@gmail.com',
@@ -10,6 +11,8 @@ Meteor.startup(function () {
 
 });
 
+
+//Accounts package config
 Meteor.startup(function() {
 
     Accounts.emailTemplates.from = 'RentKeep <no-reply@rentkeep.com>';
@@ -26,8 +29,10 @@ Meteor.startup(function() {
     };
 });
 
+
+//Email methods
 Meteor.methods({
-    sendEmail: function(doc) {
+    sendContactFormEmail: function(doc) {
         check(doc, Schemas.ContactForm);
 
         var text = "Name: " + doc.name + "\n\n"
@@ -42,5 +47,40 @@ Meteor.methods({
             subject: "App Contact Form - Message From " + doc.name,
             text: text
         });
+    },
+    sendInvoiceDueEmail: function(transDoc, initiatedBy) {
+        var lease = Leases.findOne(transDoc.leaseId);
+        var tenants = Tenants.find({_id: {$in: lease.tenants} });
+        var emailArray = [];
+        var now = new Date();
+
+        tenants.forEach(function(tenant){
+            if(tenant.email){
+                emailArray.push(tenant.email);
+            }
+        });
+
+        this.unblock();
+
+        Email.send({
+            to: emailArray,
+            from: 'RentKeep <no-reply@rentkeep.com>',
+            subject: "You have an invoice due",
+            text:   "ID: " + transDoc._id + "\n\n" +
+                    "Due Date: " + transDoc.dueDate + "\n\n" +
+                    "Amount Due: " +  transDoc.amtDue
+        });
+
+        transModifier = {
+            $push: {
+                emailed: {
+                    to: emailArray,
+                    date: now,
+                    initiatedBy: initiatedBy
+                }
+            }
+        };
+
+        Transactions.update({_id: transDoc._id}, transModifier);
     }
 });

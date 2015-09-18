@@ -6,7 +6,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Contact RentKeep</h4>
                 </div>
-                {{#autoForm schema=Schemas.ContactForm id="contactForm" type="method" meteormethod="sendEmail"}}
+                {{#autoForm schema=Schemas.ContactForm id="contactForm" type="method" meteormethod="sendContactFormEmail"}}
                     <div class="modal-body">
                         {{#if contactFormSuccess}}
                             <div class="alert alert-success text-center">
