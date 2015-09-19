@@ -60,27 +60,38 @@ Meteor.methods({
             }
         });
 
-        this.unblock();
+        if(emailArray.length === 0) {
+            return 'Can\'t send mail - no recipients defined';
+        } else {
+            this.unblock();
 
-        Email.send({
-            to: emailArray,
-            from: 'RentKeep <no-reply@rentkeep.com>',
-            subject: "You have an invoice due",
-            text:   "ID: " + transDoc._id + "\n\n" +
+            try {
+                Email.send({
+                    to: emailArray,
+                    from: 'RentKeep <no-reply@rentkeep.com>',
+                    subject: "You have an invoice due",
+                    text:   "ID: " + transDoc._id + "\n\n" +
                     "Due Date: " + transDoc.dueDate + "\n\n" +
                     "Amount Due: " +  transDoc.amtDue
-        });
+                });
 
-        transModifier = {
-            $push: {
-                emailed: {
-                    to: emailArray,
-                    date: now,
-                    initiatedBy: initiatedBy
-                }
+                transModifier = {
+                    $push: {
+                        emailed: {
+                            to: emailArray,
+                            date: now,
+                            initiatedBy: initiatedBy
+                        }
+                    }
+                };
+
+                Transactions.update({_id: transDoc._id}, transModifier);
+
+                return 'Email sent';
+
+            } catch (e) {
+                return e.message;
             }
-        };
-
-        Transactions.update({_id: transDoc._id}, transModifier);
+        }
     }
 });
