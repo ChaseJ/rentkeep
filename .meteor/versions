@@ -73,6 +73,7 @@ meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:aggregate@1.2.1
 meteorhacks:collection-utils@1.2.0
+meteorhacks:ssr@2.1.2
 meteortoys:allthings@1.2.3
 meteortoys:authenticate@0.4.1
 meteortoys:autopub@0.4.0

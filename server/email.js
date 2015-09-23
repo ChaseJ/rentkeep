@@ -69,10 +69,11 @@ Meteor.methods({
                 Email.send({
                     to: emailArray,
                     from: 'RentKeep <no-reply@rentkeep.com>',
-                    subject: "You have an invoice due",
-                    text:   "ID: " + transDoc._id + "\n\n" +
-                    "Due Date: " + transDoc.dueDate + "\n\n" +
-                    "Amount Due: " +  transDoc.amtDue
+                    subject: "You have an invoice due " + now.toISOString(),
+                    html: SSR.render('emailLayout', {
+                        template: "invoiceDueEmail",
+                        data: transDoc
+                    })
                 });
 
                 transModifier = {
