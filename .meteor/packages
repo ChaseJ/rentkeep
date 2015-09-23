@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 twbs:bootstrap
 iron:router@1.0.9
 accounts-password
@@ -36,3 +35,17 @@ useraccounts:iron-routing
 jgdovin:html-pdf
 theduke:bootstrap-modal-prompt
 meteorhacks:ssr
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
