@@ -2,19 +2,19 @@ Template.ledgerReport.onCreated(function () {
     //Initialization
     var instance = this;
     Session.set('expenseId','');
-    Session.set('transactionId','');
+    Session.set('invoiceId','');
     instance.startDate = new ReactiveVar();
     instance.endDate = new ReactiveVar();
     instance.propertyId = new ReactiveVar('all');
     instance.unitId = new ReactiveVar('all');
     instance.expenseTotal = new ReactiveVar(0);
-    instance.transactionTotal = new ReactiveVar(0);
+    instance.revenueTotal = new ReactiveVar(0);
 
     //Subscriptions
     instance.subscribe('properties');
     instance.subscribe('units');
     instance.subscribe('expenses');
-    instance.subscribe('transactions');
+    instance.subscribe('invoices');
     instance.subscribe('leases');
 
     //Cursors
@@ -42,19 +42,19 @@ Template.ledgerReport.onCreated(function () {
             );
         }
     };
-    instance.transactions = function() {
+    instance.invoices = function() {
         if (instance.propertyId.get() === 'all') {
-            return Transactions.find(
+            return Invoices.find(
                 {amtPaid: { $gt: 0 }, paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
                 {sort: {paidDate: -1}}
             );
         } else if (instance.unitId.get() === 'all' ) {
-            return Transactions.find(
+            return Invoices.find(
                 {amtPaid: { $gt: 0 }, propertyId: instance.propertyId.get(), paidDate: { $gte: instance.startDate.get(), $lte: instance.endDate.get() }},
                 {sort: {paidDate: -1}}
             );
         } else {
-            return Transactions.find(
+            return Invoices.find(
                 {amtPaid: { $gt: 0 }, propertyId: instance.propertyId.get(), unitId: instance.unitId.get(), paidDate: {$gte: instance.startDate.get(), $lte: instance.endDate.get()}},
                 {sort: {paidDate: -1}}
             );
@@ -101,18 +101,18 @@ Template.ledgerReport.events({
     'click #export-csv': function(e) {
         e.preventDefault();
 
-        var transactionsArray = Template.instance().transactions().map(function(transaction, index) {
+        var invoicesArray = Template.instance().invoices().map(function(invoice, index) {
             //Show optional properties if not declared yet
             if(index===0) {
-                if(!transaction.hasOwnProperty('notes')) {transaction.notes=''}
-                if(!transaction.hasOwnProperty('refNo')) {transaction.refNo=''}
+                if(!invoice.hasOwnProperty('notes')) {invoice.notes=''}
+                if(!invoice.hasOwnProperty('refNo')) {invoice.refNo=''}
             }
-            transaction.streetAndUnit = transaction.streetAndUnit();
-            transaction.status = transaction.status();
-            transaction.dueDate = moment.utc(transaction.dueDate).format("M/D/YY");
-            transaction.paidDate = transaction.hasOwnProperty('paidDate') ? moment.utc(transaction.paidDate).format("M/D/YY") : "";            return _.omit(transaction, ['leaseId', 'propertyId', 'unitId', 'userId', "_id"]);
+            invoice.streetAndUnit = invoice.streetAndUnit();
+            invoice.status = invoice.status();
+            invoice.dueDate = moment.utc(invoice.dueDate).format("M/D/YY");
+            invoice.paidDate = invoice.hasOwnProperty('paidDate') ? moment.utc(invoice.paidDate).format("M/D/YY") : "";            return _.omit(invoice, ['leaseId', 'propertyId', 'unitId', 'userId', "_id"]);
         });
-        var csv = Papa.unparse(transactionsArray);
+        var csv = Papa.unparse(invoicesArray);
         var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
         saveAs(blob, "paymentsReceived.csv");
 
@@ -161,8 +161,8 @@ Template.ledgerReport.helpers({
     expenses: function() {
         return Template.instance().expenses();
     },
-    transactions: function() {
-        return Template.instance().transactions();
+    invoices: function() {
+        return Template.instance().invoices();
     },
     disablePropertySelect: function() {
         if (Template.instance().propertyId.get()==='all' || Template.instance().units().count()===1) {
@@ -177,15 +177,15 @@ Template.ledgerReport.helpers({
         Template.instance().expenseTotal.set(sum);
         return sum;
     },
-    transactionTotal: function() {
+    revenueTotal: function() {
         var sum = 0;
-        Template.instance().transactions().forEach(function(transaction){
-            sum = sum + transaction.amtPaid;
+        Template.instance().invoices().forEach(function(invoice){
+            sum = sum + invoice.amtPaid;
         });
-        Template.instance().transactionTotal.set(sum);
+        Template.instance().revenueTotal.set(sum);
         return sum;
     },
     profitTotal: function() {
-        return Template.instance().transactionTotal.get() - Template.instance().expenseTotal.get();
+        return Template.instance().revenueTotal.get() - Template.instance().expenseTotal.get();
     }
 });

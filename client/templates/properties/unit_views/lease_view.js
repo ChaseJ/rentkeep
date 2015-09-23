@@ -2,7 +2,7 @@ Template.leaseView.onCreated(function () {
     //Initialization
     var instance = this;
     var unitId = Router.current().params._id;
-    Session.set('transactionId','');
+    Session.set('invoiceId','');
     Session.set('tenantId','');
     instance.tenantIds = new ReactiveVar([]);
 
@@ -13,7 +13,7 @@ Template.leaseView.onCreated(function () {
         if(lease){
             instance.tenantIds.set(lease.tenants);
             instance.subscribe('tenantsById', instance.tenantIds.get());
-            instance.subscribe('transactionsByLease', Session.get('leaseId'));
+            instance.subscribe('invoicesByLease', Session.get('leaseId'));
             instance.subscribe('documentsByLease', Session.get('leaseId'));
         }
     });
@@ -28,8 +28,8 @@ Template.leaseView.onCreated(function () {
     instance.tenants = function() {
         return Tenants.find({_id: {$in: instance.tenantIds.get()} });
     };
-    instance.transactions = function() {
-        return Transactions.find({leaseId: Session.get('leaseId')}, {sort: {dueDate: 1}});
+    instance.invoices = function() {
+        return Invoices.find({leaseId: Session.get('leaseId')}, {sort: {dueDate: 1}});
     };
     instance.documents = function() {
         return Documents.find({leaseId: Session.get('leaseId')});
@@ -57,8 +57,8 @@ Template.leaseView.onRendered(function () {
     $('#updateTenantModal').on('hidden.bs.modal', function () {
         AutoForm.resetForm('updateTenantForm');
     });
-    $('#updateTransactionModal').on('hidden.bs.modal', function () {
-        AutoForm.resetForm('updateTransactionForm');
+    $('#updateInvoiceModal').on('hidden.bs.modal', function () {
+        AutoForm.resetForm('updateInvoiceForm');
     });
 });
 
@@ -121,8 +121,8 @@ Template.leaseView.helpers({
     tenants : function() {
         return Template.instance().tenants();
     },
-    transactions: function() {
-        return Template.instance().transactions();
+    invoices: function() {
+        return Template.instance().invoices();
     },
     documents: function() {
         return Template.instance().documents();

@@ -1,12 +1,12 @@
-<template name="insertTransactionModal">
-    <div class="modal fade" id="insertTransactionModal" tabindex="-1" role="dialog" aria-hidden="true">
+<template name="insertInvoiceModal">
+    <div class="modal fade" id="insertInvoiceModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Add Transaction</h4>
+                    <h4 class="modal-title">Add Invoice</h4>
                 </div>
-                {{#autoForm collection="Transactions" id="insertTransactionForm" type="method" meteormethod="transactionInsert"}}
+                {{#autoForm collection="Invoices" id="insertInvoiceForm" type="method" meteormethod="invoiceInsert"}}
                     <div class="modal-body">
                         {{> afQuickField name='dueDate' type='bootstrap-datepicker' datePickerOptions=dpOpts}}
                         {{> afQuickField name='desc'}}

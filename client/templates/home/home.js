@@ -3,14 +3,14 @@ Template.home.onCreated(function () {
     var instance = this;
 
     //Subscriptions
-    instance.subscribe('dueTransactions', 7);
+    instance.subscribe('dueInvoices', 7);
     instance.subscribe('properties');
     instance.subscribe('units');
     instance.subscribe('leases');
 
     //Cursors
-    instance.transactions = function() {
-        return Transactions.find({},{sort: {dueDate: 1}});
+    instance.invoices = function() {
+        return Invoices.find({},{sort: {dueDate: 1}});
     };
     instance.units = function() {
         return Units.find({});
@@ -18,8 +18,8 @@ Template.home.onCreated(function () {
 });
 
 Template.home.onRendered(function () {
-    $('#updateTransactionModal').on('hidden.bs.modal', function () {
-        AutoForm.resetForm('updateTransactionForm');
+    $('#updateInvoiceModal').on('hidden.bs.modal', function () {
+        AutoForm.resetForm('updateInvoiceForm');
     });
 });
 
@@ -27,8 +27,8 @@ Template.home.helpers({
     hasUnits: function() {
         return Template.instance().units().count()>0;
     },
-    transactions: function() {
-        return Template.instance().transactions();
+    invoices: function() {
+        return Template.instance().invoices();
     },
     units: function() {
         //If unit is vacant or if lease ends in next 30 days, return unit
@@ -44,37 +44,37 @@ Template.home.helpers({
 
         return _.compact(unitArray);
     },
-    rentPastDue: function() {
-        var rentPastDue = 0;
+    invoicePastDue: function() {
+        var invoicePastDue = 0;
         var today = moment();
 
-        Template.instance().transactions().forEach(function(transaction) {
+        Template.instance().invoices().forEach(function(invoice) {
             //Because moment() is local time, and dueDate is UTC midnight,
             //I have to add the timezone offset to compare days
-            var dueDate = moment(transaction.dueDate).subtract(moment().utcOffset(),"m");
+            var dueDate = moment(invoice.dueDate).subtract(moment().utcOffset(),"m");
 
-            if(today.isAfter(dueDate, 'day') && transaction.balance>0){
-                rentPastDue+=transaction.balance;
+            if(today.isAfter(dueDate, 'day') && invoice.balance>0){
+                invoicePastDue+=invoice.balance;
             }
         });
 
-        return rentPastDue;
+        return invoicePastDue;
     },
-    rentMonthPastDue: function() {
-        var rentPastDue = 0;
+    invoiceMonthPastDue: function() {
+        var invoicePastDue = 0;
         var monthBeforeToday = moment().subtract(1, 'months');
 
-        Template.instance().transactions().forEach(function(transaction) {
-            var dueDate = moment(transaction.dueDate).subtract(moment().utcOffset(),"m");
+        Template.instance().invoices().forEach(function(invoice) {
+            var dueDate = moment(invoice.dueDate).subtract(moment().utcOffset(),"m");
 
             if(monthBeforeToday.isAfter(dueDate, 'day')){
-                if(transaction.balance>0){
-                    rentPastDue = rentPastDue + transaction.balance;
+                if(invoice.balance>0){
+                    invoicePastDue = invoicePastDue + invoice.balance;
                 }
             }
         });
 
-        return rentPastDue;
+        return invoicePastDue;
     },
     vacantUnits: function() {
         var vacantUnits = 0;

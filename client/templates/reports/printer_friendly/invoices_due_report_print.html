@@ -1,7 +1,7 @@
-<template name="paymentsDueReportPrint">
+<template name="invoicesDueReportPrint">
 
     <h1 class="text-center">{{currentUser.profile.companyName}}</h1>
-    <h3 class="text-center">Payments Due</h3>
+    <h3 class="text-center">Invoices Due</h3>
     {{#if property}}
         <h5 class="text-center">{{property.street}}</h5>
     {{else}}
@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-        {{#each transactions}}
+        {{#each invoices}}
             <tr>
                 <td>{{formatDate dueDate}}</td>
                 <td>{{streetAndUnit}}</td>
@@ -28,7 +28,7 @@
                 <td class="{{isLate status}}">{{status}}</td>
             </tr>
         {{else}}
-            <tr><td>No payments are due.</td></tr>
+            <tr><td>No invoices are due.</td></tr>
         {{/each}}
         </tbody>
     </table>

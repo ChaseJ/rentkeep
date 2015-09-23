@@ -48,8 +48,8 @@ Meteor.methods({
             text: text
         });
     },
-    sendInvoiceDueEmail: function(transDoc, initiatedBy) {
-        var lease = Leases.findOne(transDoc.leaseId);
+    sendInvoiceDueEmail: function(invoiceDoc, initiatedBy) {
+        var lease = Leases.findOne(invoiceDoc.leaseId);
         var tenants = Tenants.find({_id: {$in: lease.tenants} });
         var emailArray = [];
         var now = new Date();
@@ -72,11 +72,11 @@ Meteor.methods({
                     subject: "You have an invoice due " + now.toISOString(),
                     html: SSR.render('emailLayout', {
                         template: "invoiceDueEmail",
-                        data: transDoc
+                        data: invoiceDoc
                     })
                 });
 
-                transModifier = {
+                invoiceModifier = {
                     $push: {
                         emailed: {
                             to: emailArray,
@@ -86,7 +86,7 @@ Meteor.methods({
                     }
                 };
 
-                Transactions.update({_id: transDoc._id}, transModifier);
+                Invoices.update({_id: invoiceDoc._id}, invoiceModifier);
 
                 return 'Email sent';
 

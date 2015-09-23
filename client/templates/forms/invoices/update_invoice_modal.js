@@ -1,31 +1,31 @@
-Template.updateTransactionModal.onCreated(function () {
+Template.updateInvoiceModal.onCreated(function () {
     //Initialization
     var instance = this;
     instance.noEmailAddresses = new ReactiveVar('');
 
     //Cursors
-    instance.trans = function() {
-        return Transactions.findOne(Session.get('transactionId'));
+    instance.invoice = function() {
+        return Invoices.findOne(Session.get('invoiceId'));
     }
 });
 
-Template.updateTransactionModal.onRendered(function () {
+Template.updateInvoiceModal.onRendered(function () {
     var instance = this;
-    $('#updateTransactionModal').on('hidden.bs.modal', function () {
+    $('#updateInvoiceModal').on('hidden.bs.modal', function () {
         instance.noEmailAddresses.set('');
     })
 });
 
-Template.updateTransactionModal.events({
+Template.updateInvoiceModal.events({
     'click #deleteBtn': function(e){
         e.preventDefault();
-        $('#updateTransactionModal').modal('hide');
+        $('#updateInvoiceModal').modal('hide');
     },
     'click #email-tenant': function(e){
         e.preventDefault();
         var instance = Template.instance();
 
-        Meteor.call('sendInvoiceDueEmail', Template.instance().trans(), 'user', function(error, result) {
+        Meteor.call('sendInvoiceDueEmail', Template.instance().invoice(), 'user', function(error, result) {
             if (error) {
                 return alert(error.reason);
             } else {
@@ -39,12 +39,12 @@ Template.updateTransactionModal.events({
     }
 });
 
-Template.updateTransactionModal.helpers({
-    'transDoc': function () {
-        return Template.instance().trans();
+Template.updateInvoiceModal.helpers({
+    'invoiceDoc': function () {
+        return Template.instance().invoice();
     },
     'emailed': function() {
-        var emailed = _.sortBy(Template.instance().trans().emailed, function(o) { return o.date; });
+        var emailed = _.sortBy(Template.instance().invoice().emailed, function(o) { return o.date; });
         return _.last(emailed);
     },
     'noEmailAddresses': function() {

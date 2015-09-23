@@ -6,13 +6,13 @@ Template.ledgerReportPrint.onCreated(function () {
     instance.startDate = Router.current().params.query.startDate ? new Date(Router.current().params.query.startDate) : this.data.startDate;
     instance.endDate = Router.current().params.query.endDate ? new Date(Router.current().params.query.endDate) : this.data.endDate;
     instance.expenseTotal = new ReactiveVar(0);
-    instance.transactionTotal = new ReactiveVar(0);
+    instance.revenueTotal = new ReactiveVar(0);
 
     //Subscriptions
     instance.subscribe('properties');
     instance.subscribe('units');
     instance.subscribe('expenses');
-    instance.subscribe('transactions');
+    instance.subscribe('invoices');
     instance.subscribe('leases');
 
     //Cursors
@@ -47,19 +47,19 @@ Template.ledgerReportPrint.onCreated(function () {
             );
         }
     };
-    instance.transactions = function() {
+    instance.invoices = function() {
         if (instance.propertyId === 'all' && instance.unitId === 'all' ) {
-            return Transactions.find(
+            return Invoices.find(
                 {amtPaid: { $gt: 0 }, paidDate: { $gte: instance.startDate, $lte: instance.endDate }},
                 {sort: {paidDate: -1}}
             );
         } else if (instance.unitId === 'all' ) {
-            return Transactions.find(
+            return Invoices.find(
                 {amtPaid: { $gt: 0 }, propertyId: instance.propertyId, paidDate: { $gte: instance.startDate, $lte: instance.endDate }},
                 {sort: {paidDate: -1}}
             );
         } else {
-            return Transactions.find(
+            return Invoices.find(
                 {amtPaid: { $gt: 0 }, propertyId: instance.propertyId, unitId: instance.unitId, paidDate: {$gte: instance.startDate, $lte: instance.endDate}},
                 {sort: {paidDate: -1}}
             );
@@ -77,8 +77,8 @@ Template.ledgerReportPrint.helpers({
     expenses: function() {
         return Template.instance().expenses();
     },
-    transactions: function() {
-        return Template.instance().transactions();
+    invoices: function() {
+        return Template.instance().invoices();
     },
     expenseTotal: function() {
         var sum = 0;
@@ -88,16 +88,16 @@ Template.ledgerReportPrint.helpers({
         Template.instance().expenseTotal.set(sum);
         return sum;
     },
-    transactionTotal: function() {
+    revenueTotal: function() {
         var sum = 0;
-        Template.instance().transactions().forEach(function(transaction){
-            sum = sum + transaction.amtPaid;
+        Template.instance().invoices().forEach(function(invoice){
+            sum = sum + invoice.amtPaid;
         });
-        Template.instance().transactionTotal.set(sum);
+        Template.instance().revenueTotal.set(sum);
         return sum;
     },
     profitTotal: function() {
-        return Template.instance().transactionTotal.get() - Template.instance().expenseTotal.get();
+        return Template.instance().revenueTotal.get() - Template.instance().expenseTotal.get();
     },
     startDate: function() {
         return Template.instance().startDate;

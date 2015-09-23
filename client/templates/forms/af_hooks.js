@@ -15,7 +15,7 @@ var insertExpenseHook = {
     }
 };
 
-var insertTransactionHook = {
+var insertInvoiceHook = {
     formToDoc: function(doc) {
         doc.leaseId = Session.get('leaseId');
         doc.propertyId = Router.current().params.propertyId;
@@ -55,7 +55,7 @@ var contactHook = {
 
 AutoForm.addHooks('contactForm', contactHook);
 AutoForm.addHooks('updateProfileForm', updateProfileHook);
-AutoForm.addHooks('insertTransactionForm', insertTransactionHook);
+AutoForm.addHooks('insertInvoiceForm', insertInvoiceHook);
 AutoForm.addHooks('insertLeaseForm', insertLeaseHook);
 AutoForm.addHooks('insertExpenseForm', insertExpenseHook);
 AutoForm.addHooks(
@@ -63,8 +63,8 @@ AutoForm.addHooks(
         'insertTenantForm',
         'updateTenantForm',
         'updateUnitForm',
-        'insertTransactionForm',
-        'updateTransactionForm',
+        'insertInvoiceForm',
+        'updateInvoiceForm',
         'insertLeaseForm',
         'updateLeaseForm',
         'insertExpenseForm',

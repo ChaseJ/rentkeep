@@ -15,7 +15,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="text-center">Total Revenue</div>
-                    <div class="huge text-center">{{formatCurrency transactionTotal}}</div>
+                    <div class="huge text-center">{{formatCurrency revenueTotal}}</div>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
             </tr>
             </thead>
             <tbody>
-            {{#each transactions}}
+            {{#each invoices}}
                 <tr>
                     <td>{{streetAndUnit}}</td>
                     <td>{{formatDate paidDate}}</td>
@@ -59,7 +59,7 @@
                     <td>{{formatCurrency amtPaid}}</td>
                 </tr>
             {{else}}
-                <tr><td>There are no transactions to show.</td></tr>
+                <tr><td>There are no payments received to show.</td></tr>
             {{/each}}
             </tbody>
         </table>

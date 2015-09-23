@@ -19,7 +19,7 @@ Meteor.methods({
         Meteor.call('insertTestTenantData');
         Meteor.call('insertTestPropertyData');
         Meteor.call('insertTestActiveLeaseData');
-        Meteor.call('updateTestTransactions');
+        Meteor.call('updateTestInvoices');
         Meteor.call('insertTestExpenseData')
     },
     removeTestUserData: function() {
@@ -30,7 +30,7 @@ Meteor.methods({
         Properties.remove({userId: userId});
         Units.remove({userId: userId});
         Leases.remove({userId: userId});
-        Transactions.remove({userId: userId});
+        Invoices.remove({userId: userId});
         Documents.remove({userId: userId});
         Tenants.remove({userId: userId});
         Expenses.remove({userId: userId});
@@ -185,28 +185,28 @@ Meteor.methods({
             unitsCount++;
         });
     },
-    updateTestTransactions: function() {
+    updateTestInvoices: function() {
         check(Meteor.user().emails[0].address, 'test@rentkeep.com');
 
         var userId = Meteor.user()._id;
         var today = new Date();
         var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000));
-        var transactions = Transactions.find({userId: userId, dueDate: { $lt: todayAdj }}, {sort: {dueDate: 1}});
-        var transactionsCount = transactions.count();
-        var transModifier;
+        var invoices = Invoices.find({userId: userId, dueDate: { $lt: todayAdj }}, {sort: {dueDate: 1}});
+        var invoicesCount = invoices.count();
+        var invoiceModifier;
         var counter = 0;
 
-        transactions.forEach(function(transaction) {
-            if(counter < (transactionsCount-3)) {
-                transModifier = {
+        invoices.forEach(function(invoice) {
+            if(counter < (invoicesCount-3)) {
+                invoiceModifier = {
                     '$set': {
-                        amtDue: transaction.amtDue,
-                        amtPaid: transaction.amtDue,
-                        paidDate: transaction.dueDate,
+                        amtDue: invoice.amtDue,
+                        amtPaid: invoice.amtDue,
+                        paidDate: invoice.dueDate,
                         balance: 0
                     }
                 };
-                Meteor.call('transactionUpdate', transModifier, transaction._id);
+                Meteor.call('invoiceUpdate', invoiceModifier, invoice._id);
                 counter++;
             }
         });

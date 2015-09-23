@@ -1,6 +1,6 @@
 <template name="home">
-    {{>updateTransactionModal}}
-    {{>removeTransactionModal}}
+    {{>updateInvoiceModal}}
+    {{>removeInvoiceModal}}
     {{>insertPropertyModal}}
 
     {{#if Template.subscriptionsReady}}
@@ -10,16 +10,16 @@
                 <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="huge text-center">{{formatCurrency rentPastDue}}</div>
-                            <div class="text-center">Rent Past Due</div>
+                            <div class="huge text-center">{{formatCurrency invoicePastDue}}</div>
+                            <div class="text-center">Invoices Past Due</div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="huge text-center">{{formatCurrency rentMonthPastDue}}</div>
-                            <div class="text-center">Rent Over 1 Month Past Due</div>
+                            <div class="huge text-center">{{formatCurrency invoiceMonthPastDue}}</div>
+                            <div class="text-center">Invoices Over 1 Month Past Due</div>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Payments Due</h3>
+                    <h3 class="panel-title">Invoices Due</h3>
                 </div>
                 <table class="table table-hover">
                     <thead>
@@ -56,10 +56,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {{#each transactions}}
-                        {{> homeTransactionRow}}
+                    {{#each invoices}}
+                        {{> homeInvoiceRow}}
                     {{else}}
-                        <tr><td colspan="5">No payments due in the next 7 days.</td></tr>
+                        <tr><td colspan="5">No invoices due in the next 7 days.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>

@@ -1,9 +1,9 @@
 <template name="ledgerReport">
 
     {{>updateExpenseModal}}
-    {{>updateTransactionModal}}
+    {{>updateInvoiceModal}}
     {{>removeExpenseModal}}
-    {{>removeTransactionModal}}
+    {{>removeInvoiceModal}}
 
     <div class="row report-header">
         <div class="col-sm-3">
@@ -55,7 +55,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="text-center">Total Revenue</div>
-                        <div class="huge text-center">{{formatCurrency transactionTotal}}</div>
+                        <div class="huge text-center">{{formatCurrency revenueTotal}}</div>
                     </div>
                 </div>
             </div>
@@ -92,10 +92,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {{#each transactions}}
-                        {{> ledgerTransactionRow}}
+                    {{#each invoices}}
+                        {{> ledgerInvoiceRow}}
                     {{else}}
-                       <tr><td colspan="4">There are no transactions to show.</td></tr>
+                       <tr><td colspan="4">There are no payments receivedto show.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>

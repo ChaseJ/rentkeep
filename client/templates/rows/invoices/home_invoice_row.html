@@ -1,6 +1,7 @@
-<template name="leaseTransactionRow">
-    <tr data-toggle="modal" data-target="#updateTransactionModal">
+<template name="homeInvoiceRow">
+    <tr data-toggle="modal" data-target="#updateInvoiceModal">
         <td>{{formatDate dueDate}}</td>
+        <td>{{streetAndUnit}}</td>
         <td>{{desc}}</td>
         <td>{{formatCurrency amtDue}}</td>
         <td class="{{isLate status}}">{{status}}</td>

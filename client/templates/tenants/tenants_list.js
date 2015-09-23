@@ -79,7 +79,7 @@ Template.tenantsList.events({
         var tenantsArray = Template.instance().tenants().map(function(tenant, index) {
             //Show optional properties if not declared yet
             if(index===0) {
-                if(!tenant.hasOwnProperty('phone')) {transaction.phone=''}
+                if(!tenant.hasOwnProperty('phone')) {tenant.phone=''}
                 if(!tenant.hasOwnProperty('email')) {tenant.email=''}
                 if(!tenant.hasOwnProperty('notes')) {tenant.notes=''}
             }

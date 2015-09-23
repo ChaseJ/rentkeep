@@ -6,9 +6,9 @@
     {{>insertTenantModal}}
     {{>updateTenantModal}}
     {{>removeTenantModal}}
-    {{>insertTransactionModal}}
-    {{>updateTransactionModal}}
-    {{>removeTransactionModal}}
+    {{>insertInvoiceModal}}
+    {{>updateInvoiceModal}}
+    {{>removeInvoiceModal}}
 
     {{#if Template.subscriptionsReady}}
 
@@ -61,11 +61,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
                     <div class="pull-left">
-                        <h3 class="panel-title">Ledger</h3>
+                        <h3 class="panel-title">Invoices</h3>
                     </div>
                     <div class="pull-right">
-                        <a href="" class="transaction-add">
-                            <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#insertTransactionModal"></span>
+                        <a href="" class="invoice-add">
+                            <span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#insertInvoiceModal"></span>
                         </a>
                     </div>
                 </div>
@@ -79,10 +79,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                        {{#each transactions}}
-                            {{> leaseTransactionRow}}
+                        {{#each invoices}}
+                            {{> leaseInvoiceRow}}
                         {{else}}
-                            <tr><td colspan="4">No transactions have been added yet</td></tr>
+                            <tr><td colspan="4">No invoices have been added yet.</td></tr>
                         {{/each}}
                     </tbody>
                 </table>
@@ -112,7 +112,7 @@
                             {{/if}}
                         </td></tr>
                     {{else}}
-                        <tr><td>No documents have been added yet</td></tr>
+                        <tr><td>No documents have been added yet.</td></tr>
                     {{/each}}
                     </tbody>
                 </table>

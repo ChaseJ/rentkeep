@@ -39,13 +39,13 @@ Meteor.publish('leasesByUnit', function(unitId) {
     return Leases.find({unitId: unitId});
 });
 
-Meteor.publish('transactions', function() {
-    return Transactions.find({});
+Meteor.publish('invoices', function() {
+    return Invoices.find({});
 });
 
-Meteor.publish('transactionsByLease', function(leaseId) {
+Meteor.publish('invoicesByLease', function(leaseId) {
     check(leaseId, String);
-    return Transactions.find({leaseId: leaseId});
+    return Invoices.find({leaseId: leaseId});
 });
 
 Meteor.publish('expenses', function() {
@@ -62,13 +62,13 @@ Meteor.publish('documentsByLease', function(leaseId) {
     return Documents.find({leaseId: leaseId});
 });
 
-Meteor.publish('dueTransactions', function(days) {
+Meteor.publish('dueInvoices', function(days) {
     var today = new Date();
     var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000));
     var compareDate = new Date(todayAdj.setDate(todayAdj.getDate()+days));
-    return Transactions.find({userId: this.userId, dueDate: { $lt: compareDate }, balance: { $gt: 0 }});
+    return Invoices.find({userId: this.userId, dueDate: { $lt: compareDate }, balance: { $gt: 0 }});
 });
 
-Meteor.publish('unpaidTransactions', function() {
-    return Transactions.find({userId: this.userId, balance: { $gt: 0 }});
+Meteor.publish('unpaidInvoices', function() {
+    return Invoices.find({userId: this.userId, balance: { $gt: 0 }});
 });

@@ -1,12 +1,12 @@
-Template.paymentsDueReport.onCreated(function () {
+Template.invoicesDueReport.onCreated(function () {
     //Initialization
     var instance = this;
     instance.propertyId = new ReactiveVar('all');
     instance.dueDate = new ReactiveVar();
-    Session.set('transactionId','');
+    Session.set('invoiceId','');
 
     //Subscriptions
-    instance.subscribe('unpaidTransactions');
+    instance.subscribe('unpaidInvoices');
     instance.subscribe('properties');
     instance.subscribe('units');
 
@@ -14,16 +14,16 @@ Template.paymentsDueReport.onCreated(function () {
     instance.properties = function() {
         return Properties.find( {},{ sort: { street: 1 } });
     };
-    instance.transactions = function() {
+    instance.invoices = function() {
         if (instance.propertyId.get() === 'all') {
-            return Transactions.find({balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
+            return Invoices.find({balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
         } else {
-            return Transactions.find({propertyId: instance.propertyId.get(), balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
+            return Invoices.find({propertyId: instance.propertyId.get(), balance: { $gt: 0 }, dueDate: {$lte: instance.dueDate.get()}}, {sort: {dueDate: 1}});
         }
     };
 });
 
-Template.paymentsDueReport.onRendered(function () {
+Template.invoicesDueReport.onRendered(function () {
     var datepicker = $('#datepicker');
     datepicker.datepicker({
         autoclose: true,
@@ -37,7 +37,7 @@ Template.paymentsDueReport.onRendered(function () {
     datepicker.datepicker('setUTCDate', todayAdj);
 });
 
-Template.paymentsDueReport.events({
+Template.invoicesDueReport.events({
     'change #property-select': function(e) {
         e.preventDefault();
         Template.instance().propertyId.set($(e.target).val());
@@ -48,21 +48,21 @@ Template.paymentsDueReport.events({
     },
     'click #export-csv': function(e) {
         e.preventDefault();
-        var transactionsArray = Template.instance().transactions().map(function(transaction, index) {
+        var invoicesArray = Template.instance().invoices().map(function(invoice, index) {
             //Show optional properties if not declared yet
             if(index===0) {
-                if(!transaction.hasOwnProperty('notes')) {transaction.notes=''}
-                if(!transaction.hasOwnProperty('refNo')) {transaction.refNo=''}
+                if(!invoice.hasOwnProperty('notes')) {invoice.notes=''}
+                if(!invoice.hasOwnProperty('refNo')) {invoice.refNo=''}
             }
-            transaction.streetAndUnit = transaction.streetAndUnit();
-            transaction.status = transaction.status();
-            transaction.dueDate = moment.utc(transaction.dueDate).format("M/D/YY");
-            transaction.paidDate = transaction.hasOwnProperty('paidDate') ? moment.utc(transaction.paidDate).format("M/D/YY") : "";
-            return _.omit(transaction, ['leaseId', 'propertyId', 'unitId', 'userId', "_id"]);
+            invoice.streetAndUnit = invoice.streetAndUnit();
+            invoice.status = invoice.status();
+            invoice.dueDate = moment.utc(invoice.dueDate).format("M/D/YY");
+            invoice.paidDate = invoice.hasOwnProperty('paidDate') ? moment.utc(invoice.paidDate).format("M/D/YY") : "";
+            return _.omit(invoice, ['leaseId', 'propertyId', 'unitId', 'userId', "_id"]);
         });
-        var csv = Papa.unparse(transactionsArray);
+        var csv = Papa.unparse(invoicesArray);
         var blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
-        saveAs(blob, "paymentsDue.csv");
+        saveAs(blob, "invoicesDue.csv");
     },
     'click #export-pdf': function(e) {
         e.preventDefault();
@@ -70,23 +70,23 @@ Template.paymentsDueReport.events({
             propId: Template.instance().propertyId.get(),
             date: Template.instance().dueDate.get()
         };
-        var html = Blaze.toHTMLWithData(Template.paymentsDueReportPrint, data);
+        var html = Blaze.toHTMLWithData(Template.invoicesDueReportPrint, data);
         html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
-        Meteor.pdf.save(html, 'paymentsDue', pdfOptions);
+        Meteor.pdf.save(html, 'invoicesDue', pdfOptions);
     },
     'click .print-btn': function(e) {
         e.preventDefault();
         var dateObj = Template.instance().dueDate.get();
         var query = 'propId='+Template.instance().propertyId.get()+'&date='+dateObj.toISOString();
-        window.open(Router.url('paymentsDueReportPrint',{},{query: query}),'Payments Due Report','width=600,height=800');
+        window.open(Router.url('invoicesDueReportPrint',{},{query: query}),'Invoices Due Report','width=600,height=800');
     }
 });
 
-Template.paymentsDueReport.helpers({
+Template.invoicesDueReport.helpers({
     properties: function() {
         return Template.instance().properties();
     },
-    transactions: function() {
-        return Template.instance().transactions();
+    invoices: function() {
+        return Template.instance().invoices();
     }
 });
