@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-twbs:bootstrap
 iron:router@1.0.9
 accounts-password
 useraccounts:bootstrap@1.11.1
@@ -49,3 +48,4 @@ random
 ejson
 spacebars
 check
+less
