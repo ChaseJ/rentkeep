@@ -119,7 +119,6 @@ ordered-dict@1.0.4
 pfafman:filesaver@0.2.1
 promise@0.4.8
 raix:eventemitter@0.1.3
-rajit:bootstrap3-datepicker@1.4.1
 random@1.0.4
 rate-limit@1.0.0
 reactive-dict@1.1.1
