@@ -22,7 +22,6 @@ cfs:standard-packages
 cfs:gridfs
 ongoworks:security
 cfs:ui
-meteortoys:allthings
 dburles:collection-helpers
 gilbertwat:moment-recur
 momentjs:moment
@@ -48,3 +47,4 @@ ejson
 spacebars
 check
 less
+meteortoys:allthings@2.0.0
