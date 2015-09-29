@@ -1,4 +1,4 @@
-Template.unitView.onCreated(function () {
+Template.unit.onCreated(function () {
     //Initialization
     var instance = this;
     var unitId = Router.current().params._id;
@@ -22,7 +22,7 @@ Template.unitView.onCreated(function () {
     };
 });
 
-Template.unitView.helpers({
+Template.unit.helpers({
     unit: function () {
         return Template.instance().unit();
     },
