@@ -22,10 +22,14 @@
 @gray-lighter:           #f5f5f5;
 
 @brand-primary:          #37B1EB;
-@brand-success:          #1BC98E;
+@brand-success:          #67B92F;
 @brand-info:             #9F86FF;
-@brand-warning:          #E4D836;
+@brand-warning:          #F3D063;
 @brand-danger:           #E64759;
+
+// My colors
+@brand-navbar:             #4B637B;
+@brand-line:               #EBF1F5;
 
 
 // States
@@ -79,6 +83,11 @@
 @text-muted:              #999;
 @hr-border:               @gray-light;
 
+
+// Page Header
+//
+//Overrides Bootstrap defaults.
+@page-header-border-color:       @brand-line;
 
 // Forms
 //
@@ -177,7 +186,7 @@
 
 // Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-bg:                         #4B637B;
+@navbar-inverse-bg:                         @brand-navbar;
 @navbar-inverse-color:                      lighten(@gray-light, 15%);
 @navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
