@@ -37,7 +37,7 @@ Template.home.helpers({
 
             if( currentLeaseEnds === "Vacant") {
                 return unit;
-            } else if (moment(currentLeaseEnds).isBefore(moment().add(1,'months'))){
+            } else if (moment(currentLeaseEnds).isBefore(moment().add(30,'days'), 'day')){
                 return unit;
             }
         });
@@ -60,14 +60,14 @@ Template.home.helpers({
 
         return invoicePastDue;
     },
-    invoiceMonthPastDue: function() {
+    invoicePastDue30Days: function() {
         var invoicePastDue = 0;
-        var monthBeforeToday = moment().subtract(1, 'months');
+        var dateBeforeToday = moment().subtract(30, 'days');
 
         Template.instance().invoices().forEach(function(invoice) {
             var dueDate = moment(invoice.dueDate).subtract(moment().utcOffset(),"m");
 
-            if(monthBeforeToday.isAfter(dueDate, 'day')){
+            if(dateBeforeToday.isAfter(dueDate, 'day')){
                 if(invoice.balance>0){
                     invoicePastDue = invoicePastDue + invoice.balance;
                 }
@@ -90,16 +90,16 @@ Template.home.helpers({
     soonToBeVacantUnits: function() {
         var soonToBeVacantUnits = 0;
         var today = moment();
-        var monthFromToday = today.add(1, 'months');
+        var dateFromToday = today.add(30, 'days');
 
         Template.instance().units().forEach(function(unit) {
             var currentLeaseEnds = moment(unit.currentLeaseEnds()).subtract(moment().utcOffset(),'m');
             var nextLeaseStarts = moment(unit.nextLeaseStarts()).subtract(moment().utcOffset(),'m');
 
-            if(monthFromToday.isAfter(currentLeaseEnds, 'day')) {
+            if(dateFromToday.isAfter(currentLeaseEnds, 'day')) {
                 if(!nextLeaseStarts.isValid()) {
                     soonToBeVacantUnits+=1;
-                } else if (monthFromToday.isBefore(nextLeaseStarts, 'day')){
+                } else if (dateFromToday.isBefore(nextLeaseStarts, 'day')){
                     soonToBeVacantUnits+=1;
                 }
             }
