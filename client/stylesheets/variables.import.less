@@ -17,7 +17,7 @@
 @gray-base:              #000;
 @gray-dark:              #222;
 @gray-darker:            #111;
-@gray:                   #555;
+@gray:                   #666;
 @gray-light:             #eee;
 @gray-lighter:           #f5f5f5;
 
@@ -30,6 +30,8 @@
 // My colors
 @brand-navbar:             #4B637B;
 @brand-line:               #EBF1F5;
+@brand-headings:           #4B637B;
+@brand-font:               #758597;
 
 
 // States
@@ -78,7 +80,7 @@
 
 // Headings
 @headings-font-weight:    300;
-@headings-color:          inherit;
+@headings-color:          @brand-headings;
 
 @text-muted:              #999;
 @hr-border:               @gray-light;
@@ -202,6 +204,11 @@
 @navbar-inverse-toggle-icon-bar-bg:         #fff;
 @navbar-inverse-toggle-border-color:        darken(@navbar-inverse-bg, 10%);
 
+
+// Table
+//
+// Overrides Bootstrap defaults.
+@table-heading-color:         @brand-font;
 
 // Thumbnail
 //
