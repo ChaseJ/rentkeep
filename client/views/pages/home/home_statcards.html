@@ -1,0 +1,34 @@
+<template name="homeStatcards">
+
+    <div class="col-md-3 m-b">
+        <div class="statcard statcard-primary p-a-md">
+            <h3 class="statcard-number">{{formatCurrency invoicePastDue}}</h3>
+            <span class="statcard-desc">Total Past Due</span>
+        </div>
+    </div>
+    <div class="col-md-3 m-b">
+        <div class="statcard statcard-warning p-a-md">
+            <h3 class="statcard-number">{{formatCurrency invoicePastDue30Days}}</h3>
+            <span class="statcard-desc">Total Past Due 30 Days</span>
+        </div>
+    </div>
+    <div class="col-md-3 m-b">
+        <div class="statcard statcard-danger p-a-md">
+            <h3 class="statcard-number">
+                {{vacantUnits}}
+                <span class="label">Units</span>
+            </h3>
+            <span class="statcard-desc">Currently Vacant</span>
+        </div>
+    </div>
+    <div class="col-md-3 m-b">
+        <div class="statcard statcard-success p-a-md">
+            <h3 class="statcard-number">
+                {{soonToBeVacantUnits}}
+                <span class="label">Units</span>
+            </h3>
+            <span class="statcard-desc">Vacant in 30 days</span>
+        </div>
+    </div>
+
+</template>

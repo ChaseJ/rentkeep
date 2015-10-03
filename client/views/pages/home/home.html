@@ -1,95 +1,30 @@
 <template name="home">
-    {{>updateInvoiceModal}}
-    {{>removeInvoiceModal}}
+
     {{>insertPropertyModal}}
 
     {{#if Template.subscriptionsReady}}
-
-        {{#if hasUnits}}
-            <div class="row page-header">
-                <div class="col-md-3 m-b">
-                    <div class="statcard statcard-primary p-a-md">
-                        <h3 class="statcard-number">{{formatCurrency invoicePastDue}}</h3>
-                        <span class="statcard-desc">Total Past Due</span>
-                    </div>
-                </div>
-                <div class="col-md-3 m-b">
-                    <div class="statcard statcard-warning p-a-md">
-                        <h3 class="statcard-number">{{formatCurrency invoicePastDue30Days}}</h3>
-                        <span class="statcard-desc">Total Past Due 30 Days</span>
-                    </div>
-                </div>
-                <div class="col-md-3 m-b">
-                    <div class="statcard statcard-danger p-a-md">
-                        <h3 class="statcard-number">
-                            {{vacantUnits}}
-                            <span class="label">Units</span>
-                        </h3>
-                        <span class="statcard-desc">Currently Vacant</span>
-                    </div>
-                </div>
-                <div class="col-md-3 m-b">
-                    <div class="statcard statcard-success p-a-md">
-                        <h3 class="statcard-number">
-                            {{soonToBeVacantUnits}}
-                            <span class="label">Units</span>
-                        </h3>
-                        <span class="statcard-desc">Vacant in 30 days</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="page-header">
-                <h2>Invoices Due</h2>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Due Date</th>
-                            <th>Unit</th>
-                            <th>Description</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {{#each invoices}}
-                        {{> homeInvoiceRow}}
-                    {{else}}
-                        <tr><td colspan="5">No invoices due in the next 7 days.</td></tr>
-                    {{/each}}
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="page-header">
-                <h2>Vacancies</h2>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Unit</th>
-                        <th>Current Lease Ends</th>
-                        <th>Next Lease Starts</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each units}}
-                        {{> unitStatusRow}}
-                    {{else}}
-                        <tr><td colspan="3">All units are rented.</td></tr>
-                    {{/each}}
-                    </tbody>
-                </table>
-            </div>
-
-        {{else}}
+        {{#unless hasUnits}}
             <div class="jumbotron">
                 <h1>Welcome to RentKeep</h1>
                 <p>Get started by adding your first property.</p>
                 <p><button class="btn btn-lg btn-primary" type="button" data-toggle="modal" data-target="#insertPropertyModal">Add Property</button></p>
             </div>
-        {{/if}}
+        {{/unless}}
+
+        <div class="row page-header">
+            {{> homeStatcards}}
+        </div>
+
+        <div class="page-header">
+            {{> homeInvoices}}
+        </div>
+
+        <div class="page-header">
+            {{> homeVacancies}}
+        </div>
 
     {{else}}
         {{>loading}}
     {{/if}}
+
 </template>

@@ -1,0 +1,40 @@
+<template name="homeVacancies">
+
+    <div class="clearfix">
+        <div class="pull-left">
+            <h2>Vacancies</h2>
+        </div>
+        <div class="pull-right m-t">
+            <form class="form-inline">
+                <div class="form-group m-r">
+                    <label style="font-weight: inherit;" for="datepicker-vacancies">Vacant on </label>
+                    <input type="text" class="form-control" id="datepicker-vacancies">
+                </div>
+                <select id="property-select-vacancies" class="form-control" title="Select a property">
+                    <option value="all">All Properties</option>
+                    {{#each properties}}
+                        <option value="{{_id}}">{{street}}</option>
+                    {{/each}}
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Unit</th>
+            <th>Current Lease Ends</th>
+            <th>Next Lease Starts</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{#each vacancies}}
+                {{> unitStatusRow}}
+            {{else}}
+                <tr><td colspan="3">All units are rented.</td></tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</template>
