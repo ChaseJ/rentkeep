@@ -63,11 +63,7 @@ Template.ledgerReport.onCreated(function () {
 });
 
 Template.ledgerReport.onRendered(function () {
-    $('#datepicker').datepicker({
-        autoclose: true,
-        orientation: 'top',
-        startDate: "1/1/2000" //stops users from entering '15' and assuming the date saved is 2015
-    });
+    $('#datepicker').datepicker(dpOptions);
 
     var today = new Date();
     var todayAdj = new Date(today.setHours(0,0,0,0) - (today.getTimezoneOffset() * 60000)); //UTC midnight
