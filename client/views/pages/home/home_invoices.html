@@ -13,7 +13,7 @@
                     <label style="font-weight: inherit;" for="datepicker-invoices">Due on or before </label>
                     <input type="text" class="form-control" id="datepicker-invoices">
                 </div>
-                <select id="property-select-invoices" class="form-control" title="Select a property">
+                <select id="property-select-invoices" class="form-control custom-select" title="Select a property">
                     <option value="all">All Properties</option>
                     {{#each properties}}
                         <option value="{{_id}}">{{street}}</option>

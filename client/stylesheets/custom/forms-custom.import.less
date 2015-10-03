@@ -13,13 +13,14 @@
   line-height: @line-height-base;
   color: @custom-select-color; // @input-color
   vertical-align: middle;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right @padding-base-horizontal center;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVR42mNgwAfKy8v/48I4FeA0AacVDFQBAP9wJkE/KhUMAAAAAElFTkSuQmCC) no-repeat right @padding-base-horizontal center;
   background-color: @custom-select-bg; // @input-bg
   background-clip: padding-box;
   background-size: 8px 10px;
-  border: 1px solid rgba(0,0,0,.15);
+  border: 1px solid @input-border;
   border-radius: @input-border-radius;
   -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 
   // Unfuck IE9 custom selects which otherwise display our custom arrows along
