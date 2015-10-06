@@ -55,24 +55,26 @@ Template.homeStatcards.helpers({
 
         return vacantUnits;
     },
-    soonToBeVacantUnits: function() {
-        var soonToBeVacantUnits = 0;
+    vacantUnits30days: function() {
+        var vacantUnits = 0;
         var today = moment();
         var dateFromToday = today.add(30, 'days');
 
         Template.instance().units().forEach(function(unit) {
-            var currentLeaseEnds = moment(unit.currentLeaseEnds()).subtract(moment().utcOffset(),'m');
-            var nextLeaseStarts = moment(unit.nextLeaseStarts()).subtract(moment().utcOffset(),'m');
+            var vacant = true;
+            var leases = Leases.find({unitId: unit._id});
 
-            if(dateFromToday.isAfter(currentLeaseEnds, 'day')) {
-                if(!nextLeaseStarts.isValid()) {
-                    soonToBeVacantUnits+=1;
-                } else if (dateFromToday.isBefore(nextLeaseStarts, 'day')){
-                    soonToBeVacantUnits+=1;
+            leases.forEach(function(lease){
+                if(lease.startDate <= dateFromToday && lease.endDate >= dateFromToday){
+                    vacant = false;
                 }
+            });
+
+            if(vacant){
+                vacantUnits+=1;
             }
         });
 
-        return soonToBeVacantUnits;
+        return vacantUnits;
     }
 });
