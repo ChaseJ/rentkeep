@@ -24,7 +24,6 @@ Template.propertyPanel.events({
     'click .single-unit-link': function(e) {
         e.preventDefault();
         Router.go('leaseView', Units.findOne({propertyId: this._id}));
-
     }
 });
 

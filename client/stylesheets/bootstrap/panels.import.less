@@ -9,7 +9,6 @@
   background-color: @panel-bg;
   border: 1px solid transparent;
   border-radius: @panel-border-radius;
-  .box-shadow(0 1px 1px rgba(0,0,0,.05));
 }
 
 // Panel contents
@@ -268,4 +267,18 @@
 }
 .panel-danger {
   .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+
+
+// Links
+.panel-default {
+  .panel-heading {
+    a {
+      color: @panel-default-link;
+      &:hover {
+        color: @panel-default-link-hover;
+        text-decoration: none;
+      }
+    }
+  }
 }

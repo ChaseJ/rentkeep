@@ -119,6 +119,13 @@
 @btn-toolbar-divider-bg:         #eee;
 
 
+// Icons
+//
+// Custom.
+@icon-light-color:               #ccc;
+@icon-light-color-hover:         @gray;
+
+
 // Badges
 //
 // Overrides Bootstrap defaults.
@@ -150,6 +157,19 @@
 // Panels
 //
 // Overrides Bootstrap defaults.
+@panel-bg:                    #fff;
+@panel-body-padding:          15px;
+@panel-heading-padding:       10px 15px;
+@panel-footer-padding:        @panel-heading-padding;
+@panel-border-radius:         @border-radius-base;
+
+// Border color for elements within panels
+@panel-inner-border:          #ddd;
+@panel-footer-bg:             #f5f5f5;
+
+@panel-default-text:          @brand-headings;
+@panel-default-border:        #ddd;
+@panel-default-heading-bg:    #f5f5f5;
 
 @panel-success-text:          #fff;
 @panel-success-border:        @state-success-text;
@@ -166,6 +186,10 @@
 @panel-danger-text:           #fff;
 @panel-danger-border:         @state-danger-text;
 @panel-danger-heading-bg:     @state-danger-text;
+
+// Link color
+@panel-default-link:          @brand-headings;
+@panel-default-link-hover:     lighten(@brand-headings, 30%);
 
 
 // Navs
