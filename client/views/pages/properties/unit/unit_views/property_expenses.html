@@ -4,10 +4,10 @@
     {{>updateExpenseModal}}
     {{>removeExpenseModal}}
 
-    <div class="row expenses-header {{#unless Template.subscriptionsReady}}hidden{{/unless}} {{#unless expenses.count}}hidden{{/unless}}">
+    <div class="row m-b {{#unless Template.subscriptionsReady}}hidden{{/unless}} {{#unless expenses.count}}hidden{{/unless}}">
         {{#if isMultiUnit}}
             <div class="col-sm-3">
-                <select id="unit-select" class="form-control" title="Select a unit to view">
+                <select id="unit-select" class="form-control custom-select" title="Select a unit to view">
                     <option value="all">Property & All Units</option>
                     <option value="property">Only Property</option>
                     {{#each units}}

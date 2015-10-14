@@ -13,7 +13,7 @@
     {{#if Template.subscriptionsReady}}
 
         {{#if hasLeases}}
-            <div class="row m-b lease-header">
+            <div class="row m-b">
                 <div class="col-sm-4">
                     <select id="lease-select" class="form-control custom-select" title="Select a lease to view">
                         {{#each leases}}
@@ -42,7 +42,7 @@
                         <h3 class="panel-title">Tenants</h3>
                     </div>
                     <div class="pull-right">
-                        <a href="" class="email-tenants" title="Email tenants">
+                        <a href="" id="email-tenants" title="Email tenants">
                             <span class="icon icon-mail "></span>
                         </a>
                     </div>
@@ -52,7 +52,7 @@
                         {{#each tenants}}
                             {{> leaseTenantRow}}
                         {{else}}
-                            <tr><td>No tenants have been added yet</td></tr>
+                            <tr><td>No tenants have been added yet.</td></tr>
                         {{/each}}
                     </tbody>
                 </table>
@@ -64,7 +64,7 @@
                         <h3 class="panel-title">Invoices</h3>
                     </div>
                     <div class="pull-right">
-                        <a href="" class="invoice-add">
+                        <a href="">
                             <span class="icon icon-plus" data-toggle="modal" data-target="#insertInvoiceModal"></span>
                         </a>
                     </div>
@@ -94,7 +94,7 @@
                         <h3 class="panel-title">Documents</h3>
                     </div>
                     <div class="pull-right">
-                        <a href="" class="document-select">
+                        <a href="" id="document-add">
                             <span class="icon icon-plus"></span>
                         </a>
                         <input type="file" class="hidden document-input">

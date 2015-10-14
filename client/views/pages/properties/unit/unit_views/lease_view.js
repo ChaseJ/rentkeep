@@ -67,7 +67,7 @@ Template.leaseView.events({
         e.preventDefault();
         Session.set('leaseId', $('#lease-select').val());
     },
-    'click .email-tenants': function(e) {
+    'click #email-tenants': function(e) {
         e.preventDefault();
         var noEmailArray = [];
         var toString = '';
@@ -98,7 +98,7 @@ Template.leaseView.events({
             window.location.href = "mailto:?to=" + toString
         }
     },
-    'click .document-select': function(e, t) {
+    'click #document-add': function(e, t) {
         return t.$('.document-input').click();
     },
     'change .document-input': FS.EventHandlers.insertFiles(Documents, {
