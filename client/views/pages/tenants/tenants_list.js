@@ -106,7 +106,7 @@ Template.tenantsList.events({
         html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
         Meteor.pdf.save(html, 'tenants', pdfOptions);
     },
-    'click .print-btn': function(e) {
+    'click #print-btn': function(e) {
         e.preventDefault();
         var query = 'propId='+Template.instance().propertyId.get()+'&unitId='+Template.instance().unitId.get()+
             '&current='+Template.instance().current.get()+'&past='+Template.instance().past.get()+
@@ -129,7 +129,7 @@ Template.tenantsList.events({
         $(e.target.firstChild).prop('checked', !$(e.target.firstChild).prop('checked'));
         $('.rowCheckbox').prop('checked', $(e.target.firstChild).prop('checked'))
     },
-    'click .email-btn': function(e) {
+    'click #email-btn': function(e) {
         e.preventDefault();
         var addresses = [];
         var noEmailArray = [];
