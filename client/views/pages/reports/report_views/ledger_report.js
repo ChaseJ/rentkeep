@@ -138,7 +138,7 @@ Template.ledgerReport.events({
         html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
         Meteor.pdf.save(html, 'ledger', pdfOptions);
     },
-    'click .print-btn': function(e) {
+    'click #print-btn': function(e) {
         e.preventDefault();
         var startDateObj = Template.instance().startDate.get();
         var endDateObj = Template.instance().endDate.get();

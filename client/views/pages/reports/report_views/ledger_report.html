@@ -5,9 +5,9 @@
     {{>removeExpenseModal}}
     {{>removeInvoiceModal}}
 
-    <div class="row report-header">
+    <div class="row m-b-md">
         <div class="col-sm-3">
-            <select id="property-select" class="form-control" title="Select a property to view">
+            <select id="property-select" class="form-control custom-select" title="Select a property to view">
                 <option value="all">All Properties</option>
                 {{#each properties}}
                     <option value="{{_id}}">{{street}}</option>
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div class="col-sm-3">
-            <select id="unit-select" class="form-control" title="Select a unit to view" {{disablePropertySelect}}>
+            <select id="unit-select" class="form-control custom-select" title="Select a unit to view" {{disablePropertySelect}}>
                 <option value="all">Property & All Units</option>
                 <option value="property">Only Property</option>
                 {{#each units}}
@@ -23,25 +23,25 @@
                 {{/each}}
             </select>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="input-daterange input-group" id="datepicker">
                 <input type="text" class="form-control" name="start-date" />
                 <span class="input-group-addon">to</span>
                 <input type="text" class="form-control" name="end-date" />
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="pull-right filter-glyphicons">
-                <div class="btn-group export-btn-group">
-                    <a href="" class="export-glyphicon" title="Export Data" data-toggle="dropdown">
+        <div class="col-sm-2">
+            <div class="pull-right icons-large icons-light">
+                <span class="dropdown">
+                    <a href="" class="m-r-sm" title="Export Data" data-toggle="dropdown">
                         <span class="icon icon-download"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a id="export-csv" href="#">CSV</a></li>
                         <li><a id="export-pdf" href="#">PDF</a></li>
                     </ul>
-                </div>
-                <a href="" class="print-glyphicon print-btn" title="Print">
+                </span>
+                <a href="" id="print-btn" title="Print Data">
                     <span class="icon icon-print"></span>
                 </a>
             </div>
@@ -51,28 +51,22 @@
     {{#if Template.subscriptionsReady}}
 
         <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="text-center">Total Revenue</div>
-                        <div class="huge text-center">{{formatCurrency revenueTotal}}</div>
-                    </div>
+            <div class="col-md-4 m-b">
+                <div class="statcard statcard-info p-a-md">
+                    <h3 class="statcard-number">{{formatCurrency revenueTotal}}</h3>
+                    <span class="statcard-desc">Total Revenue</span>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="text-center">Total Expenses</div>
-                        <div class="huge text-center">{{formatCurrency expenseTotal}}</div>
-                    </div>
+            <div class="col-md-4 m-b">
+                <div class="statcard statcard-info p-a-md">
+                    <h3 class="statcard-number">{{formatCurrency expenseTotal}}</h3>
+                    <span class="statcard-desc">Total Expenses</span>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="text-center">Profit</div>
-                        <div class="huge text-center">{{formatCurrency profitTotal}}</div>
-                    </div>
+            <div class="col-md-4 m-b">
+                <div class="statcard statcard-info p-a-md">
+                    <h3 class="statcard-number">{{formatCurrency profitTotal}}</h3>
+                    <span class="statcard-desc">Profit</span>
                 </div>
             </div>
         </div>
