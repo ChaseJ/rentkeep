@@ -10,29 +10,23 @@
     <h5 class="text-center">{{unit}}</h5>
     <h5 class="text-center">{{formatDate startDate}} to {{formatDate endDate}}</h5>
 
-    <div class="row">
-        <div class="col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="text-center">Total Revenue</div>
-                    <div class="huge text-center">{{formatCurrency revenueTotal}}</div>
-                </div>
+    <div class="row m-t">
+        <div class="col-xs-4 m-b">
+            <div class="statcard statcard-info p-a-md">
+                <h3 class="statcard-number">{{formatCurrency revenueTotal}}</h3>
+                <span class="statcard-desc">Total Revenue</span>
             </div>
         </div>
-        <div class="col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="text-center">Total Expenses</div>
-                    <div class="huge text-center">{{formatCurrency expenseTotal}}</div>
-                </div>
+        <div class="col-xs-4 m-b">
+            <div class="statcard statcard-info p-a-md">
+                <h3 class="statcard-number">{{formatCurrency expenseTotal}}</h3>
+                <span class="statcard-desc">Total Expenses</span>
             </div>
         </div>
-        <div class="col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="text-center">Profit</div>
-                    <div class="huge text-center">{{formatCurrency profitTotal}}</div>
-                </div>
+        <div class="col-xs-4 m-b">
+            <div class="statcard statcard-info p-a-md">
+                <h3 class="statcard-number">{{formatCurrency profitTotal}}</h3>
+                <span class="statcard-desc">Profit</span>
             </div>
         </div>
     </div>
@@ -59,7 +53,7 @@
                     <td>{{formatCurrency amtPaid}}</td>
                 </tr>
             {{else}}
-                <tr><td>There are no payments received to show.</td></tr>
+                <tr><td colspan="4">There are no payments received to show.</td></tr>
             {{/each}}
             </tbody>
         </table>
@@ -89,7 +83,7 @@
                     <td>{{formatCurrency amount}}</td>
                 </tr>
             {{else}}
-                <tr><td>There are no expenses to show.</td></tr>
+                <tr><td colspan="5">There are no expenses to show.</td></tr>
             {{/each}}
             </tbody>
         </table>
