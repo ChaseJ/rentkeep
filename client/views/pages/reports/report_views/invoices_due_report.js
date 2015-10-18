@@ -70,7 +70,7 @@ Template.invoicesDueReport.events({
         html = '<link rel="stylesheet" type="text/css" href="' + window.location.protocol + '//' + window.location.host + '/pdf.css">' + html;
         Meteor.pdf.save(html, 'invoicesDue', pdfOptions);
     },
-    'click .print-btn': function(e) {
+    'click #print-btn': function(e) {
         e.preventDefault();
         var dateObj = Template.instance().dueDate.get();
         var query = 'propId='+Template.instance().propertyId.get()+'&date='+dateObj.toISOString();

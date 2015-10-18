@@ -3,9 +3,9 @@
     {{>updateInvoiceModal}}
     {{>removeInvoiceModal}}
 
-    <div class="row report-header">
+    <div class="row m-b-md">
         <div class="col-sm-3">
-            <select id="property-select" class="form-control" title="Select a property to view">
+            <select id="property-select" class="form-control custom-select" title="Select a property to view">
                 <option value="all">All Properties</option>
                 {{#each properties}}
                     <option value="{{_id}}">{{street}}</option>
@@ -21,17 +21,17 @@
             </form>
         </div>
         <div class="col-sm-3">
-            <div class="pull-right filter-glyphicons">
-                <div class="btn-group export-btn-group">
-                    <a href="" class="export-glyphicon" title="Export Data" data-toggle="dropdown">
+            <div class="pull-right icons-large icons-light">
+                <span class="dropdown">
+                    <a href="" class="m-r-sm" title="Export Data" data-toggle="dropdown">
                         <span class="icon icon-download"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a id="export-csv" href="#">CSV</a></li>
                         <li><a id="export-pdf" href="#">PDF</a></li>
                     </ul>
-                </div>
-                <a href="" class="print-glyphicon print-btn" title="Print">
+                </span>
+                <a href="" id="print-btn" title="Print Data">
                     <span class="icon icon-print"></span>
                 </a>
             </div>
