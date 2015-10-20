@@ -3,26 +3,32 @@
         <h1 class="m-t-0">Account Settings</h1>
     </div>
 
-    <div class="panel panel-default panel-profile">
-        <div class="panel-heading">
-            <h3 class="panel-title">Profile</h3>
-        </div>
-        {{#autoForm collection='Meteor.users' schema=Schemas.User doc=currentUser type='update' id='updateProfileForm'}}
-            {{#if profileFormSuccess}}
-                <div class="alert alert-success text-center">
-                    <span>Profile updated</span>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default panel-profile">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Profile</h3>
                 </div>
-            {{/if}}
-            {{> afQuickFields name="profile"}}
-            <button type="submit" id="saveProfile" class="btn btn-lg btn-block btn-default">Save Profile</button>
-        {{/autoForm}}
-    </div>
-
-    <div class="panel panel-default panel-change-password">
-        <div class="panel-heading">
-            <h3 class="panel-title">Change Password</h3>
+                {{#autoForm collection='Meteor.users' schema=Schemas.User doc=currentUser type='update' id='updateProfileForm'}}
+                    {{#if profileFormSuccess}}
+                        <div class="alert alert-success text-center">
+                            <span>Profile updated</span>
+                        </div>
+                    {{/if}}
+                    {{> afQuickFields name="profile"}}
+                    <button type="submit" id="saveProfile" class="m-t-md btn btn-lg btn-block btn-default">Save Profile</button>
+                {{/autoForm}}
+            </div>
         </div>
-        {{> atForm state='changePwd'}}
+
+        <div class="col-sm-6">
+            <div class="panel panel-default panel-change-password">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Change Password</h3>
+                </div>
+                {{> atForm state='changePwd'}}
+            </div>
+        </div>
     </div>
 
 </template>

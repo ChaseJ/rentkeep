@@ -8,7 +8,6 @@ iron:router@1.0.9
 accounts-password
 useraccounts:bootstrap@1.11.1
 sacha:spin
-fourseven:scss
 zimme:iron-router-active
 aldeed:autoform@5.3.0
 aldeed:collection2
