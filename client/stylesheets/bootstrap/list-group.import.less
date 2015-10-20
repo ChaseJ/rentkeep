@@ -128,3 +128,30 @@ button.list-group-item {
   margin-bottom: 0;
   line-height: 1.3;
 }
+
+
+// Extra classes for arrays on forms
+.list-group-item.form-array-item {
+  > div {
+    display: table;
+  }
+
+  .form-remove-item-wrap {
+    display: table-cell;
+  }
+
+  .form-remove-item {
+    vertical-align: top;
+    margin-left: 15px;
+  }
+
+  .form-array-item-body {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+  }
+}
+
+.list-group-item.no-border {
+  border: none;
+}
