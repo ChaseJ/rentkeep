@@ -25,7 +25,7 @@ Template.updateInvoiceModal.events({
         e.preventDefault();
         var instance = Template.instance();
 
-        Meteor.call('sendInvoiceDueEmail', Template.instance().invoice(), 'user', function(error, result) {
+        Meteor.call('sendInvoiceDueEmail', instance.invoice()._id, 'user', function(error, result) {
             if (error) {
                 return alert(error.reason);
             } else {

@@ -1,3 +1,32 @@
-ID: {{_id}} <br/><br/>
-Due Date: {{formatDate dueDate}} <br/><br/>
-Amount Due: {{amtDue}}
+<tr style="font-family:'Open Sans','Helvetica',Helvetica,Arial,sans-serif;margin:0;padding:0">
+    <td style="font-family:'Open Sans','Helvetica',Helvetica,Arial,sans-serif;vertical-align:top;margin:0;padding:30px" valign="top">
+        <p>You have an invoice due.</p>
+
+        <table cellpadding="5">
+            <tbody>
+            <tr>
+                <td>Due date:</td>
+                <td>{{formatDate dueDate}}</td>
+            </tr>
+            <tr>
+                <td>Rental address:</td>
+                <td>{{streetAndUnit}}</td>
+            </tr>
+            <tr>
+                <td>Amount:</td>
+                <td><b>{{formatCurrency amtDue}}</b></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>{{desc}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p style="margin:20px 15%;padding:5%;text-align:center;background-color:#f5f5f5">
+            <b>{{currentUser.profile.companyName}}</b><br>
+            <a href="mailto:{{currentUser.emails.[0].address}}" style="color:#37b1eb" target="_blank">{{currentUser.emails.[0].address}}</a><br>
+        </p>
+
+    </td>
+</tr>
