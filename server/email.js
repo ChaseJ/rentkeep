@@ -2,7 +2,7 @@
 Meteor.startup(function () {
     smtp = {
         username: 'rentkeep@gmail.com',
-        password: '^3jZ@Zuq#8',
+        password: 'J#6^y&J8bRCK',
         server:   'smtp.gmail.com',
         port: 465
     };
