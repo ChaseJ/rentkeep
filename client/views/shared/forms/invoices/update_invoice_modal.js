@@ -1,7 +1,8 @@
 Template.updateInvoiceModal.onCreated(function () {
     //Initialization
     var instance = this;
-    instance.noEmailAddresses = new ReactiveVar('');
+    instance.emailError = new ReactiveVar('');
+    instance.emailSending = new ReactiveVar('');
 
     //Cursors
     instance.invoice = function() {
@@ -25,16 +26,18 @@ Template.updateInvoiceModal.events({
         e.preventDefault();
         var instance = Template.instance();
 
+        instance.emailSending.set('Email sending...');
         Meteor.call('sendInvoiceDueEmail', instance.invoice()._id, 'user', function(error, result) {
             if (error) {
                 return alert(error.reason);
             } else {
                 if(result === 'Email sent'){
-                    instance.noEmailAddresses.set('');
+                    instance.emailError.set('');
                 } else if(result) {
-                    instance.noEmailAddresses.set(result);
+                    instance.emailError.set(result);
                 }
             }
+            instance.emailSending.set('')
         })
     }
 });
@@ -47,7 +50,10 @@ Template.updateInvoiceModal.helpers({
         var emailed = _.sortBy(Template.instance().invoice().emailed, function(o) { return o.date; });
         return _.last(emailed);
     },
-    'noEmailAddresses': function() {
-        return Template.instance().noEmailAddresses.get();
+    'emailError': function() {
+        return Template.instance().emailError.get();
+    },
+    'emailSending': function() {
+        return Template.instance().emailSending.get();
     }
 });
