@@ -19,7 +19,10 @@
                             <div class="form-group">
                                 <label class="control-label">Last Emailed</label>
                                 <a class="pull-right" id="email-tenant" href="">Email invoice to tenant(s)</a>
-                                {{#with noEmailAddresses}}
+                                {{#with emailSending}}
+                                    <p>{{this}}</p>
+                                {{/with}}
+                                {{#with emailError}}
                                     <div class="alert alert-danger text-center">
                                         <span>{{this}}</span>
                                     </div>
