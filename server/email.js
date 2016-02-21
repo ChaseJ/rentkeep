@@ -8,7 +8,8 @@ Meteor.startup(function () {
     };
 
     process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
-
+    var oneDay = 86400000;
+    Meteor.setInterval(sendDailyInvoices, oneDay);
 });
 
 
@@ -29,6 +30,86 @@ Meteor.startup(function() {
     };
 });
 
+//server side functions
+var sendDailyInvoices = function() {
+    var dueInvoiceCollection = Invoices.find({});
+
+    dueInvoiceCollection.forEach(function(dueInvoice) {
+        var lease = Leases.findOne(dueInvoice.leaseId);
+        var tenants = Tenants.find({_id: {$in: lease.tenants}});
+        var flag = false;
+
+        /* Checks through a list of tenants in
+         * that invoice to see if they are tests
+         * or not.                               */
+         tenants.forEach(function(tenant) {
+            if(tenant.email.contains("@example.com")) {
+                flag = true;
+           }
+
+        });
+
+        if(flag) {
+            //do nothing
+
+        } else {
+            var oneWeekUntil = new Date();
+            oneWeekUntil.setDate(dueInvoice.dueDate.getDate() - 7);
+
+            var oneWeekAfter = new Date();
+            oneWeekAfter.setDate(dueInvoice.dueDate.getDate() + 7);
+
+            var today = new Date();
+
+            var dueInWeek = today.getDay() === oneWeekUntil.getDay();
+
+            var overDueWeek = today.getDay() === oneWeekAfter.getDay();
+
+            var dueToday = today.getDay() === dueInvoice.dueDate.getDay();
+
+            var needsPaid = dueInvoice.amtPaid < dueInvoice.amtDue;
+
+
+            /*
+             * if today is the day the invoice is due and
+             * the invoice is not paid send a new invoice */
+            if (dueToday && needsPaid) {
+
+                Meteor.call('sendInvoiceDueEmail', dueInvoice._id, 'cron', function (error) {
+                    if (error) {
+                        console.log("There was an error in sendDailyInvoices");
+                        return alert(error.reason);
+                    }
+                })
+            }
+
+            /*
+             * if the due date minus 7 days is the same as today
+             * and the amount is not paid send an invoice             */
+            else if (dueInWeek && needsPaid) {
+
+                Meteor.call('sendInvoiceDueEmail', dueInvoice._id, 'cron', function (error) {
+                    if (error) {
+                        console.log("There was an error in sendDailyInvoices");
+                        return alert(error.reason);
+                    }
+                })
+            }
+
+            /*
+             * if the due date plus 7 days is the same as today
+             * and the amount is not paid send an invoice             */
+            else if (overDueWeek && needsPaid) {
+                Meteor.call('sendInvoiceDueEmail', dueInvoice._id, 'cron', function (error) {
+                    if (error) {
+                        console.log("There was an error in sendDailyInvoices");
+                        return alert(error.reason);
+                    }
+                })
+            }
+        }
+    });
+};
 
 //Email methods
 Meteor.methods({
